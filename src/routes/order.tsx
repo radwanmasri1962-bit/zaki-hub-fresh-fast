@@ -3,9 +3,9 @@ import { Store, Truck, ArrowRight } from "lucide-react";
 import { orderDestinations, contact } from "@/data/locations";
 
 export const Route = createFileRoute("/order")({
-  validateSearch: (search: Record<string, unknown>) => ({
-    location: typeof search["location"] === "string" ? (search["location"] as string) : undefined,
-  }),
+  validateSearch: (search: Record<string, unknown>): { location?: string } =>
+    typeof search["location"] === "string" ? { location: search["location"] } : {},
+
   head: () => ({
     meta: [
       { title: "Order Online | Zaki Mediterranean Grill Columbus" },
