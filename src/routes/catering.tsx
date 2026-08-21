@@ -76,10 +76,12 @@ function CateringPage() {
               Let Zaki bring fresh Mediterranean food to you.
             </p>
           </div>
-          <PhotoSlot
-            label="ZAKI TRUCK PHOTOGRAPHY"
-            caption="Zaki truck serving at an event."
-            className="min-h-[260px] border-cream/25 bg-cream/5 md:min-h-[360px]"
+          <ConceptPhoto
+            src={cateringSpread}
+            alt="Mediterranean catering spread with grilled chicken, falafel, hummus, rice, salads and pita"
+            width={1536}
+            height={864}
+            className="min-h-[260px] md:min-h-[360px]"
           />
         </div>
       </section>

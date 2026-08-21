@@ -23,10 +23,13 @@ export const Route = createFileRoute("/menu")({
 function MenuPage() {
   return (
     <>
-      <section className="bg-deep py-14 text-deep-foreground md:py-20">
+      <section className="border-b border-border bg-cream py-14 md:py-20">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
-          <h1 className="text-4xl font-bold md:text-6xl">The Zaki Menu</h1>
-          <p className="mt-4 max-w-2xl text-deep-foreground/80 md:text-lg">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+            Fresh · Halal · Columbus
+          </span>
+          <h1 className="mt-3 text-4xl font-bold text-deep md:text-6xl">The Zaki Menu</h1>
+          <p className="mt-4 max-w-2xl text-muted-foreground md:text-lg">
             Bold Mediterranean flavors, fresh ingredients and halal proteins. Available at all three
             trucks and at Budd Dairy Food Hall.
           </p>
