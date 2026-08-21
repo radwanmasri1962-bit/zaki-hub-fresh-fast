@@ -108,14 +108,16 @@ function Home() {
             </Link>
           </div>
 
-          <ConceptPhoto
-            src={heroBowl}
-            alt="Mediterranean chicken shawarma bowl with basmati rice, salad, pickles, garlic sauce and warm pita"
-            width={1024}
-            height={1280}
-            priority
-            className="min-h-[340px] rounded-3xl md:min-h-[560px]"
-          />
+          <div className="overflow-hidden rounded-3xl shadow-lift">
+            <img
+              src={heroMix.url}
+              alt="Zaki chicken shawarma bowl with rice, salad, pickled turnips and pita, served with hummus, fries, baklava and iced tea"
+              width={1405}
+              height={1131}
+              loading="eager"
+              className="h-full min-h-[300px] w-full object-cover md:min-h-[520px]"
+            />
+          </div>
         </div>
       </section>
 
@@ -127,9 +129,15 @@ function Home() {
             {quickActions.map((a) => (
               <div
                 key={a.title}
-                className="flex flex-col overflow-hidden rounded-2xl bg-card shadow-card transition-shadow hover:shadow-lift"
+                className="flex flex-col overflow-hidden rounded-2xl border border-border/70 bg-card shadow-card transition-shadow hover:shadow-lift"
               >
-                <PhotoSlot label={a.label} className="h-40 rounded-none border-x-0 border-t-0" />
+                <img
+                  src={a.image}
+                  alt={a.alt}
+                  loading="lazy"
+                  className="h-52 w-full object-cover"
+                />
+
                 <div className="flex flex-1 flex-col p-6">
                   <a.icon className="h-7 w-7 text-primary" />
                   <h2 className="mt-4 text-2xl font-bold">{a.title}</h2>
