@@ -14,6 +14,7 @@ import { Route as BuddDairyRouteImport } from './routes/budd-dairy'
 import { Route as CateringRouteImport } from './routes/catering'
 import { Route as FindOurTrucksRouteImport } from './routes/find-our-trucks'
 import { Route as MenuRouteImport } from './routes/menu'
+import { Route as OrderRouteImport } from './routes/order'
 import { Route as OurStoryRouteImport } from './routes/our-story'
 
 const IndexRoute = IndexRouteImport.update({
@@ -41,6 +42,11 @@ const MenuRoute = MenuRouteImport.update({
   path: '/menu',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OrderRoute = OrderRouteImport.update({
+  id: '/order',
+  path: '/order',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OurStoryRoute = OurStoryRouteImport.update({
   id: '/our-story',
   path: '/our-story',
@@ -53,6 +59,7 @@ export interface FileRoutesByFullPath {
   '/catering': typeof CateringRoute
   '/find-our-trucks': typeof FindOurTrucksRoute
   '/menu': typeof MenuRoute
+  '/order': typeof OrderRoute
   '/our-story': typeof OurStoryRoute
 }
 export interface FileRoutesByTo {
@@ -61,6 +68,7 @@ export interface FileRoutesByTo {
   '/catering': typeof CateringRoute
   '/find-our-trucks': typeof FindOurTrucksRoute
   '/menu': typeof MenuRoute
+  '/order': typeof OrderRoute
   '/our-story': typeof OurStoryRoute
 }
 export interface FileRoutesById {
@@ -70,6 +78,7 @@ export interface FileRoutesById {
   '/catering': typeof CateringRoute
   '/find-our-trucks': typeof FindOurTrucksRoute
   '/menu': typeof MenuRoute
+  '/order': typeof OrderRoute
   '/our-story': typeof OurStoryRoute
 }
 export interface FileRouteTypes {
@@ -80,6 +89,7 @@ export interface FileRouteTypes {
     | '/catering'
     | '/find-our-trucks'
     | '/menu'
+    | '/order'
     | '/our-story'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -88,6 +98,7 @@ export interface FileRouteTypes {
     | '/catering'
     | '/find-our-trucks'
     | '/menu'
+    | '/order'
     | '/our-story'
   id:
     | '__root__'
@@ -96,6 +107,7 @@ export interface FileRouteTypes {
     | '/catering'
     | '/find-our-trucks'
     | '/menu'
+    | '/order'
     | '/our-story'
   fileRoutesById: FileRoutesById
 }
@@ -105,6 +117,7 @@ export interface RootRouteChildren {
   CateringRoute: typeof CateringRoute
   FindOurTrucksRoute: typeof FindOurTrucksRoute
   MenuRoute: typeof MenuRoute
+  OrderRoute: typeof OrderRoute
   OurStoryRoute: typeof OurStoryRoute
 }
 
@@ -145,6 +158,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MenuRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/order': {
+      id: '/order'
+      path: '/order'
+      fullPath: '/order'
+      preLoaderRoute: typeof OrderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/our-story': {
       id: '/our-story'
       path: '/our-story'
@@ -161,6 +181,7 @@ const rootRouteChildren: RootRouteChildren = {
   CateringRoute: CateringRoute,
   FindOurTrucksRoute: FindOurTrucksRoute,
   MenuRoute: MenuRoute,
+  OrderRoute: OrderRoute,
   OurStoryRoute: OurStoryRoute,
 }
 export const routeTree = rootRouteImport
