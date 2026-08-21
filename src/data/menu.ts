@@ -15,6 +15,10 @@ import summerSalataLambThumb from "@/assets/summer-salata-lamb.png.asset.json";
 import zakiFriesSidesThumb from "@/assets/zaki-fries-sides.png.asset.json";
 import zakiFriesChickenThumb from "@/assets/zaki-fries-chicken.png.asset.json";
 import zakiFriesLambThumb from "@/assets/zaki-fries-lamb.png.asset.json";
+import friesThumb from "@/assets/fries.png.asset.json";
+import sideFetaThumb from "@/assets/side-feta.png.asset.json";
+import baklavaThumb from "@/assets/baklava.png.asset.json";
+import namooraThumb from "@/assets/namoora.png.asset.json";
 
 export type MenuItem = {
   name: string;
