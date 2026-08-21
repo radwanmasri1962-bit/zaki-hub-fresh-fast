@@ -9,6 +9,12 @@ import shawarmaSandwichThumb from "@/assets/chicken-shawarma-sandwich-chatgpt-1.
 import falafelSandwichThumb from "@/assets/revenge-of-the-falafel-chatgpt-1.png.asset.json";
 import gyroHeroThumb from "@/assets/gyro-the-hero-chatgpt-1.png.asset.json";
 import falafelBowlThumb from "@/assets/falafel-bowl-chatgpt-1.png.asset.json";
+import summerSalataThumb from "@/assets/summer-salata.png.asset.json";
+import summerSalataChickenThumb from "@/assets/summer-salata-chicken.png.asset.json";
+import summerSalataLambThumb from "@/assets/summer-salata-lamb.png.asset.json";
+import zakiFriesSidesThumb from "@/assets/zaki-fries-sides.png.asset.json";
+import zakiFriesChickenThumb from "@/assets/zaki-fries-chicken.png.asset.json";
+import zakiFriesLambThumb from "@/assets/zaki-fries-lamb.png.asset.json";
 
 export type MenuItem = {
   name: string;
