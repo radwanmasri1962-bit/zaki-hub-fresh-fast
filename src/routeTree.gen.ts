@@ -10,33 +10,128 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BuddDairyRouteImport } from './routes/budd-dairy'
+import { Route as CateringRouteImport } from './routes/catering'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as FindOurTrucksRouteImport } from './routes/find-our-trucks'
+import { Route as MenuRouteImport } from './routes/menu'
+import { Route as OrderRouteImport } from './routes/order'
+import { Route as OurStoryRouteImport } from './routes/our-story'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BuddDairyRoute = BuddDairyRouteImport.update({
+  id: '/budd-dairy',
+  path: '/budd-dairy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CateringRoute = CateringRouteImport.update({
+  id: '/catering',
+  path: '/catering',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FindOurTrucksRoute = FindOurTrucksRouteImport.update({
+  id: '/find-our-trucks',
+  path: '/find-our-trucks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MenuRoute = MenuRouteImport.update({
+  id: '/menu',
+  path: '/menu',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OrderRoute = OrderRouteImport.update({
+  id: '/order',
+  path: '/order',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OurStoryRoute = OurStoryRouteImport.update({
+  id: '/our-story',
+  path: '/our-story',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/budd-dairy': typeof BuddDairyRoute
+  '/catering': typeof CateringRoute
+  '/contact': typeof ContactRoute
+  '/find-our-trucks': typeof FindOurTrucksRoute
+  '/menu': typeof MenuRoute
+  '/order': typeof OrderRoute
+  '/our-story': typeof OurStoryRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/budd-dairy': typeof BuddDairyRoute
+  '/catering': typeof CateringRoute
+  '/contact': typeof ContactRoute
+  '/find-our-trucks': typeof FindOurTrucksRoute
+  '/menu': typeof MenuRoute
+  '/order': typeof OrderRoute
+  '/our-story': typeof OurStoryRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/budd-dairy': typeof BuddDairyRoute
+  '/catering': typeof CateringRoute
+  '/contact': typeof ContactRoute
+  '/find-our-trucks': typeof FindOurTrucksRoute
+  '/menu': typeof MenuRoute
+  '/order': typeof OrderRoute
+  '/our-story': typeof OurStoryRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/budd-dairy'
+    | '/catering'
+    | '/contact'
+    | '/find-our-trucks'
+    | '/menu'
+    | '/order'
+    | '/our-story'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/budd-dairy'
+    | '/catering'
+    | '/contact'
+    | '/find-our-trucks'
+    | '/menu'
+    | '/order'
+    | '/our-story'
+  id:
+    | '__root__'
+    | '/'
+    | '/budd-dairy'
+    | '/catering'
+    | '/contact'
+    | '/find-our-trucks'
+    | '/menu'
+    | '/order'
+    | '/our-story'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BuddDairyRoute: typeof BuddDairyRoute
+  CateringRoute: typeof CateringRoute
+  ContactRoute: typeof ContactRoute
+  FindOurTrucksRoute: typeof FindOurTrucksRoute
+  MenuRoute: typeof MenuRoute
+  OrderRoute: typeof OrderRoute
+  OurStoryRoute: typeof OurStoryRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +143,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/budd-dairy': {
+      id: '/budd-dairy'
+      path: '/budd-dairy'
+      fullPath: '/budd-dairy'
+      preLoaderRoute: typeof BuddDairyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/catering': {
+      id: '/catering'
+      path: '/catering'
+      fullPath: '/catering'
+      preLoaderRoute: typeof CateringRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/find-our-trucks': {
+      id: '/find-our-trucks'
+      path: '/find-our-trucks'
+      fullPath: '/find-our-trucks'
+      preLoaderRoute: typeof FindOurTrucksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/menu': {
+      id: '/menu'
+      path: '/menu'
+      fullPath: '/menu'
+      preLoaderRoute: typeof MenuRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/order': {
+      id: '/order'
+      path: '/order'
+      fullPath: '/order'
+      preLoaderRoute: typeof OrderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/our-story': {
+      id: '/our-story'
+      path: '/our-story'
+      fullPath: '/our-story'
+      preLoaderRoute: typeof OurStoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BuddDairyRoute: BuddDairyRoute,
+  CateringRoute: CateringRoute,
+  ContactRoute: ContactRoute,
+  FindOurTrucksRoute: FindOurTrucksRoute,
+  MenuRoute: MenuRoute,
+  OrderRoute: OrderRoute,
+  OurStoryRoute: OurStoryRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
