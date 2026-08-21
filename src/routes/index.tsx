@@ -37,7 +37,8 @@ const quickActions = [
     cta: "Order Now",
     to: "/order" as const,
     icon: ShoppingBag,
-    label: "ZAKI FOOD PHOTOGRAPHY",
+    image: orderTakeaway.url,
+    alt: "Zaki takeaway bag, mezze bowl, iced tea and the Zaki ordering app",
   },
   {
     title: "Find a Truck",
@@ -45,7 +46,8 @@ const quickActions = [
     cta: "Find Today's Trucks",
     to: "/find-our-trucks" as const,
     icon: MapPin,
-    label: "ZAKI TRUCK PHOTOGRAPHY",
+    image: foodTrucks.url,
+    alt: "The three Zaki food trucks and crew parked outside Ohio Stadium in Columbus",
   },
   {
     title: "Catering & Events",
@@ -53,9 +55,11 @@ const quickActions = [
     cta: "Get a Catering Quote",
     to: "/catering" as const,
     icon: CalendarDays,
-    label: "ZAKI TRUCK PHOTOGRAPHY",
+    image: cateringSpread.url,
+    alt: "Zaki catering spread of rice, grilled chicken, gyro, falafel, salad, pita and hummus in an office",
   },
 ];
+
 
 function Home() {
   return (
