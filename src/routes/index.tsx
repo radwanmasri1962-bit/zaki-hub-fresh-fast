@@ -1,11 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ShoppingBag, MapPin, CalendarDays, ArrowRight, Star } from "lucide-react";
 import logo from "@/assets/zaki-logo.png.asset.json";
-import heroBowl from "@/assets/concept-hero-bowl.jpg";
+import heroMix from "@/assets/hero-mix.png.asset.json";
+import orderTakeaway from "@/assets/order-takeaway.png.asset.json";
+import foodTrucks from "@/assets/food-trucks.png.asset.json";
+import cateringSpread from "@/assets/catering-spread.png.asset.json";
 import { PhotoSlot } from "@/components/site/PhotoSlot";
-import { ConceptPhoto } from "@/components/site/ConceptPhoto";
 import { signatureItems } from "@/data/menu";
 import { buddDairy, mapsUrl } from "@/data/locations";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -34,7 +37,8 @@ const quickActions = [
     cta: "Order Now",
     to: "/order" as const,
     icon: ShoppingBag,
-    label: "ZAKI FOOD PHOTOGRAPHY",
+    image: orderTakeaway.url,
+    alt: "Zaki takeaway bag, mezze bowl, iced tea and the Zaki ordering app",
   },
   {
     title: "Find a Truck",
@@ -42,7 +46,8 @@ const quickActions = [
     cta: "Find Today's Trucks",
     to: "/find-our-trucks" as const,
     icon: MapPin,
-    label: "ZAKI TRUCK PHOTOGRAPHY",
+    image: foodTrucks.url,
+    alt: "The three Zaki food trucks and crew parked outside Ohio Stadium in Columbus",
   },
   {
     title: "Catering & Events",
@@ -50,9 +55,11 @@ const quickActions = [
     cta: "Get a Catering Quote",
     to: "/catering" as const,
     icon: CalendarDays,
-    label: "ZAKI TRUCK PHOTOGRAPHY",
+    image: cateringSpread.url,
+    alt: "Zaki catering spread of rice, grilled chicken, gyro, falafel, salad, pita and hummus in an office",
   },
 ];
+
 
 function Home() {
   return (
@@ -101,14 +108,16 @@ function Home() {
             </Link>
           </div>
 
-          <ConceptPhoto
-            src={heroBowl}
-            alt="Mediterranean chicken shawarma bowl with basmati rice, salad, pickles, garlic sauce and warm pita"
-            width={1024}
-            height={1280}
-            priority
-            className="min-h-[340px] rounded-3xl md:min-h-[560px]"
-          />
+          <div className="overflow-hidden rounded-3xl shadow-lift">
+            <img
+              src={heroMix.url}
+              alt="Zaki chicken shawarma bowl with rice, salad, pickled turnips and pita, served with hummus, fries, baklava and iced tea"
+              width={1405}
+              height={1131}
+              loading="eager"
+              className="h-full min-h-[300px] w-full object-cover md:min-h-[520px]"
+            />
+          </div>
         </div>
       </section>
 
@@ -120,9 +129,15 @@ function Home() {
             {quickActions.map((a) => (
               <div
                 key={a.title}
-                className="flex flex-col overflow-hidden rounded-2xl bg-card shadow-card transition-shadow hover:shadow-lift"
+                className="flex flex-col overflow-hidden rounded-2xl border border-border/70 bg-card shadow-card transition-shadow hover:shadow-lift"
               >
-                <PhotoSlot label={a.label} className="h-40 rounded-none border-x-0 border-t-0" />
+                <img
+                  src={a.image}
+                  alt={a.alt}
+                  loading="lazy"
+                  className="h-52 w-full object-cover"
+                />
+
                 <div className="flex flex-1 flex-col p-6">
                   <a.icon className="h-7 w-7 text-primary" />
                   <h2 className="mt-4 text-2xl font-bold">{a.title}</h2>
