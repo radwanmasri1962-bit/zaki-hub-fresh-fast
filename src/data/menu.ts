@@ -15,6 +15,10 @@ import summerSalataLambThumb from "@/assets/summer-salata-lamb.png.asset.json";
 import zakiFriesSidesThumb from "@/assets/zaki-fries-sides.png.asset.json";
 import zakiFriesChickenThumb from "@/assets/zaki-fries-chicken.png.asset.json";
 import zakiFriesLambThumb from "@/assets/zaki-fries-lamb.png.asset.json";
+import friesThumb from "@/assets/fries.png.asset.json";
+import sideFetaThumb from "@/assets/side-feta.png.asset.json";
+import baklavaThumb from "@/assets/baklava.png.asset.json";
+import namooraThumb from "@/assets/namoora.png.asset.json";
 
 export type MenuItem = {
   name: string;
@@ -221,8 +225,15 @@ export const menu: MenuCategory[] = [
         price: "$5+",
         description: "Crispy Idaho potato fries.",
         tags: ["Gluten Free", "Vegetarian", "Vegan"],
+        image: friesThumb.url,
+        imageAlt: "Crispy golden French fries served in a paper-lined tray",
       },
-      { name: "Side of Feta", price: "$2" },
+      {
+        name: "Side of Feta",
+        price: "$2",
+        image: sideFetaThumb.url,
+        imageAlt: "Small cup of crumbled feta cheese",
+      },
     ],
   },
   {
@@ -233,11 +244,15 @@ export const menu: MenuCategory[] = [
         name: "Baklava",
         price: "$7",
         description: "Classic flaky pastry layered with your choice of walnut or pistachio.",
+        image: baklavaThumb.url,
+        imageAlt: "Slice of pistachio baklava in a paper-lined tray",
       },
       {
         name: "Namoora",
         price: "$7",
         description: "Traditional Middle Eastern semolina cake with a sweet, tender finish.",
+        image: namooraThumb.url,
+        imageAlt: "Square of namoora semolina cake topped with pistachio and coconut",
       },
     ],
   },
