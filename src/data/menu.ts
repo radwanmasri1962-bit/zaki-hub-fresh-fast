@@ -5,6 +5,10 @@ import hummusThumb from "@/assets/hummus-harissa-chatgpt-1.png.asset.json";
 import grapeLeavesThumb from "@/assets/grape-leaves-chatgpt-1.png.asset.json";
 import babaThumb from "@/assets/baba-ghannuj-chatgpt-1.webp.asset.json";
 import falafelBallsThumb from "@/assets/falafel-balls-chatgpt-1.webp.asset.json";
+import shawarmaSandwichThumb from "@/assets/chicken-shawarma-sandwich-chatgpt-1.png.asset.json";
+import falafelSandwichThumb from "@/assets/revenge-of-the-falafel-chatgpt-1.png.asset.json";
+import gyroHeroThumb from "@/assets/gyro-the-hero-chatgpt-1.png.asset.json";
+import falafelBowlThumb from "@/assets/falafel-bowl-chatgpt-1.png.asset.json";
 
 export type MenuItem = {
   name: string;
@@ -109,6 +113,8 @@ export const menu: MenuCategory[] = [
         price: "$12",
         description: "Seasoned chicken shawarma with turmeric, paprika and Zaki garlic sauce.",
         badge: "Popular",
+        image: shawarmaSandwichThumb.url,
+        imageAlt: "Chicken shawarma sandwich halved in a paper tray with lettuce, tomato and garlic sauce",
       },
       {
         name: "Revenge of the Falafel Sandwich",
@@ -116,12 +122,16 @@ export const menu: MenuCategory[] = [
         description: "Fresh falafel served with tahini and Zaki-made pickles.",
         tags: ["Vegetarian", "Vegan"],
         badge: "Vegetarian Favorite",
+        image: falafelSandwichThumb.url,
+        imageAlt: "Falafel sandwich halved in a paper tray with tahini, pickles and vegetables",
       },
       {
         name: "Gyro the Hero Sandwich",
         price: "$12",
         description: "Slow-roasted lamb and beef with creamy tzatziki, served in warm pita.",
         badge: "Zaki Signature",
+        image: gyroHeroThumb.url,
+        imageAlt: "Gyro sandwich in warm pita with lamb and beef, tomato, onion and tzatziki",
       },
       {
         name: "Zaki Chicken Bowl",
@@ -129,12 +139,16 @@ export const menu: MenuCategory[] = [
         description:
           "Tender chicken seasoned with za'atar, sumac and paprika, served over basmati rice with Zaki garlic sauce.",
         tags: ["Gluten Free"],
+        image: chickenBowlThumb.url,
+        imageAlt: "Zaki chicken bowl with grilled chicken, rice, vegetables and garlic sauce",
       },
       {
         name: "Gyro Bowl",
         price: "$16",
         description: "Slow-roasted lamb and beef served over basmati rice with creamy tzatziki.",
         tags: ["Gluten Free"],
+        image: gyroBowlThumb.url,
+        imageAlt: "Gyro bowl with lamb and beef over rice with fresh vegetables and sauce",
       },
       {
         name: "Falafel Bowl",
@@ -142,6 +156,8 @@ export const menu: MenuCategory[] = [
         description:
           "Fresh falafel made with chickpeas, parsley, green onion and cumin, served over basmati rice.",
         tags: ["Gluten Free", "Vegetarian", "Vegan"],
+        image: falafelBowlThumb.url,
+        imageAlt: "Falafel bowl with falafel balls over rice with fresh vegetables and tahini",
       },
     ],
   },
