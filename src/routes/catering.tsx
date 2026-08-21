@@ -126,7 +126,7 @@ function CateringPage() {
         </div>
       </section>
 
-      <section id="inquiry" className="bg-secondary/60 scroll-mt-24 section-pad">
+      <section id="inquiry" className="bg-secondary scroll-mt-24 section-pad">
         <div className="mx-auto max-w-3xl px-4 md:px-6">
           <h2 className="text-3xl font-bold md:text-4xl">Request a Quote</h2>
           <p className="mt-2 text-muted-foreground">
