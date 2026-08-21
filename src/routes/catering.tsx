@@ -3,7 +3,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { z } from "zod";
 import { toast } from "sonner";
 import { Truck, UtensilsCrossed } from "lucide-react";
-import { PhotoSlot } from "@/components/site/PhotoSlot";
+import { ConceptPhoto } from "@/components/site/ConceptPhoto";
+import cateringSpread from "@/assets/concept-catering-spread.jpg";
 
 export const Route = createFileRoute("/catering")({
   head: () => ({
