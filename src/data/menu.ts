@@ -1,3 +1,11 @@
+import chickenBowlThumb from "@/assets/chicken-bowl-chatgpt-2.png.asset.json";
+import gyroBowlThumb from "@/assets/gyro-bowl-chatgpt-2.png.asset.json";
+import zakiFriesThumb from "@/assets/zaki-fries-chatgpt-1.webp.asset.json";
+import hummusThumb from "@/assets/hummus-harissa-chatgpt-1.png.asset.json";
+import grapeLeavesThumb from "@/assets/grape-leaves-chatgpt-1.png.asset.json";
+import babaThumb from "@/assets/baba-ghannuj-chatgpt-1.webp.asset.json";
+import falafelBallsThumb from "@/assets/falafel-balls-chatgpt-1.webp.asset.json";
+
 export type MenuItem = {
   name: string;
   price: string;
