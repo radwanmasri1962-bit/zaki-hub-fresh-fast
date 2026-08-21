@@ -9,6 +9,12 @@ import shawarmaSandwichThumb from "@/assets/chicken-shawarma-sandwich-chatgpt-1.
 import falafelSandwichThumb from "@/assets/revenge-of-the-falafel-chatgpt-1.png.asset.json";
 import gyroHeroThumb from "@/assets/gyro-the-hero-chatgpt-1.png.asset.json";
 import falafelBowlThumb from "@/assets/falafel-bowl-chatgpt-1.png.asset.json";
+import summerSalataThumb from "@/assets/summer-salata.png.asset.json";
+import summerSalataChickenThumb from "@/assets/summer-salata-chicken.png.asset.json";
+import summerSalataLambThumb from "@/assets/summer-salata-lamb.png.asset.json";
+import zakiFriesSidesThumb from "@/assets/zaki-fries-sides.png.asset.json";
+import zakiFriesChickenThumb from "@/assets/zaki-fries-chicken.png.asset.json";
+import zakiFriesLambThumb from "@/assets/zaki-fries-lamb.png.asset.json";
 
 export type MenuItem = {
   name: string;
@@ -171,32 +177,44 @@ export const menu: MenuCategory[] = [
         description:
           "Fresh spring mix with feta, cucumber and grape tomatoes, tossed with oregano vinaigrette.",
         tags: ["Gluten Free", "Vegetarian"],
+        image: summerSalataThumb.url,
+        imageAlt: "Summer salata bowl with cucumber, tomato, feta, olives, peppers and red onion",
       },
       {
         name: "Summer Salata with Chicken",
         price: "$15",
         description: "Zaki's fresh Summer Salata topped with seasoned chicken.",
+        image: summerSalataChickenThumb.url,
+        imageAlt: "Summer salata bowl topped with sliced grilled chicken",
       },
       {
         name: "Summer Salata with Lamb",
         price: "$15",
         description: "Zaki's fresh Summer Salata topped with slow-roasted lamb and beef.",
+        image: summerSalataLambThumb.url,
+        imageAlt: "Summer salata bowl topped with slow-roasted lamb and beef and white sauce",
       },
       {
         name: "Zaki Fries",
         price: "$11",
         description: "Crispy fries topped with feta, banana peppers and Zaki garlic sauce.",
         tags: ["Vegetarian"],
+        image: zakiFriesSidesThumb.url,
+        imageAlt: "Zaki fries topped with feta, banana peppers and garlic sauce",
       },
       {
         name: "Zaki Fries with Chicken",
         price: "$16",
         description: "Signature Zaki Fries topped with seasoned chicken.",
+        image: zakiFriesChickenThumb.url,
+        imageAlt: "Zaki fries topped with seasoned chicken, tomato, onion and garlic sauce",
       },
       {
         name: "Zaki Fries with Lamb",
         price: "$16",
         description: "Signature Zaki Fries topped with slow-roasted lamb and beef.",
+        image: zakiFriesLambThumb.url,
+        imageAlt: "Zaki fries topped with slow-roasted lamb and beef, vegetables and garlic sauce",
       },
       {
         name: "Fries",
