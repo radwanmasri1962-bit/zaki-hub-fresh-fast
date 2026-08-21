@@ -51,7 +51,7 @@ function TrucksPage() {
             <article key={stop.truck} className="flex flex-col rounded-2xl bg-card p-6 shadow-card">
               <div className="flex items-center justify-between gap-3">
                 <h3 className="text-lg font-bold text-primary">{stop.truck}</h3>
-                <span className="rounded-full bg-secondary px-3 py-1 text-xs font-semibold">
+                <span className="rounded-full bg-muted px-3 py-1 text-xs font-semibold">
                   {stop.distance}
                 </span>
               </div>
@@ -81,7 +81,7 @@ function TrucksPage() {
                     <ShoppingBag className="h-4 w-4" /> Order Ahead
                   </Link>
                 ) : (
-                  <span className="rounded-xl bg-secondary px-5 py-3.5 text-center text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+                  <span className="rounded-xl bg-muted px-5 py-3.5 text-center text-sm font-semibold uppercase tracking-wide text-muted-foreground">
                     Walk-up only today
                   </span>
                 )}
@@ -97,7 +97,7 @@ function TrucksPage() {
         />
       </section>
 
-      <section className="bg-secondary/60 section-pad">
+      <section className="bg-secondary section-pad">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
           <h2 className="text-2xl font-bold md:text-3xl">Upcoming Stops</h2>
           <p className="mt-2 text-muted-foreground">This week across Central Ohio.</p>

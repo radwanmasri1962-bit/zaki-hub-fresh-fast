@@ -75,7 +75,7 @@ function BuddDairyPage() {
         />
       </section>
 
-      <section className="bg-secondary/60 section-pad">
+      <section className="bg-secondary section-pad">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
           <h2 className="text-2xl font-bold md:text-3xl">What to expect</h2>
           <div className="mt-6 grid gap-5 md:grid-cols-3">

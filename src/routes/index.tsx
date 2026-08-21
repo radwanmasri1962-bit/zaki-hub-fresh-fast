@@ -141,7 +141,7 @@ function Home() {
       </section>
 
       {/* OUR FOOD */}
-      <section className="bg-secondary/60 section-pad">
+      <section className="bg-secondary section-pad">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
           <h2 className="max-w-2xl text-3xl font-bold md:text-5xl">
             Mediterranean Favorites. Made Fresh.
@@ -153,7 +153,7 @@ function Home() {
 
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {signatureItems.map((item) => (
-              <article key={item.name} className="overflow-hidden rounded-2xl bg-card shadow-card">
+              <article key={item.name} className="overflow-hidden rounded-2xl border border-border/70 bg-card shadow-card">
                 <PhotoSlot
                   label="ZAKI FOOD PHOTOGRAPHY"
                   caption={item.name}

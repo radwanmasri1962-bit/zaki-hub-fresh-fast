@@ -47,7 +47,7 @@ function StoryPage() {
             {["Local", "Independent", "Family-operated", "Columbus"].map((t) => (
               <span
                 key={t}
-                className="rounded-full bg-secondary px-4 py-2 text-xs font-semibold uppercase tracking-wide"
+                className="rounded-full bg-muted px-4 py-2 text-xs font-semibold uppercase tracking-wide"
               >
                 {t}
               </span>
@@ -61,7 +61,7 @@ function StoryPage() {
         />
       </section>
 
-      <section className="bg-secondary/60 section-pad">
+      <section className="bg-secondary section-pad">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
           <div className="grid gap-6 md:grid-cols-2">
             <PhotoSlot label="ZAKI TRUCK PHOTOGRAPHY" className="min-h-[220px]" />
