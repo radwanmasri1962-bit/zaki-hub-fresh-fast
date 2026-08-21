@@ -127,8 +127,8 @@
   position: relative;
   overflow: hidden;
   border-radius: var(--radius-2xl);
-  background-color: color-mix(in oklab, var(--primary) 8%, var(--cream));
-  border: 1px dashed color-mix(in oklab, var(--primary) 35%, transparent);
+  background-color: color-mix(in oklab, var(--taupe) 28%, var(--cream));
+  border: 1px dashed color-mix(in oklab, var(--deep) 30%, transparent);
   display: grid;
   place-items: center;
   text-align: center;
