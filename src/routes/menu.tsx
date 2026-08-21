@@ -61,18 +61,30 @@ function MenuPage() {
           <section key={category.id} id={category.id} className="scroll-mt-40 pb-14">
             <h2 className="text-2xl font-bold md:text-4xl">{category.title}</h2>
             <div className="mt-6 space-y-4">
-              {category.items.map((item, i) => (
+              {category.items.map((item, i) => {
+                const badge = item.badge ?? (item.bestSeller ? "Best Seller" : null);
+                return (
                 <article
                   key={`${category.id}-${item.name}-${i}`}
                   className="rounded-2xl bg-card p-5 shadow-card"
                 >
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="min-w-0">
+                  <div className="flex items-start gap-4">
+                    <div className="h-[70px] w-[70px] shrink-0 overflow-hidden rounded-xl border border-border bg-muted md:h-[85px] md:w-[85px]">
+                      {item.image ? (
+                        <img
+                          src={item.image}
+                          alt={item.imageAlt ?? item.name}
+                          loading="lazy"
+                          className="h-full w-full object-cover object-center"
+                        />
+                      ) : null}
+                    </div>
+                    <div className="min-w-0 flex-1">
                       <div className="flex flex-wrap items-center gap-2">
                         <h3 className="text-lg font-semibold">{item.name}</h3>
-                        {item.bestSeller ? (
-                          <span className="rounded-full bg-gold/20 px-2.5 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-gold-foreground">
-                            Best Seller
+                        {badge ? (
+                          <span className="rounded-full border border-gold/40 bg-gold/10 px-2.5 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.16em] text-gold-foreground/80">
+                            {badge}
                           </span>
                         ) : null}
                       </div>
@@ -88,7 +100,8 @@ function MenuPage() {
                     <span className="shrink-0 text-lg font-bold text-primary">{item.price}</span>
                   </div>
                 </article>
-              ))}
+                );
+              })}
             </div>
             {category.note ? (
               <p className="mt-4 text-xs text-muted-foreground">{category.note}</p>
