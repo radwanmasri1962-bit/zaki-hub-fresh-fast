@@ -1,11 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ShoppingBag, MapPin, CalendarDays, ArrowRight, Star } from "lucide-react";
 import logo from "@/assets/zaki-logo.png.asset.json";
-import heroBowl from "@/assets/concept-hero-bowl.jpg";
+import heroMix from "@/assets/hero-mix.png.asset.json";
+import orderTakeaway from "@/assets/order-takeaway.png.asset.json";
+import foodTrucks from "@/assets/food-trucks.png.asset.json";
+import cateringSpread from "@/assets/catering-spread.png.asset.json";
 import { PhotoSlot } from "@/components/site/PhotoSlot";
-import { ConceptPhoto } from "@/components/site/ConceptPhoto";
 import { signatureItems } from "@/data/menu";
 import { buddDairy, mapsUrl } from "@/data/locations";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
