@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BuddDairyRouteImport } from './routes/budd-dairy'
 import { Route as CateringRouteImport } from './routes/catering'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FindOurTrucksRouteImport } from './routes/find-our-trucks'
 import { Route as MenuRouteImport } from './routes/menu'
 import { Route as OrderRouteImport } from './routes/order'
@@ -30,6 +31,11 @@ const BuddDairyRoute = BuddDairyRouteImport.update({
 const CateringRoute = CateringRouteImport.update({
   id: '/catering',
   path: '/catering',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FindOurTrucksRoute = FindOurTrucksRouteImport.update({
@@ -57,6 +63,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/budd-dairy': typeof BuddDairyRoute
   '/catering': typeof CateringRoute
+  '/contact': typeof ContactRoute
   '/find-our-trucks': typeof FindOurTrucksRoute
   '/menu': typeof MenuRoute
   '/order': typeof OrderRoute
@@ -66,6 +73,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/budd-dairy': typeof BuddDairyRoute
   '/catering': typeof CateringRoute
+  '/contact': typeof ContactRoute
   '/find-our-trucks': typeof FindOurTrucksRoute
   '/menu': typeof MenuRoute
   '/order': typeof OrderRoute
@@ -76,6 +84,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/budd-dairy': typeof BuddDairyRoute
   '/catering': typeof CateringRoute
+  '/contact': typeof ContactRoute
   '/find-our-trucks': typeof FindOurTrucksRoute
   '/menu': typeof MenuRoute
   '/order': typeof OrderRoute
@@ -87,6 +96,7 @@ export interface FileRouteTypes {
     | '/'
     | '/budd-dairy'
     | '/catering'
+    | '/contact'
     | '/find-our-trucks'
     | '/menu'
     | '/order'
@@ -96,6 +106,7 @@ export interface FileRouteTypes {
     | '/'
     | '/budd-dairy'
     | '/catering'
+    | '/contact'
     | '/find-our-trucks'
     | '/menu'
     | '/order'
@@ -105,6 +116,7 @@ export interface FileRouteTypes {
     | '/'
     | '/budd-dairy'
     | '/catering'
+    | '/contact'
     | '/find-our-trucks'
     | '/menu'
     | '/order'
@@ -115,6 +127,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BuddDairyRoute: typeof BuddDairyRoute
   CateringRoute: typeof CateringRoute
+  ContactRoute: typeof ContactRoute
   FindOurTrucksRoute: typeof FindOurTrucksRoute
   MenuRoute: typeof MenuRoute
   OrderRoute: typeof OrderRoute
@@ -142,6 +155,13 @@ declare module '@tanstack/react-router' {
       path: '/catering'
       fullPath: '/catering'
       preLoaderRoute: typeof CateringRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/find-our-trucks': {
@@ -179,6 +199,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BuddDairyRoute: BuddDairyRoute,
   CateringRoute: CateringRoute,
+  ContactRoute: ContactRoute,
   FindOurTrucksRoute: FindOurTrucksRoute,
   MenuRoute: MenuRoute,
   OrderRoute: OrderRoute,
