@@ -61,12 +61,10 @@ function Home() {
       <section className="bg-cream">
         <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 md:grid-cols-[0.95fr_1.05fr] md:items-center md:gap-14 md:px-6 md:py-20">
           <div>
-            <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-primary">
+            <img src={logo.url} alt="Zaki Mediterranean Grill" className="h-14 w-auto md:h-16" />
+            <span className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-primary">
               Halal Mediterranean · Columbus
             </span>
-            <div className="mt-6 inline-flex">
-              <img src={logo.url} alt="Zaki Mediterranean Grill" className="h-16 w-auto md:h-20" />
-            </div>
             <h1 className="mt-6 text-4xl font-bold leading-[1.05] text-deep sm:text-5xl md:text-6xl">
               Fresh. Fast.
               <br />
