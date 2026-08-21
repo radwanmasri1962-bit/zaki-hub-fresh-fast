@@ -1,3 +1,11 @@
+import chickenBowlThumb from "@/assets/chicken-bowl-chatgpt-2.png.asset.json";
+import gyroBowlThumb from "@/assets/gyro-bowl-chatgpt-2.png.asset.json";
+import zakiFriesThumb from "@/assets/zaki-fries-chatgpt-1.webp.asset.json";
+import hummusThumb from "@/assets/hummus-harissa-chatgpt-1.png.asset.json";
+import grapeLeavesThumb from "@/assets/grape-leaves-chatgpt-1.png.asset.json";
+import babaThumb from "@/assets/baba-ghannuj-chatgpt-1.webp.asset.json";
+import falafelBallsThumb from "@/assets/falafel-balls-chatgpt-1.webp.asset.json";
+
 export type MenuItem = {
   name: string;
   price: string;
@@ -29,6 +37,8 @@ export const menu: MenuCategory[] = [
         description:
           "Tender chicken seasoned with za'atar, sumac and paprika, served over basmati rice and finished with Zaki garlic sauce.",
         bestSeller: true,
+        image: chickenBowlThumb.url,
+        imageAlt: "Zaki chicken bowl with grilled chicken, rice, vegetables and garlic sauce",
       },
       {
         name: "Gyro Bowl",
@@ -36,12 +46,16 @@ export const menu: MenuCategory[] = [
         description:
           "Slow-roasted lamb and beef served over fragrant basmati rice with creamy tzatziki.",
         bestSeller: true,
+        image: gyroBowlThumb.url,
+        imageAlt: "Gyro bowl with lamb and beef over rice with fresh vegetables and sauce",
       },
       {
         name: "Zaki Fries",
         price: "$11",
         description: "Crispy fries topped with feta cheese, banana peppers and Zaki garlic sauce.",
         bestSeller: true,
+        image: zakiFriesThumb.url,
+        imageAlt: "Zaki fries topped with feta, banana peppers and garlic sauce",
       },
     ],
   },
@@ -55,6 +69,8 @@ export const menu: MenuCategory[] = [
         description:
           "Creamy chickpea hummus seasoned with cumin and garlic, finished with harissa and Fresno peppers.",
         tags: ["Gluten Free", "Vegetarian", "Vegan"],
+        image: hummusThumb.url,
+        imageAlt: "Hummus topped with harissa and olive oil, served with grilled pita",
       },
       {
         name: "Grape Leaves",
@@ -62,18 +78,24 @@ export const menu: MenuCategory[] = [
         description:
           "Tender grape leaves filled with lemon-seasoned basmati rice, parsley and Zaki spices.",
         tags: ["Gluten Free", "Vegetarian", "Vegan"],
+        image: grapeLeavesThumb.url,
+        imageAlt: "Stuffed grape leaves plated with lemon wedges and fresh greens",
       },
       {
         name: "Baba Ghannouj",
         price: "$8",
         description: "Smoky roasted eggplant blended with garlic, olive oil and tahini.",
         tags: ["Gluten Free", "Vegetarian", "Vegan"],
+        image: babaThumb.url,
+        imageAlt: "Baba ghannouj with olive oil and parsley, served with grilled pita",
       },
       {
         name: "Falafel Balls",
         price: "$8",
         description: "Traditional falafel made with chickpeas, parsley, green onion and cumin.",
         tags: ["Gluten Free", "Vegetarian", "Vegan"],
+        image: falafelBallsThumb.url,
+        imageAlt: "Falafel balls on fresh greens with a side of tahini sauce",
       },
     ],
   },
