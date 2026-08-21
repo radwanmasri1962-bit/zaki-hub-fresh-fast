@@ -153,7 +153,7 @@ function Home() {
 
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {signatureItems.map((item) => (
-              <article key={item.name} className="overflow-hidden rounded-2xl bg-card shadow-card">
+              <article key={item.name} className="overflow-hidden rounded-2xl border border-border/70 bg-card shadow-card">
                 <PhotoSlot
                   label="ZAKI FOOD PHOTOGRAPHY"
                   caption={item.name}
