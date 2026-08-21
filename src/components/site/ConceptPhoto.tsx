@@ -27,7 +27,7 @@ export function ConceptPhoto({
   return (
     <figure
       data-concept-image="CONCEPT IMAGE — REPLACE WITH ZAKI PHOTOGRAPHY"
-      className={cn("relative overflow-hidden rounded-2xl bg-muted shadow-card", className)}
+      className={cn("relative flex overflow-hidden rounded-2xl bg-muted shadow-card", className)}
     >
       <img
         src={src}
