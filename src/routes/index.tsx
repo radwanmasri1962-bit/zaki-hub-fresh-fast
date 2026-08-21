@@ -169,11 +169,13 @@ function Home() {
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {signatureItems.map((item) => (
               <article key={item.name} className="overflow-hidden rounded-2xl border border-border/70 bg-card shadow-card">
-                <PhotoSlot
-                  label="ZAKI FOOD PHOTOGRAPHY"
-                  caption={item.name}
-                  className="h-44 rounded-none border-x-0 border-t-0"
+                <img
+                  src={item.image}
+                  alt={item.alt}
+                  loading="lazy"
+                  className="h-56 w-full object-cover object-center"
                 />
+
                 <div className="flex items-start justify-between gap-4 p-5">
                   <div className="min-w-0">
                     <h3 className="text-lg font-semibold">{item.name}</h3>
