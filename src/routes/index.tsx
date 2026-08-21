@@ -1,7 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ShoppingBag, MapPin, CalendarDays, ArrowRight, Star } from "lucide-react";
 import logo from "@/assets/zaki-logo.png.asset.json";
+import heroBowl from "@/assets/concept-hero-bowl.jpg";
 import { PhotoSlot } from "@/components/site/PhotoSlot";
+import { ConceptPhoto } from "@/components/site/ConceptPhoto";
 import { signatureItems } from "@/data/menu";
 import { buddDairy, mapsUrl } from "@/data/locations";
 
