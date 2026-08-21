@@ -4,6 +4,11 @@ export type MenuItem = {
   description?: string;
   tags?: string[];
   bestSeller?: boolean;
+  /** Optional badge label, e.g. "Best Seller", "Popular", "Zaki Signature". */
+  badge?: string;
+  /** Square thumbnail URL. Left empty until approved photography is mapped. */
+  image?: string;
+  imageAlt?: string;
 };
 
 export type MenuCategory = {
@@ -202,6 +207,7 @@ export const signatureItems = [
   {
     name: "Zaki Chicken Bowl",
     price: "$16",
+    badge: "Best Seller",
     note: "Za'atar chicken, basmati, Zaki garlic sauce",
     image: chickenBowlImg.url,
     alt: "Zaki chicken bowl with grilled za'atar chicken, rice, tomatoes, cucumber, pickled cabbage and garlic sauce",
@@ -209,6 +215,7 @@ export const signatureItems = [
   {
     name: "Gyro Bowl",
     price: "$16",
+    badge: "Best Seller",
     note: "Slow-roasted lamb & beef, tzatziki",
     image: gyroBowlImg.url,
     alt: "Zaki gyro bowl with slow-roasted lamb and beef over rice with fresh vegetables and tzatziki",
@@ -216,6 +223,7 @@ export const signatureItems = [
   {
     name: "Chicken Shawarma Sandwich",
     price: "$12",
+    badge: "Popular",
     note: "Turmeric, paprika, garlic sauce",
     image: shawarmaSandwichImg.url,
     alt: "Chicken shawarma sandwich wrapped in pita, halved and served in a paper tray",
@@ -223,6 +231,7 @@ export const signatureItems = [
   {
     name: "Gyro the Hero Sandwich",
     price: "$12",
+    badge: "Zaki Signature",
     note: "Warm pita, tzatziki",
     image: gyroHeroImg.url,
     alt: "Gyro the Hero sandwich with lamb and beef, tomato, onion and tzatziki in warm pita",
@@ -230,6 +239,7 @@ export const signatureItems = [
   {
     name: "Revenge of the Falafel",
     price: "$12",
+    badge: "Vegetarian Favorite",
     note: "Fresh falafel served with tahini and Zaki-made pickles.",
     image: falafelImg.url,
     alt: "Revenge of the Falafel sandwich with falafel, tahini, pickles and vegetables in pita",
@@ -237,6 +247,7 @@ export const signatureItems = [
   {
     name: "Zaki Fries",
     price: "$11",
+    badge: "Best Seller",
     note: "Feta, banana peppers, garlic sauce",
     image: zakiFriesImg.url,
     alt: "Zaki fries topped with feta, banana peppers and garlic sauce",
