@@ -159,11 +159,10 @@ function Home() {
       <section className="bg-secondary section-pad">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
           <h2 className="max-w-2xl text-3xl font-bold md:text-5xl">
-            Mediterranean Favorites. Made Fresh.
+            Zaki Favorites
           </h2>
           <p className="mt-4 max-w-2xl text-base text-muted-foreground md:text-lg">
-            From chicken shawarma and slow-roasted gyro to falafel, hummus and our signature Zaki
-            Fries, our food is prepared with bold Mediterranean flavors and fresh ingredients.
+            The dishes Columbus keeps coming back for.
           </p>
 
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -178,6 +177,11 @@ function Home() {
 
                 <div className="flex items-start justify-between gap-4 p-5">
                   <div className="min-w-0">
+                    {item.badge ? (
+                      <span className="mb-2 inline-flex rounded-full border border-gold/40 bg-gold/10 px-2.5 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.16em] text-gold-foreground/80">
+                        {item.badge}
+                      </span>
+                    ) : null}
                     <h3 className="text-lg font-semibold">{item.name}</h3>
                     <p className="mt-1 text-sm text-muted-foreground">{item.note}</p>
                   </div>
