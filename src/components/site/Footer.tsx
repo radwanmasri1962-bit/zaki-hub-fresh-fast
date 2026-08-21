@@ -18,9 +18,7 @@ export function Footer() {
     <footer className="mt-auto bg-deep pb-28 pt-16 text-deep-foreground md:pb-16">
       <div className="mx-auto grid max-w-6xl gap-12 px-4 md:grid-cols-[1.2fr_1fr_1fr] md:px-6">
         <div>
-          <div className="inline-flex rounded-2xl bg-card px-4 py-3">
-            <img src={logo.url} alt="Zaki Mediterranean Grill" className="h-10 w-auto" />
-          </div>
+          <img src={logo.url} alt="Zaki Mediterranean Grill" className="h-12 w-auto" />
           <p className="mt-5 text-2xl font-bold">Fresh. Fast. Always Zaki.</p>
           <p className="mt-3 text-sm text-deep-foreground/75">
             Halal Mediterranean food, made fresh in Columbus, Ohio.

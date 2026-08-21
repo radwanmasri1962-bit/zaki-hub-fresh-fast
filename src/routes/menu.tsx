@@ -69,16 +69,18 @@ function MenuPage() {
                   className="rounded-2xl bg-card p-5 shadow-card"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="h-[70px] w-[70px] shrink-0 overflow-hidden rounded-xl border border-border bg-muted md:h-[85px] md:w-[85px]">
-                      {item.image ? (
-                        <img
-                          src={item.image}
-                          alt={item.imageAlt ?? item.name}
-                          loading="lazy"
-                          className="h-full w-full object-cover object-center"
-                        />
-                      ) : null}
-                    </div>
+                    {category.id !== "beverages" ? (
+                      <div className="h-[70px] w-[70px] shrink-0 overflow-hidden rounded-xl border border-border bg-muted md:h-[85px] md:w-[85px]">
+                        {item.image ? (
+                          <img
+                            src={item.image}
+                            alt={item.imageAlt ?? item.name}
+                            loading="lazy"
+                            className="h-full w-full object-cover object-center"
+                          />
+                        ) : null}
+                      </div>
+                    ) : null}
                     <div className="min-w-0 flex-1">
                       <div className="flex flex-wrap items-center gap-2">
                         <h3 className="text-lg font-semibold">{item.name}</h3>
