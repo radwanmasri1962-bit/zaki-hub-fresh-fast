@@ -85,18 +85,21 @@ export const menu: MenuCategory[] = [
       {
         name: "Chicken Shawarma Sandwich",
         price: "$12",
-        description: "Seasoned chicken shawarma with turmeric, paprika and Zaki garlic sauce.",
+        description: "Seasoned chicken shawarma with turmeric, paprika and Zaki garlic sauce."
+        badge: "Popular",,
       },
       {
         name: "Revenge of the Falafel Sandwich",
         price: "$12",
         description: "Fresh falafel served with tahini and Zaki-made pickles.",
         tags: ["Vegetarian", "Vegan"],
+        badge: "Vegetarian Favorite",
       },
       {
         name: "Gyro the Hero Sandwich",
         price: "$12",
-        description: "Slow-roasted lamb and beef with creamy tzatziki, served in warm pita.",
+        description: "Slow-roasted lamb and beef with creamy tzatziki, served in warm pita."
+        badge: "Zaki Signature",,
       },
       {
         name: "Zaki Chicken Bowl",
