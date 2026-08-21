@@ -191,11 +191,54 @@ export const menu: MenuCategory[] = [
   },
 ];
 
+import chickenBowlImg from "@/assets/chicken-bowl-chatgpt-2.png.asset.json";
+import gyroBowlImg from "@/assets/gyro-bowl-chatgpt-2.png.asset.json";
+import shawarmaSandwichImg from "@/assets/chicken-shawarma-sandwich-chatgpt-1.png.asset.json";
+import gyroHeroImg from "@/assets/gyro-the-hero-chatgpt-1.png.asset.json";
+import falafelImg from "@/assets/revenge-of-the-falafel-chatgpt-1.png.asset.json";
+import zakiFriesImg from "@/assets/zaki-fries-chatgpt-1.webp.asset.json";
+
 export const signatureItems = [
-  { name: "Zaki Chicken Bowl", price: "$16", note: "Za'atar chicken, basmati, Zaki garlic sauce" },
-  { name: "Gyro Bowl", price: "$16", note: "Slow-roasted lamb & beef, tzatziki" },
-  { name: "Chicken Shawarma Sandwich", price: "$12", note: "Turmeric, paprika, garlic sauce" },
-  { name: "Gyro the Hero Sandwich", price: "$12", note: "Warm pita, tzatziki" },
-  { name: "Falafel Bowl", price: "$16", note: "Chickpea falafel over basmati" },
-  { name: "Zaki Fries", price: "$11", note: "Feta, banana peppers, garlic sauce" },
+  {
+    name: "Zaki Chicken Bowl",
+    price: "$16",
+    note: "Za'atar chicken, basmati, Zaki garlic sauce",
+    image: chickenBowlImg.url,
+    alt: "Zaki chicken bowl with grilled za'atar chicken, rice, tomatoes, cucumber, pickled cabbage and garlic sauce",
+  },
+  {
+    name: "Gyro Bowl",
+    price: "$16",
+    note: "Slow-roasted lamb & beef, tzatziki",
+    image: gyroBowlImg.url,
+    alt: "Zaki gyro bowl with slow-roasted lamb and beef over rice with fresh vegetables and tzatziki",
+  },
+  {
+    name: "Chicken Shawarma Sandwich",
+    price: "$12",
+    note: "Turmeric, paprika, garlic sauce",
+    image: shawarmaSandwichImg.url,
+    alt: "Chicken shawarma sandwich wrapped in pita, halved and served in a paper tray",
+  },
+  {
+    name: "Gyro the Hero Sandwich",
+    price: "$12",
+    note: "Warm pita, tzatziki",
+    image: gyroHeroImg.url,
+    alt: "Gyro the Hero sandwich with lamb and beef, tomato, onion and tzatziki in warm pita",
+  },
+  {
+    name: "Revenge of the Falafel",
+    price: "$12",
+    note: "Fresh falafel served with tahini and Zaki-made pickles.",
+    image: falafelImg.url,
+    alt: "Revenge of the Falafel sandwich with falafel, tahini, pickles and vegetables in pita",
+  },
+  {
+    name: "Zaki Fries",
+    price: "$11",
+    note: "Feta, banana peppers, garlic sauce",
+    image: zakiFriesImg.url,
+    alt: "Zaki fries topped with feta, banana peppers and garlic sauce",
+  },
 ];
