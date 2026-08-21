@@ -5,6 +5,10 @@ import hummusThumb from "@/assets/hummus-harissa-chatgpt-1.png.asset.json";
 import grapeLeavesThumb from "@/assets/grape-leaves-chatgpt-1.png.asset.json";
 import babaThumb from "@/assets/baba-ghannuj-chatgpt-1.webp.asset.json";
 import falafelBallsThumb from "@/assets/falafel-balls-chatgpt-1.webp.asset.json";
+import shawarmaSandwichThumb from "@/assets/chicken-shawarma-sandwich-chatgpt-1.png.asset.json";
+import falafelSandwichThumb from "@/assets/revenge-of-the-falafel-chatgpt-1.png.asset.json";
+import gyroHeroThumb from "@/assets/gyro-the-hero-chatgpt-1.png.asset.json";
+import falafelBowlThumb from "@/assets/falafel-bowl-chatgpt-1.png.asset.json";
 
 export type MenuItem = {
   name: string;
