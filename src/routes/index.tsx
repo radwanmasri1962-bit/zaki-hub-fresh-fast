@@ -1,7 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ShoppingBag, MapPin, CalendarDays, ArrowRight, Star } from "lucide-react";
 import logo from "@/assets/zaki-logo.png.asset.json";
+import heroBowl from "@/assets/concept-hero-bowl.jpg";
 import { PhotoSlot } from "@/components/site/PhotoSlot";
+import { ConceptPhoto } from "@/components/site/ConceptPhoto";
 import { signatureItems } from "@/data/menu";
 import { buddDairy, mapsUrl } from "@/data/locations";
 
@@ -56,21 +58,24 @@ function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="bg-deep text-deep-foreground">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 md:grid-cols-2 md:items-center md:gap-14 md:px-6 md:py-24">
+      <section className="bg-cream">
+        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 md:grid-cols-[0.95fr_1.05fr] md:items-center md:gap-14 md:px-6 md:py-20">
           <div>
-            <span className="inline-flex rounded-full bg-gold/15 px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-gold">
-              Halal Mediterranean Food · Columbus
+            <img
+              src={logo.url}
+              alt="Zaki Mediterranean Grill"
+              className="block h-14 w-auto object-contain object-left md:h-16"
+            />
+            <span className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-primary">
+              Halal Mediterranean · Columbus
             </span>
-            <div className="mt-6 inline-flex rounded-2xl bg-card px-5 py-4">
-              <img src={logo.url} alt="Zaki Mediterranean Grill" className="h-16 w-auto md:h-20" />
-            </div>
-            <h1 className="mt-7 text-4xl font-bold leading-[1.05] sm:text-5xl md:text-6xl">
+            <h1 className="mt-6 text-4xl font-bold leading-[1.05] text-deep sm:text-5xl md:text-6xl">
               Fresh. Fast.
               <br />
-              Always Zaki.
+              <span className="text-primary">Always Zaki.</span>
             </h1>
-            <p className="mt-5 max-w-lg text-base text-deep-foreground/80 md:text-lg">
+            <span className="mt-6 block h-1 w-16 rounded-full bg-gold" />
+            <p className="mt-5 max-w-lg text-base text-muted-foreground md:text-lg">
               Halal Mediterranean food made fresh in Columbus. Find one of our food trucks, visit us
               at Budd Dairy, or order your Zaki favorites online.
             </p>
@@ -83,26 +88,30 @@ function Home() {
               </Link>
               <Link
                 to="/find-our-trucks"
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-cream/35 px-7 py-4 text-sm font-semibold uppercase tracking-wide text-deep-foreground transition-colors hover:bg-cream/10"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-deep/25 px-7 py-4 text-sm font-semibold uppercase tracking-wide text-deep transition-colors hover:bg-taupe/25"
               >
-                <MapPin className="h-5 w-5" /> Find Our Trucks
+                <MapPin className="h-5 w-5 text-primary" /> Find Our Trucks
               </Link>
             </div>
             <Link
               to="/catering"
-              className="mt-5 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-gold hover:underline"
+              className="mt-5 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-primary hover:text-gold"
             >
               Catering & Events <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
 
-          <PhotoSlot
-            label="ZAKI FOOD PHOTOGRAPHY"
-            caption="Hero image — signature bowl or shawarma sandwich, shot vertically for mobile."
-            className="min-h-[320px] border-cream/25 bg-cream/5 md:min-h-[520px]"
+          <ConceptPhoto
+            src={heroBowl}
+            alt="Mediterranean chicken shawarma bowl with basmati rice, salad, pickles, garlic sauce and warm pita"
+            width={1024}
+            height={1280}
+            priority
+            className="min-h-[340px] rounded-3xl md:min-h-[560px]"
           />
         </div>
       </section>
+
 
       {/* QUICK ACTIONS */}
       <section className="section-pad">
@@ -215,13 +224,13 @@ function Home() {
       </section>
 
       {/* HALAL / STORY STRIP */}
-      <section className="bg-primary py-14 text-primary-foreground">
+      <section className="bg-deep py-14 text-deep-foreground">
         <div className="mx-auto flex max-w-6xl flex-col items-start gap-6 px-4 md:flex-row md:items-center md:justify-between md:px-6">
           <div className="flex items-start gap-4">
             <Star className="mt-1 h-6 w-6 shrink-0 text-gold" />
             <div>
               <h2 className="text-2xl font-bold md:text-3xl">Halal Mediterranean Food</h2>
-              <p className="mt-2 max-w-xl text-primary-foreground/85">
+              <p className="mt-2 max-w-xl text-deep-foreground/85">
                 Local, independent and family-operated. "Zaki" means delicious in Arabic — and
                 that's the standard for every bowl we serve.
               </p>
