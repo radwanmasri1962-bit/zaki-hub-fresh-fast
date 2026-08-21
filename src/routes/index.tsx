@@ -222,13 +222,13 @@ function Home() {
       </section>
 
       {/* HALAL / STORY STRIP */}
-      <section className="bg-primary py-14 text-primary-foreground">
+      <section className="bg-deep py-14 text-deep-foreground">
         <div className="mx-auto flex max-w-6xl flex-col items-start gap-6 px-4 md:flex-row md:items-center md:justify-between md:px-6">
           <div className="flex items-start gap-4">
             <Star className="mt-1 h-6 w-6 shrink-0 text-gold" />
             <div>
               <h2 className="text-2xl font-bold md:text-3xl">Halal Mediterranean Food</h2>
-              <p className="mt-2 max-w-xl text-primary-foreground/85">
+              <p className="mt-2 max-w-xl text-deep-foreground/85">
                 Local, independent and family-operated. "Zaki" means delicious in Arabic — and
                 that's the standard for every bowl we serve.
               </p>
