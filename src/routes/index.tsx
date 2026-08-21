@@ -5,7 +5,7 @@ import heroMix from "@/assets/hero-mix.png.asset.json";
 import orderTakeaway from "@/assets/order-takeaway.png.asset.json";
 import foodTrucks from "@/assets/food-trucks.png.asset.json";
 import cateringSpread from "@/assets/catering-spread.png.asset.json";
-import { PhotoSlot } from "@/components/site/PhotoSlot";
+import buddDairyImg from "@/assets/budd-dairy.png.asset.json";
 import { signatureItems } from "@/data/menu";
 import { buddDairy, mapsUrl } from "@/data/locations";
 
