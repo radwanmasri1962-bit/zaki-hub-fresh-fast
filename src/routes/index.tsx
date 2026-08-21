@@ -205,11 +205,14 @@ function Home() {
       {/* BUDD DAIRY TEASER */}
       <section className="section-pad">
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 md:grid-cols-2 md:px-6">
-          <PhotoSlot
-            label="BUDD DAIRY PHOTOGRAPHY"
-            caption="Zaki counter inside Budd Dairy Food Hall."
-            className="min-h-[280px] md:min-h-[380px]"
-          />
+          <div className="overflow-hidden rounded-2xl shadow-card">
+            <img
+              src={buddDairyImg.url}
+              alt="Zaki signage and patio outside The Budd Dairy Co. food hall building in Columbus"
+              loading="lazy"
+              className="h-full min-h-[280px] w-full object-cover object-center md:min-h-[380px]"
+            />
+          </div>
           <div>
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
               Our permanent home
