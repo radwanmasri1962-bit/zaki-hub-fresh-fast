@@ -56,10 +56,11 @@ function StoryPage() {
             ))}
           </div>
         </div>
-        <PhotoSlot
-          label="ZAKI TEAM PHOTOGRAPHY"
-          caption="Founders and team at the truck."
-          className="min-h-[320px] md:min-h-[460px]"
+        <img
+          src={teamPhoto.url}
+          alt="Zaki team member plating a Mediterranean bowl behind the counter"
+          loading="lazy"
+          className="h-full min-h-[320px] w-full rounded-2xl object-cover shadow-card md:min-h-[460px]"
         />
       </section>
 
