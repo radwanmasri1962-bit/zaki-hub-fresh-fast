@@ -3,8 +3,8 @@ import { MapPin, Phone } from "lucide-react";
 import buddDairyImg from "@/assets/budd-dairy.png.asset.json";
 import { buddDairy, contact, mapsUrl } from "@/data/locations";
 
-
 export const Route = createFileRoute("/budd-dairy")({
+
   head: () => ({
     meta: [
       { title: "Zaki at Budd Dairy Food Hall | Columbus, OH" },
