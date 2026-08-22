@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { PhotoSlot } from "@/components/site/PhotoSlot";
+import teamPhoto from "@/assets/zaki-team.png.asset.json";
+import truckPhoto from "@/assets/zaki-truck-event.png.asset.json";
+import foodPhoto from "@/assets/zaki-takeaway-containers.png.asset.json";
 
 export const Route = createFileRoute("/our-story")({
   head: () => ({
@@ -54,18 +56,29 @@ function StoryPage() {
             ))}
           </div>
         </div>
-        <PhotoSlot
-          label="ZAKI TEAM PHOTOGRAPHY"
-          caption="Founders and team at the truck."
-          className="min-h-[320px] md:min-h-[460px]"
+        <img
+          src={teamPhoto.url}
+          alt="Zaki team member plating a Mediterranean bowl behind the counter"
+          loading="lazy"
+          className="h-full min-h-[320px] w-full rounded-2xl object-cover shadow-card md:min-h-[460px]"
         />
       </section>
 
       <section className="bg-secondary section-pad">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
           <div className="grid gap-6 md:grid-cols-2">
-            <PhotoSlot label="ZAKI TRUCK PHOTOGRAPHY" className="min-h-[220px]" />
-            <PhotoSlot label="ZAKI FOOD PHOTOGRAPHY" className="min-h-[220px]" />
+            <img
+              src={truckPhoto.url}
+              alt="Zaki food truck serving guests at an evening event"
+              loading="lazy"
+              className="h-full min-h-[220px] w-full rounded-2xl object-cover shadow-card"
+            />
+            <img
+              src={foodPhoto.url}
+              alt="Zaki takeaway bowls and a falafel wrap held up outdoors"
+              loading="lazy"
+              className="h-full min-h-[220px] w-full rounded-2xl object-cover shadow-card"
+            />
           </div>
           <div className="mt-10 rounded-2xl bg-primary p-8 text-primary-foreground">
             <h2 className="text-2xl font-bold md:text-3xl">Halal Mediterranean Food</h2>
