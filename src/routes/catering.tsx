@@ -77,13 +77,15 @@ function CateringPage() {
               Let Zaki bring fresh Mediterranean food to you.
             </p>
           </div>
-          <ConceptPhoto
-            src={cateringSpread}
+          <img
+            src={cateringSpread.url}
             alt="Mediterranean catering spread with grilled chicken, falafel, hummus, rice, salads and pita"
             width={1536}
             height={864}
-            className="min-h-[260px] md:min-h-[360px]"
+            loading="lazy"
+            className="h-full min-h-[260px] w-full rounded-2xl object-cover md:min-h-[360px]"
           />
+
         </div>
       </section>
 
