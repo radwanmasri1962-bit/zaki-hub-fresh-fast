@@ -67,8 +67,18 @@ function StoryPage() {
       <section className="bg-secondary section-pad">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
           <div className="grid gap-6 md:grid-cols-2">
-            <PhotoSlot label="ZAKI TRUCK PHOTOGRAPHY" className="min-h-[220px]" />
-            <PhotoSlot label="ZAKI FOOD PHOTOGRAPHY" className="min-h-[220px]" />
+            <img
+              src={truckPhoto.url}
+              alt="Zaki food truck serving guests at an evening event"
+              loading="lazy"
+              className="h-full min-h-[220px] w-full rounded-2xl object-cover shadow-card"
+            />
+            <img
+              src={foodPhoto.url}
+              alt="Zaki takeaway bowls and a falafel wrap held up outdoors"
+              loading="lazy"
+              className="h-full min-h-[220px] w-full rounded-2xl object-cover shadow-card"
+            />
           </div>
           <div className="mt-10 rounded-2xl bg-primary p-8 text-primary-foreground">
             <h2 className="text-2xl font-bold md:text-3xl">Halal Mediterranean Food</h2>
