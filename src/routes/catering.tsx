@@ -5,8 +5,8 @@ import { toast } from "sonner";
 import { Truck, UtensilsCrossed } from "lucide-react";
 import cateringSpread from "@/assets/catering-spread.png.asset.json";
 
-
 export const Route = createFileRoute("/catering")({
+
   head: () => ({
     meta: [
       { title: "Catering & Food Truck Booking | Zaki Mediterranean Grill" },
