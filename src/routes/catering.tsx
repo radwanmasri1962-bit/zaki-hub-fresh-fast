@@ -3,10 +3,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { z } from "zod";
 import { toast } from "sonner";
 import { Truck, UtensilsCrossed } from "lucide-react";
-import { ConceptPhoto } from "@/components/site/ConceptPhoto";
-import cateringSpread from "@/assets/concept-catering-spread.jpg";
+import cateringSpread from "@/assets/catering-spread.png.asset.json";
 
 export const Route = createFileRoute("/catering")({
+
   head: () => ({
     meta: [
       { title: "Catering & Food Truck Booking | Zaki Mediterranean Grill" },
@@ -77,13 +77,15 @@ function CateringPage() {
               Let Zaki bring fresh Mediterranean food to you.
             </p>
           </div>
-          <ConceptPhoto
-            src={cateringSpread}
+          <img
+            src={cateringSpread.url}
             alt="Mediterranean catering spread with grilled chicken, falafel, hummus, rice, salads and pita"
             width={1536}
             height={864}
-            className="min-h-[260px] md:min-h-[360px]"
+            loading="lazy"
+            className="h-full min-h-[260px] w-full rounded-2xl object-cover md:min-h-[360px]"
           />
+
         </div>
       </section>
 
