@@ -69,11 +69,15 @@ function BuddDairyPage() {
           </a>
         </div>
 
-        <PhotoSlot
-          label="BUDD DAIRY PHOTOGRAPHY"
-          caption="Zaki counter inside Budd Dairy Food Hall."
-          className="min-h-[320px] md:min-h-[460px]"
+        <img
+          src={buddDairyImg.url}
+          alt="The Budd Dairy Co. building with Zaki signage and outdoor seating"
+          width={1536}
+          height={1024}
+          loading="lazy"
+          className="h-full min-h-[320px] w-full rounded-2xl object-cover shadow-card md:min-h-[460px]"
         />
+
       </section>
 
       <section className="bg-secondary section-pad">
