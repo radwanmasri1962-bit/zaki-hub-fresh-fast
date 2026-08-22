@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { MapPin, Phone } from "lucide-react";
-import { PhotoSlot } from "@/components/site/PhotoSlot";
+import buddDairyImg from "@/assets/budd-dairy.png.asset.json";
 import { buddDairy, contact, mapsUrl } from "@/data/locations";
+
 
 export const Route = createFileRoute("/budd-dairy")({
   head: () => ({
