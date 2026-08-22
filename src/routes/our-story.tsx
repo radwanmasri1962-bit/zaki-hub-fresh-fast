@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { PhotoSlot } from "@/components/site/PhotoSlot";
+import teamPhoto from "@/assets/zaki-team.png.asset.json";
+import truckPhoto from "@/assets/zaki-truck-event.png.asset.json";
+import foodPhoto from "@/assets/zaki-takeaway-containers.png.asset.json";
 
 export const Route = createFileRoute("/our-story")({
   head: () => ({
