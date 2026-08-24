@@ -88,6 +88,24 @@ export function Footer() {
           Halal Mediterranean Food
         </p>
       </div>
+
+      <div className="mx-auto mt-4 max-w-6xl px-4 pb-2 md:px-6">
+        <a
+          href="https://jaraai.co"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Developed by JARA AI — opens in new tab"
+          className="inline-flex items-center gap-2 text-xs text-deep-foreground/55 transition-colors hover:text-deep-foreground/85"
+        >
+          <span>Developed by</span>
+          <img
+            src={jaraLogo.url}
+            alt="JARA AI"
+            className="h-4 w-auto"
+            loading="lazy"
+          />
+        </a>
+      </div>
     </footer>
   );
 }
