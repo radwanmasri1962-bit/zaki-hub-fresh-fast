@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Instagram, Facebook, Phone, Mail, MapPin } from "lucide-react";
 import logo from "@/assets/zaki-logo.png.asset.json";
 import jaraLogo from "@/assets/jara-logo-dark.png.asset.json";
+import sffLogo from "@/assets/streetfood-finder-logo.png.asset.json";
 import { buddDairy, contact } from "@/data/locations";
 
 const links = [
@@ -27,6 +28,8 @@ export function Footer() {
           <div className="mt-5 flex gap-3">
             <a
               href={contact.instagram}
+              target="_blank"
+              rel="noreferrer"
               aria-label="Zaki on Instagram"
               className="grid h-11 w-11 place-items-center rounded-xl bg-cream/10 transition-colors hover:bg-cream/20"
             >
@@ -34,10 +37,26 @@ export function Footer() {
             </a>
             <a
               href={contact.facebook}
+              target="_blank"
+              rel="noreferrer"
               aria-label="Zaki on Facebook"
               className="grid h-11 w-11 place-items-center rounded-xl bg-cream/10 transition-colors hover:bg-cream/20"
             >
               <Facebook className="h-5 w-5" />
+            </a>
+            <a
+              href={contact.streetFoodFinder}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Find Zaki on StreetFoodFinder"
+              className="grid h-11 w-11 place-items-center rounded-xl bg-cream/10 transition-colors hover:bg-cream/20"
+            >
+              <img
+                src={sffLogo.url}
+                alt="StreetFoodFinder"
+                className="h-5 w-5"
+                loading="lazy"
+              />
             </a>
           </div>
         </div>
