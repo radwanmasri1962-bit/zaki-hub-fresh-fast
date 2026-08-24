@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { MapPin, Clock, Navigation, ShoppingBag, CalendarDays } from "lucide-react";
-import truckEvent from "@/assets/zaki-truck-event.png.asset.json";
+import trucksIllustration from "@/assets/zaki-trucks-illustration.jpg.asset.json";
 import { todayStops, upcomingStops, mapsUrl } from "@/data/locations";
 
 type SampleEvent = {
@@ -72,8 +72,8 @@ function TrucksPage() {
           </div>
           <div className="overflow-hidden rounded-3xl shadow-lift">
             <img
-              src={truckEvent.url}
-              alt="Zaki food truck serving guests at an outdoor event in Columbus"
+              src={trucksIllustration.url}
+              alt="Illustrated map of Columbus showing Zaki food trucks moving through neighborhoods, events, and landmarks"
               loading="eager"
               className="h-full min-h-[240px] w-full object-cover md:min-h-[380px]"
             />
