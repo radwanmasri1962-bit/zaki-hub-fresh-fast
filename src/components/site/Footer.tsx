@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Instagram, Facebook, Phone, Mail, MapPin } from "lucide-react";
 import logo from "@/assets/zaki-logo.png.asset.json";
 import jaraLogo from "@/assets/jara-logo-dark.png.asset.json";
+import sffLogo from "@/assets/streetfood-finder-logo.png.asset.json";
 import { buddDairy, contact } from "@/data/locations";
 
 const links = [

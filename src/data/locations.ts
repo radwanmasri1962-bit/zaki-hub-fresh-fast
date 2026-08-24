@@ -105,8 +105,9 @@ export const contact = {
   phone: "(614) 555-0148",
   phoneHref: "tel:+16145550148",
   email: "hello@zakigrill.com",
-  instagram: "https://instagram.com",
-  facebook: "https://facebook.com",
+  instagram: "https://www.instagram.com/zakigrill/",
+  facebook: "https://www.facebook.com/ZakiGrill/",
+  streetFoodFinder: "https://streetfoodfinder.com/ZakiGrill",
 };
 
 export const mapsUrl = (query: string) =>
