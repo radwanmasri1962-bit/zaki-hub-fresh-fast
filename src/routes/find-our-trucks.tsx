@@ -1,7 +1,40 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { MapPin, Clock, Navigation, ShoppingBag } from "lucide-react";
-import { PhotoSlot } from "@/components/site/PhotoSlot";
+import { MapPin, Clock, Navigation, ShoppingBag, CalendarDays } from "lucide-react";
+import truckEvent from "@/assets/zaki-truck-event.png.asset.json";
 import { todayStops, upcomingStops, mapsUrl } from "@/data/locations";
+
+type SampleEvent = {
+  date: string;
+  day: string;
+  title: string;
+  truck: "Zaki Truck 1" | "Zaki Truck 2" | "Zaki Truck 3" | "All Zaki Trucks";
+  time: string;
+  type: "Public Stop" | "Private Event";
+};
+
+const augustSchedule: SampleEvent[] = [
+  { date: "August 3", day: "Mon", title: "Short North Brewery Night", truck: "Zaki Truck 1", time: "5:00 PM – 10:00 PM", type: "Public Stop" },
+  { date: "August 5", day: "Wed", title: "Downtown Columbus Corporate Lunch", truck: "Zaki Truck 2", time: "11:00 AM – 2:00 PM", type: "Public Stop" },
+  { date: "August 7", day: "Fri", title: "Dublin Taproom Evening", truck: "Zaki Truck 3", time: "4:00 PM – 9:00 PM", type: "Public Stop" },
+  { date: "August 9", day: "Sun", title: "German Village Summer Market", truck: "Zaki Truck 1", time: "12:00 PM – 7:00 PM", type: "Public Stop" },
+  { date: "August 10", day: "Mon", title: "Private Wedding Reception, Scioto Reserve", truck: "Zaki Truck 2", time: "5:00 PM – 10:00 PM", type: "Private Event" },
+  { date: "August 13", day: "Thu", title: "Ohio State Campus Lunch", truck: "Zaki Truck 3", time: "11:30 AM – 3:00 PM", type: "Public Stop" },
+  { date: "August 15", day: "Sat", title: "Franklinton Arts Night", truck: "Zaki Truck 1", time: "5:00 PM – 10:00 PM", type: "Public Stop" },
+  { date: "August 17", day: "Mon", title: "Private Birthday Celebration, New Albany", truck: "Zaki Truck 3", time: "4:00 PM – 8:00 PM", type: "Private Event" },
+  { date: "August 20", day: "Thu", title: "Brewery Patio Night, Grandview", truck: "Zaki Truck 2", time: "5:00 PM – 9:00 PM", type: "Public Stop" },
+  { date: "August 22", day: "Sat", title: "Columbus Commons Lunch", truck: "Zaki Truck 1", time: "11:00 AM – 2:30 PM", type: "Public Stop" },
+  { date: "August 24", day: "Mon", title: "Private Wedding, Hilliard", truck: "Zaki Truck 2", time: "5:00 PM – 10:00 PM", type: "Private Event" },
+  { date: "August 27", day: "Thu", title: "Dublin Community Night", truck: "Zaki Truck 3", time: "4:00 PM – 9:00 PM", type: "Public Stop" },
+  { date: "August 29", day: "Sat", title: "Easton Evening Market", truck: "Zaki Truck 1", time: "5:00 PM – 10:00 PM", type: "Public Stop" },
+  { date: "August 31", day: "Mon", title: "End-of-Summer Festival", truck: "All Zaki Trucks", time: "12:00 PM – 8:00 PM", type: "Public Stop" },
+];
+
+const truckStyles: Record<SampleEvent["truck"], string> = {
+  "Zaki Truck 1": "bg-primary/10 text-primary border-primary/25",
+  "Zaki Truck 2": "bg-gold/15 text-gold-foreground/80 border-gold/35",
+  "Zaki Truck 3": "bg-deep/10 text-deep border-deep/25",
+  "All Zaki Trucks": "bg-foreground/10 text-foreground border-foreground/25",
+};
 
 export const Route = createFileRoute("/find-our-trucks")({
   head: () => ({
