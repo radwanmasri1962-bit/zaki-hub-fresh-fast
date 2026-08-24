@@ -63,6 +63,8 @@ function ContactPage() {
       <div className="mt-8 flex gap-3">
         <a
           href={contact.instagram}
+          target="_blank"
+          rel="noreferrer"
           aria-label="Zaki on Instagram"
           className="grid h-12 w-12 place-items-center rounded-xl bg-card shadow-card"
         >
@@ -70,6 +72,8 @@ function ContactPage() {
         </a>
         <a
           href={contact.facebook}
+          target="_blank"
+          rel="noreferrer"
           aria-label="Zaki on Facebook"
           className="grid h-12 w-12 place-items-center rounded-xl bg-card shadow-card"
         >
