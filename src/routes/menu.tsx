@@ -1,5 +1,8 @@
+import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { menu } from "@/data/menu";
+import { Expand } from "lucide-react";
+import { menu, type MenuItem } from "@/data/menu";
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
 export const Route = createFileRoute("/menu")({
   head: () => ({
@@ -21,6 +24,9 @@ export const Route = createFileRoute("/menu")({
 });
 
 function MenuPage() {
+  const [active, setActive] = useState<MenuItem | null>(null);
+  const activeBadge = active ? (active.badge ?? (active.bestSeller ? "Best Seller" : null)) : null;
+
   return (
     <>
       <section className="border-b border-border bg-cream py-14 md:py-20">
@@ -63,21 +69,45 @@ function MenuPage() {
             <div className="mt-6 space-y-4">
               {category.items.map((item, i) => {
                 const badge = item.badge ?? (item.bestSeller ? "Best Seller" : null);
+                const interactive = Boolean(item.image);
                 return (
                 <article
                   key={`${category.id}-${item.name}-${i}`}
-                  className="rounded-2xl bg-card p-5 shadow-card"
+                  onClick={interactive ? () => setActive(item) : undefined}
+                  onKeyDown={
+                    interactive
+                      ? (e) => {
+                          if (e.key === "Enter" || e.key === " ") {
+                            e.preventDefault();
+                            setActive(item);
+                          }
+                        }
+                      : undefined
+                  }
+                  role={interactive ? "button" : undefined}
+                  tabIndex={interactive ? 0 : undefined}
+                  aria-label={interactive ? `View details for ${item.name}` : undefined}
+                  className={`group rounded-2xl bg-card p-5 shadow-card ${
+                    interactive
+                      ? "cursor-pointer transition-shadow hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                      : ""
+                  }`}
                 >
                   <div className="flex items-start gap-4">
                     {category.id !== "beverages" ? (
-                      <div className="h-[70px] w-[70px] shrink-0 overflow-hidden rounded-xl border border-border bg-muted md:h-[85px] md:w-[85px]">
+                      <div className="relative h-[70px] w-[70px] shrink-0 overflow-hidden rounded-xl border border-border bg-muted md:h-[85px] md:w-[85px]">
                         {item.image ? (
-                          <img
-                            src={item.image}
-                            alt={item.imageAlt ?? item.name}
-                            loading="lazy"
-                            className="h-full w-full object-cover object-center"
-                          />
+                          <>
+                            <img
+                              src={item.image}
+                              alt={item.imageAlt ?? item.name}
+                              loading="lazy"
+                              className="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-110"
+                            />
+                            <span className="pointer-events-none absolute bottom-1 right-1 rounded-md bg-deep/60 p-1 text-cream opacity-80 transition-opacity group-hover:opacity-100">
+                              <Expand className="h-3 w-3" />
+                            </span>
+                          </>
                         ) : null}
                       </div>
                     ) : null}
@@ -132,6 +162,39 @@ function MenuPage() {
           </div>
         </div>
       </div>
+
+      <Dialog open={!!active} onOpenChange={(open) => !open && setActive(null)}>
+        <DialogContent className="max-w-lg overflow-hidden rounded-2xl bg-card p-0">
+          {active ? (
+            <div className="max-h-[85vh] overflow-y-auto">
+              <img
+                src={active.image}
+                alt={active.imageAlt ?? active.name}
+                className="aspect-[4/3] w-full object-cover object-center"
+              />
+              <div className="p-6">
+                <div className="flex flex-wrap items-center gap-3">
+                  <DialogTitle className="text-2xl font-bold text-deep">{active.name}</DialogTitle>
+                  {activeBadge ? (
+                    <span className="rounded-full border border-gold/40 bg-gold/10 px-2.5 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.16em] text-gold-foreground/80">
+                      {activeBadge}
+                    </span>
+                  ) : null}
+                </div>
+                <p className="mt-2 text-xl font-bold text-primary">{active.price}</p>
+                <DialogDescription className="mt-3 text-sm text-muted-foreground">
+                  {active.description ?? active.name}
+                </DialogDescription>
+                {active.tags?.length ? (
+                  <p className="mt-4 text-xs font-medium uppercase tracking-wide text-primary">
+                    {active.tags.join(" · ")}
+                  </p>
+                ) : null}
+              </div>
+            </div>
+          ) : null}
+        </DialogContent>
+      </Dialog>
     </>
   );
 }
