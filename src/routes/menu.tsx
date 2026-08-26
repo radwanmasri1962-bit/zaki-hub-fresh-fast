@@ -24,6 +24,9 @@ export const Route = createFileRoute("/menu")({
 });
 
 function MenuPage() {
+  const [active, setActive] = useState<MenuItem | null>(null);
+  const activeBadge = active ? (active.badge ?? (active.bestSeller ? "Best Seller" : null)) : null;
+
   return (
     <>
       <section className="border-b border-border bg-cream py-14 md:py-20">
