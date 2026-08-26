@@ -162,6 +162,39 @@ function MenuPage() {
           </div>
         </div>
       </div>
+
+      <Dialog open={!!active} onOpenChange={(open) => !open && setActive(null)}>
+        <DialogContent className="max-w-lg overflow-hidden rounded-2xl bg-card p-0">
+          {active ? (
+            <div className="max-h-[85vh] overflow-y-auto">
+              <img
+                src={active.image}
+                alt={active.imageAlt ?? active.name}
+                className="aspect-[4/3] w-full object-cover object-center"
+              />
+              <div className="p-6">
+                <div className="flex flex-wrap items-center gap-3">
+                  <DialogTitle className="text-2xl font-bold text-deep">{active.name}</DialogTitle>
+                  {activeBadge ? (
+                    <span className="rounded-full border border-gold/40 bg-gold/10 px-2.5 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.16em] text-gold-foreground/80">
+                      {activeBadge}
+                    </span>
+                  ) : null}
+                </div>
+                <p className="mt-2 text-xl font-bold text-primary">{active.price}</p>
+                <DialogDescription className="mt-3 text-sm text-muted-foreground">
+                  {active.description ?? active.name}
+                </DialogDescription>
+                {active.tags?.length ? (
+                  <p className="mt-4 text-xs font-medium uppercase tracking-wide text-primary">
+                    {active.tags.join(" · ")}
+                  </p>
+                ) : null}
+              </div>
+            </div>
+          ) : null}
+        </DialogContent>
+      </Dialog>
     </>
   );
 }
