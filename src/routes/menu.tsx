@@ -1,5 +1,8 @@
+import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { menu } from "@/data/menu";
+import { Expand } from "lucide-react";
+import { menu, type MenuItem } from "@/data/menu";
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
 export const Route = createFileRoute("/menu")({
   head: () => ({
