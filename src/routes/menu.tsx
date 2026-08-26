@@ -69,21 +69,45 @@ function MenuPage() {
             <div className="mt-6 space-y-4">
               {category.items.map((item, i) => {
                 const badge = item.badge ?? (item.bestSeller ? "Best Seller" : null);
+                const interactive = Boolean(item.image);
                 return (
                 <article
                   key={`${category.id}-${item.name}-${i}`}
-                  className="rounded-2xl bg-card p-5 shadow-card"
+                  onClick={interactive ? () => setActive(item) : undefined}
+                  onKeyDown={
+                    interactive
+                      ? (e) => {
+                          if (e.key === "Enter" || e.key === " ") {
+                            e.preventDefault();
+                            setActive(item);
+                          }
+                        }
+                      : undefined
+                  }
+                  role={interactive ? "button" : undefined}
+                  tabIndex={interactive ? 0 : undefined}
+                  aria-label={interactive ? `View details for ${item.name}` : undefined}
+                  className={`group rounded-2xl bg-card p-5 shadow-card ${
+                    interactive
+                      ? "cursor-pointer transition-shadow hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                      : ""
+                  }`}
                 >
                   <div className="flex items-start gap-4">
                     {category.id !== "beverages" ? (
-                      <div className="h-[70px] w-[70px] shrink-0 overflow-hidden rounded-xl border border-border bg-muted md:h-[85px] md:w-[85px]">
+                      <div className="relative h-[70px] w-[70px] shrink-0 overflow-hidden rounded-xl border border-border bg-muted md:h-[85px] md:w-[85px]">
                         {item.image ? (
-                          <img
-                            src={item.image}
-                            alt={item.imageAlt ?? item.name}
-                            loading="lazy"
-                            className="h-full w-full object-cover object-center"
-                          />
+                          <>
+                            <img
+                              src={item.image}
+                              alt={item.imageAlt ?? item.name}
+                              loading="lazy"
+                              className="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-110"
+                            />
+                            <span className="pointer-events-none absolute bottom-1 right-1 rounded-md bg-deep/60 p-1 text-cream opacity-80 transition-opacity group-hover:opacity-100">
+                              <Expand className="h-3 w-3" />
+                            </span>
+                          </>
                         ) : null}
                       </div>
                     ) : null}
