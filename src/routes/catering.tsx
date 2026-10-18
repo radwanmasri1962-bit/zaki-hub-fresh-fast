@@ -9,6 +9,8 @@ export const Route = createFileRoute("/catering")({
 
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Catering & Food Truck Booking | Zaki Mediterranean Grill" },
       {
         name: "description",

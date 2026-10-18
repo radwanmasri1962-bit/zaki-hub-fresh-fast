@@ -1,15 +1,17 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Phone, Mail, MapPin, Instagram, Facebook } from "lucide-react";
-import { buddDairy, contact, mapsUrl } from "@/data/locations";
+import { Mail, MapPin, Instagram, Facebook } from "lucide-react";
+import { locations, contact, mapsUrl } from "@/data/locations";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Contact Zaki | Columbus Halal Mediterranean Grill" },
       {
         name: "description",
         content:
-          "Call, email or visit Zaki Mediterranean Grill in Columbus, Ohio. Questions about catering, food truck booking or ordering? Get in touch.",
+          "Email or visit Zaki Mediterranean Grill in Columbus, Ohio. Questions about catering, food truck booking or ordering? Get in touch.",
       },
       { property: "og:title", content: "Contact Zaki Mediterranean Grill" },
       {
@@ -31,14 +33,6 @@ function ContactPage() {
 
       <div className="mt-10 grid gap-4 sm:grid-cols-2">
         <a
-          href={contact.phoneHref}
-          className="rounded-2xl bg-card p-6 shadow-card transition-shadow hover:shadow-lift"
-        >
-          <Phone className="h-6 w-6 text-primary" />
-          <h2 className="mt-3 text-lg font-semibold">Call us</h2>
-          <p className="mt-1 text-sm text-muted-foreground">{contact.phone}</p>
-        </a>
-        <a
           href={`mailto:${contact.email}`}
           className="rounded-2xl bg-card p-6 shadow-card transition-shadow hover:shadow-lift"
         >
@@ -46,18 +40,7 @@ function ContactPage() {
           <h2 className="mt-3 text-lg font-semibold">Email us</h2>
           <p className="mt-1 text-sm text-muted-foreground">{contact.email}</p>
         </a>
-        <a
-          href={mapsUrl(buddDairy.mapQuery)}
-          target="_blank"
-          rel="noreferrer"
-          className="rounded-2xl bg-card p-6 shadow-card transition-shadow hover:shadow-lift sm:col-span-2"
-        >
-          <MapPin className="h-6 w-6 text-primary" />
-          <h2 className="mt-3 text-lg font-semibold">Visit us at Budd Dairy Food Hall</h2>
-          <p className="mt-1 text-sm text-muted-foreground">
-            {buddDairy.address}, {buddDairy.cityStateZip}
-          </p>
-        </a>
+        {locations.map(location => <a key={location.id} href={mapsUrl(`${location.address}, ${location.cityStateZip}`)} target="_blank" rel="noreferrer" className="rounded-2xl bg-card p-6 shadow-card transition-shadow hover:shadow-lift"><MapPin className="h-6 w-6 text-primary" /><h2 className="mt-3 text-lg font-semibold">{location.name}</h2><p className="mt-1 text-sm text-muted-foreground">{location.address}, {location.cityStateZip}</p></a>)}
       </div>
 
       <div className="mt-8 flex gap-3">

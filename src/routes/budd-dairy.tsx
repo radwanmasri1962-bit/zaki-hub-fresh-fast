@@ -1,12 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { MapPin, Phone } from "lucide-react";
-import buddDairyImg from "@/assets/budd-dairy.png.asset.json";
-import { buddDairy, contact, mapsUrl } from "@/data/locations";
+import { MapPin } from "lucide-react";
+import buddDairyImg from "@/assets/budd-dairy-storefront.jpg.asset.json";
+import { buddDairy, mapsUrl } from "@/data/locations";
 
 export const Route = createFileRoute("/budd-dairy")({
 
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Zaki at Budd Dairy Food Hall | Columbus, OH" },
       {
         name: "description",
@@ -16,7 +18,7 @@ export const Route = createFileRoute("/budd-dairy")({
       { property: "og:title", content: "Find Zaki at Budd Dairy Food Hall" },
       {
         property: "og:description",
-        content: "Zaki's permanent Columbus home — bowls, sandwiches, sides and more.",
+        content: "Visit Zaki at Budd Dairy Food Hall in Columbus.",
       },
     ],
   }),
@@ -33,7 +35,7 @@ function BuddDairyPage() {
           </span>
           <h1 className="mt-3 text-4xl font-bold md:text-6xl">Find Us at Budd Dairy</h1>
           <p className="mt-4 text-muted-foreground md:text-lg">
-            Your permanent home for Zaki in Columbus. Visit us inside Budd Dairy Food Hall for your
+            Visit us inside Budd Dairy Food Hall for your
             favorite Mediterranean bowls, sandwiches, sides and more.
           </p>
           <p className="mt-6 flex gap-3 text-lg font-semibold">
@@ -58,15 +60,10 @@ function BuddDairyPage() {
               search={{ location: "budd-dairy" }}
               className="inline-flex items-center justify-center rounded-xl bg-primary px-7 py-4 text-sm font-semibold uppercase tracking-wide text-primary-foreground hover:bg-deep"
             >
-              Order from Budd Dairy
+              Online Ordering Coming Soon
             </Link>
           </div>
-          <a
-            href={contact.phoneHref}
-            className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
-          >
-            <Phone className="h-4 w-4" /> Call {contact.phone}
-          </a>
+          <Link to="/locations" hash="budd-dairy" className="mt-5 inline-block text-sm font-semibold text-primary underline underline-offset-4">Food-service hours & location details</Link>
         </div>
 
         <img
@@ -95,7 +92,7 @@ function BuddDairyPage() {
               },
               {
                 t: "Easy pickup",
-                d: "Order ahead and grab your food inside the hall, or dine in with friends.",
+                d: "Visit the hall for a meal, or dine in with friends.",
               },
             ].map((c) => (
               <div key={c.t} className="rounded-2xl bg-card p-6 shadow-card">
