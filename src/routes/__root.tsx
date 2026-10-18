@@ -85,7 +85,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Halal Mediterranean food made fresh in Columbus. Find our food trucks, visit Budd Dairy Food Hall, order online or book Zaki catering.",
+          "Halal Mediterranean food made fresh in Columbus. Find our food trucks, visit Budd Dairy Food Hall or Worthington, and explore Zaki catering.",
       },
       { name: "author", content: "Zaki Mediterranean Grill" },
       { property: "og:type", content: "website" },

@@ -39,6 +39,8 @@ const truckStyles: Record<SampleEvent["truck"], string> = {
 export const Route = createFileRoute("/find-our-trucks")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Find Our Trucks | Zaki Food Trucks in Columbus, OH" },
       {
         name: "description",

@@ -1,18 +1,14 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, Facebook, Phone, Mail, MapPin } from "lucide-react";
+import { Instagram, Facebook, Mail, MapPin } from "lucide-react";
 import logo from "@/assets/zaki-logo.png.asset.json";
 import jaraLogo from "@/assets/jara-logo-dark.png.asset.json";
 import sffLogo from "@/assets/streetfood-finder-logo.png.asset.json";
-import { buddDairy, contact } from "@/data/locations";
+import { locations, contact } from "@/data/locations";
 
 const links = [
-  { to: "/menu", label: "Menu" },
-  { to: "/find-our-trucks", label: "Find Our Trucks" },
-  { to: "/budd-dairy", label: "Budd Dairy" },
-  { to: "/catering", label: "Catering" },
-  { to: "/catering", label: "Book a Truck" },
-  { to: "/our-story", label: "About" },
-  { to: "/contact", label: "Contact" },
+ { to: "/menu", label: "Menu" }, { to: "/locations", label: "Locations" },
+ { to: "/find-our-trucks", label: "Find Our Food Trucks" }, { to: "/catering", label: "Catering" },
+ { to: "/our-story", label: "Our Story" }, { to: "/order", label: "Order Online" },
 ] as const;
 
 export function Footer() {
@@ -77,20 +73,7 @@ export function Footer() {
         <div>
           <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">Contact</h3>
           <ul className="mt-4 space-y-3 text-sm text-deep-foreground/85">
-            <li className="flex gap-3">
-              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
-              <span>
-                {buddDairy.address}
-                <br />
-                {buddDairy.cityStateZip}
-              </span>
-            </li>
-            <li>
-              <a href={contact.phoneHref} className="flex gap-3 hover:text-gold">
-                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
-                {contact.phone}
-              </a>
-            </li>
+            {locations.map(location => <li key={location.id} className="flex gap-3"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold" /><Link to="/locations" hash={location.id} className="hover:text-gold"><span className="font-semibold">{location.name}</span><br />{location.address}<br />{location.cityStateZip}</Link></li>)}
             <li>
               <a href={`mailto:${contact.email}`} className="flex gap-3 hover:text-gold">
                 <Mail className="mt-0.5 h-4 w-4 shrink-0 text-gold" />

@@ -7,6 +7,8 @@ import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/compone
 export const Route = createFileRoute("/menu")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Menu | Zaki Mediterranean Grill Columbus" },
       {
         name: "description",
@@ -25,7 +27,7 @@ export const Route = createFileRoute("/menu")({
 
 function MenuPage() {
   const [active, setActive] = useState<MenuItem | null>(null);
-  const activeBadge = active ? (active.badge ?? (active.bestSeller ? "Best Seller" : null)) : null;
+  const activeBadge = active?.badge ?? null;
 
   return (
     <>
@@ -36,8 +38,7 @@ function MenuPage() {
           </span>
           <h1 className="mt-3 text-4xl font-bold text-deep md:text-6xl">The Zaki Menu</h1>
           <p className="mt-4 max-w-2xl text-muted-foreground md:text-lg">
-            Bold Mediterranean flavors, fresh ingredients and halal proteins. Available at all three
-            trucks and at Budd Dairy Food Hall.
+            Fresh halal Mediterranean flavors from Zaki in Central Ohio. Explore our bowls, pita wraps and favorites.
           </p>
           <Link
             to="/order"
@@ -68,7 +69,7 @@ function MenuPage() {
             <h2 className="text-2xl font-bold md:text-4xl">{category.title}</h2>
             <div className="mt-6 space-y-4">
               {category.items.map((item, i) => {
-                const badge = item.badge ?? (item.bestSeller ? "Best Seller" : null);
+                const badge = item.badge ?? null;
                 const interactive = Boolean(item.image);
                 return (
                 <article
@@ -94,15 +95,15 @@ function MenuPage() {
                   }`}
                 >
                   <div className="flex items-start gap-4">
-                    {category.id !== "beverages" ? (
-                      <div className="relative h-[70px] w-[70px] shrink-0 overflow-hidden rounded-xl border border-border bg-muted md:h-[85px] md:w-[85px]">
+                    {item.image ? (
+                      <div className="relative h-[70px] w-[70px] shrink-0 overflow-hidden rounded-xl border border-border bg-food-surface md:h-[85px] md:w-[85px]">
                         {item.image ? (
                           <>
                             <img
                               src={item.image}
                               alt={item.imageAlt ?? item.name}
                               loading="lazy"
-                              className="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-110"
+                              className="h-full w-full object-contain object-center p-1 transition-transform duration-300 motion-safe:group-hover:scale-105"
                             />
                             <span className="pointer-events-none absolute bottom-1 right-1 rounded-md bg-deep/60 p-1 text-cream opacity-80 transition-opacity group-hover:opacity-100">
                               <Expand className="h-3 w-3" />
@@ -129,7 +130,7 @@ function MenuPage() {
                         </p>
                       ) : null}
                     </div>
-                    <span className="shrink-0 text-lg font-bold text-primary">{item.price}</span>
+                    <span className="max-w-[120px] text-right text-base font-bold text-primary">{item.price}</span>
                   </div>
                 </article>
                 );
@@ -144,7 +145,7 @@ function MenuPage() {
         <div className="rounded-2xl bg-primary p-8 text-center text-primary-foreground">
           <h2 className="text-2xl font-bold md:text-3xl">Ready to eat?</h2>
           <p className="mt-2 text-primary-foreground/85">
-            Order for pickup or delivery, or find the truck closest to you today.
+            Online ordering is coming soon. Explore our locations and find Zaki near you.
           </p>
           <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
             <Link
@@ -154,10 +155,10 @@ function MenuPage() {
               Order Online
             </Link>
             <Link
-              to="/find-our-trucks"
+              to="/locations"
               className="rounded-xl border border-cream/40 px-6 py-4 text-sm font-semibold uppercase tracking-wide hover:bg-cream/10"
             >
-              Find Our Trucks
+              Find a Location
             </Link>
           </div>
         </div>
@@ -170,7 +171,7 @@ function MenuPage() {
               <img
                 src={active.image}
                 alt={active.imageAlt ?? active.name}
-                className="aspect-[4/3] w-full object-cover object-center"
+                className="aspect-[4/3] w-full bg-food-surface object-contain object-center p-6"
               />
               <div className="p-6">
                 <div className="flex flex-wrap items-center gap-3">
