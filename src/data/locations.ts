@@ -1,48 +1,3 @@
-/**
- * Ordering architecture: each Zaki location is an "order destination".
- * `orderUrl` is intentionally null until Zaki's direct ordering system (or a
- * chosen provider) is connected — the UI routes customers to /order, which
- * lists destinations, rather than hard-coding a marketplace.
- */
-export type OrderDestination = {
-  id: string;
-  name: string;
-  kind: "brick-and-mortar" | "truck";
-  blurb: string;
-  orderUrl: string | null;
-};
-
-export const orderDestinations: OrderDestination[] = [
-  {
-    id: "budd-dairy",
-    name: "Zaki at Budd Dairy Food Hall",
-    kind: "brick-and-mortar",
-    blurb: "1086 N. 4th St., Columbus, OH 43201 · Pickup & delivery",
-    orderUrl: null,
-  },
-  {
-    id: "truck-1",
-    name: "Zaki Truck 1",
-    kind: "truck",
-    blurb: "Order ahead when Truck 1 is serving today.",
-    orderUrl: null,
-  },
-  {
-    id: "truck-2",
-    name: "Zaki Truck 2",
-    kind: "truck",
-    blurb: "Order ahead when Truck 2 is serving today.",
-    orderUrl: null,
-  },
-  {
-    id: "truck-3",
-    name: "Zaki Truck 3",
-    kind: "truck",
-    blurb: "Order ahead when Truck 3 is serving today.",
-    orderUrl: null,
-  },
-];
-
 export type TruckStop = {
   truck: string;
   location: string;
@@ -102,8 +57,6 @@ export const buddDairy = {
 };
 
 export const contact = {
-  phone: "(614) 555-0148",
-  phoneHref: "tel:+16145550148",
   email: "hello@zakigrill.com",
   instagram: "https://www.instagram.com/zakigrill/",
   facebook: "https://www.facebook.com/ZakiGrill/",
@@ -112,3 +65,13 @@ export const contact = {
 
 export const mapsUrl = (query: string) =>
   `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+
+export const buddDairyHours = [
+  ["Monday", "Closed"], ["Tuesday", "4–9 p.m."], ["Wednesday", "4–9 p.m."],
+  ["Thursday", "11 a.m.–9 p.m."], ["Friday", "11 a.m.–11 p.m."],
+  ["Saturday", "11 a.m.–11 p.m."], ["Sunday", "11 a.m.–9 p.m."],
+] as const;
+export const locations = [
+  { id: "budd-dairy", name: "Zaki at Budd Dairy Food Hall", address: "1086 N. 4th St.", cityStateZip: "Columbus, OH 43201" },
+  { id: "worthington", name: "Zaki Worthington", address: "2245 W. Dublin-Granville Rd.", cityStateZip: "Columbus, OH 43085" },
+] as const;
