@@ -1,108 +1,18 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import teamPhoto from "@/assets/zaki-team.png.asset.json";
 import truckPhoto from "@/assets/zaki-truck-event.png.asset.json";
 import foodPhoto from "@/assets/zaki-takeaway-containers.png.asset.json";
-
-export const Route = createFileRoute("/our-story")({
-  head: () => ({
-    meta: [
-      { title: "Our Story | Zaki Mediterranean Grill, Columbus" },
-      {
-        name: "description",
-        content:
-          "Zaki began as a Columbus food-truck business built on fresh Mediterranean food and personal hospitality. Today: three trucks plus Budd Dairy Food Hall.",
-      },
-      { property: "og:title", content: "Our Story | Zaki Mediterranean Grill" },
-      {
-        property: "og:description",
-        content: "Local, independent and family-operated halal Mediterranean food in Columbus.",
-      },
-    ],
-  }),
-  component: StoryPage,
-});
-
-function StoryPage() {
-  return (
-    <>
-      <section className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-14 md:grid-cols-2 md:px-6 md:py-20">
-        <div>
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-            About Zaki
-          </span>
-          <h1 className="mt-3 text-4xl font-bold md:text-6xl">Our Story</h1>
-          <div className="mt-6 space-y-4 text-muted-foreground md:text-lg">
-            <p>
-              Zaki began as a Columbus food-truck business built around fresh Mediterranean food and
-              personal hospitality.
-            </p>
-            <p>
-              Today Zaki operates three food trucks across Central Ohio along with its permanent
-              home at Budd Dairy Food Hall.
-            </p>
-            <p>
-              "Zaki" means <span className="font-semibold text-foreground">delicious</span> in
-              Arabic — a simple promise we try to keep with every bowl, sandwich and side we serve.
-            </p>
-          </div>
-          <div className="mt-8 flex flex-wrap gap-2">
-            {["Local", "Independent", "Family-operated", "Columbus"].map((t) => (
-              <span
-                key={t}
-                className="rounded-full bg-muted px-4 py-2 text-xs font-semibold uppercase tracking-wide"
-              >
-                {t}
-              </span>
-            ))}
-          </div>
-        </div>
-        <img
-          src={teamPhoto.url}
-          alt="Zaki team member plating a Mediterranean bowl behind the counter"
-          loading="lazy"
-          className="h-full min-h-[320px] w-full rounded-2xl object-cover shadow-card md:min-h-[460px]"
-        />
-      </section>
-
-      <section className="bg-secondary section-pad">
-        <div className="mx-auto max-w-6xl px-4 md:px-6">
-          <div className="grid gap-6 md:grid-cols-2">
-            <img
-              src={truckPhoto.url}
-              alt="Zaki food truck serving guests at an evening event"
-              loading="lazy"
-              className="h-full min-h-[220px] w-full rounded-2xl object-cover shadow-card"
-            />
-            <img
-              src={foodPhoto.url}
-              alt="Zaki takeaway bowls and a falafel wrap held up outdoors"
-              loading="lazy"
-              className="h-full min-h-[220px] w-full rounded-2xl object-cover shadow-card"
-            />
-          </div>
-          <div className="mt-10 rounded-2xl bg-primary p-8 text-primary-foreground">
-            <h2 className="text-2xl font-bold md:text-3xl">Halal Mediterranean Food</h2>
-            <p className="mt-2 max-w-2xl text-primary-foreground/85">
-              Fresh ingredients, bold Mediterranean seasoning and halal proteins — served from our
-              trucks and at Budd Dairy Food Hall.
-            </p>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <Link
-                to="/menu"
-                className="rounded-xl bg-cream px-6 py-4 text-center text-sm font-semibold uppercase tracking-wide text-foreground hover:bg-cream/90"
-              >
-                See the Menu
-              </Link>
-              <Link
-                to="/contact"
-                className="rounded-xl border border-cream/40 px-6 py-4 text-center text-sm font-semibold uppercase tracking-wide hover:bg-cream/10"
-              >
-                Contact Zaki
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
-  );
-}
+import buddPhoto from "@/assets/budd-dairy-storefront.jpg.asset.json";
+import { Button } from "@/components/ui/button";
+export const Route = createFileRoute("/our-story")({ head: () => ({ meta: [
+ { title: "Ahmed’s Story | Zaki Mediterranean Grill" },
+ { name: "description", content: "From roots in Palestine to Central Ohio, discover Ahmed’s journey through food, persistence and personal hospitality at Zaki." },
+ { property: "og:title", content: "Built from the Ground Up | The Zaki Story" },
+ { property: "og:description", content: "Ahmed’s journey from Palestine to a growing Mediterranean food business in Central Ohio." },
+ { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" },
+ ] }), component: StoryPage });
+function StoryPage() { return <>
+ <section className="mx-auto max-w-6xl px-4 py-14 md:px-6 md:py-20"><span className="text-xs font-semibold uppercase text-primary">Ahmed’s story</span><h1 className="mt-3 max-w-3xl text-4xl font-bold md:text-6xl">Built from the Ground Up.</h1><p className="mt-6 max-w-3xl text-muted-foreground md:text-lg">From roots in Palestine to a growing Mediterranean food business in Central Ohio, Ahmed’s journey is built on food, persistence and personal hospitality.</p><div className="mt-10 grid gap-10 md:grid-cols-2"><div><h2 className="text-2xl font-bold">Roots and a new beginning</h2><p className="mt-4 text-muted-foreground">Ahmed’s story begins in Palestine and continues with a new beginning in Columbus. Food and hospitality connect those roots to the community he is building in Central Ohio.</p></div><div><h2 className="text-2xl font-bold">Building through food</h2><p className="mt-4 text-muted-foreground">Learning, working and getting to know customers shaped the journey. At Zaki, food is an invitation to connect — a meal served with personal care, one customer at a time.</p></div></div></section>
+ <section className="bg-secondary section-pad"><div className="mx-auto grid max-w-6xl items-center gap-10 px-4 md:grid-cols-2 md:px-6"><img src={truckPhoto.url} alt="Zaki food truck serving an outdoor community event" loading="lazy" className="aspect-[4/3] w-full rounded-2xl object-cover shadow-card" /><div><h2 className="text-3xl font-bold">Taking Zaki on the road</h2><p className="mt-4 text-muted-foreground">Food trucks brought Zaki into neighborhoods, community gatherings and events across Central Ohio. Taking the food on the road created more opportunities to meet people and share Zaki’s Mediterranean flavors.</p></div></div></section>
+ <section className="section-pad"><div className="mx-auto grid max-w-6xl items-center gap-10 px-4 md:grid-cols-2 md:px-6"><div><h2 className="text-3xl font-bold">A growing home in Central Ohio</h2><p className="mt-4 text-muted-foreground">Alongside the trucks, Zaki welcomes guests at Budd Dairy Food Hall and in Worthington. Each location is another place to share a meal and build a relationship with the community.</p><Link to="/locations" className="mt-5 inline-block font-semibold text-primary underline underline-offset-4">Budd Dairy & Worthington</Link></div><img src={buddPhoto.url} alt="Zaki signs and outdoor seating at Budd Dairy Food Hall" loading="lazy" className="aspect-[4/3] w-full rounded-2xl object-cover shadow-card" /></div></section>
+ <section className="bg-secondary section-pad"><div className="mx-auto grid max-w-6xl items-center gap-10 px-4 md:grid-cols-2 md:px-6"><img src={foodPhoto.url} alt="Zaki takeaway bowls and a pita wrap outdoors" loading="lazy" className="aspect-[4/3] w-full rounded-2xl object-cover shadow-card" /><div><h2 className="text-3xl font-bold">The next chapter</h2><p className="mt-4 text-muted-foreground">The ambition is simple: bring Zaki’s flavors and hospitality to more people, while keeping the personal welcome that has shaped Ahmed’s journey.</p><div className="mt-6 flex flex-wrap gap-3"><Button asChild className="h-auto rounded-xl px-6 py-4 font-semibold"><Link to="/menu">Explore the Menu</Link></Button><Button asChild variant="outline" className="h-auto rounded-xl px-6 py-4 font-semibold"><Link to="/locations">Find a Location</Link></Button></div></div></div></section>
+ </>; }
