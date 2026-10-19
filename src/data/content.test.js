@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test";
 import { signatureItems, menu } from "./menu";
-import { locations, buddDairyHours, contact } from "./locations";
+import { locations, buddDairyHours, worthingtonHours, contact } from "./locations";
 
 describe("Confirmed stage-one content", () => {
   for (const [name, price] of [
@@ -24,8 +24,17 @@ describe("Confirmed stage-one content", () => {
       ["Saturday", "11 a.m.–11 p.m."], ["Sunday", "11 a.m.–9 p.m."],
     ]);
   });
-  test("Unknown Worthington weekly hours are not published", () => {
-    expect(locations.find(location => location.id === "worthington")).not.toHaveProperty("hours");
+  test("Worthington uses its newly confirmed weekly hours", () => {
+    expect(worthingtonHours).toEqual([
+      ["Monday", "11 a.m.–9 p.m."], ["Tuesday", "11 a.m.–9 p.m."],
+      ["Wednesday", "11 a.m.–9 p.m."], ["Thursday", "11 a.m.–9 p.m."],
+      ["Friday", "11 a.m.–11 p.m."], ["Saturday", "11 a.m.–11 p.m."],
+      ["Sunday", "11 a.m.–9 p.m."],
+    ]);
+  });
+  test("Zaki Fries belongs to Sides, not Extras", () => {
+    expect(menu.find(category => category.id === "sides")?.items.map(item => item.name)).toContain("Zaki Fries");
+    expect(menu.find(category => category.id === "extras")?.items).toEqual([]);
   });
   test("Placeholder phone is absent", () => {
     expect(contact).not.toHaveProperty("phone");

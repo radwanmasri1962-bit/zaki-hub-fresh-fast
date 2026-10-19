@@ -13,12 +13,12 @@ export const Route = createFileRoute("/menu")({
       {
         name: "description",
         content:
-          "Explore the Zaki menu: chicken and gyro bowls, shawarma sandwiches, falafel, hummus, Zaki Fries, baklava and more. Halal Mediterranean food in Columbus, Ohio.",
+          "Explore the Zaki menu: chicken and gyro bowls, shawarma, falafel wraps and Zaki Fries. Halal Mediterranean food in Columbus, Ohio.",
       },
       { property: "og:title", content: "Zaki Menu | Halal Mediterranean in Columbus" },
       {
         property: "og:description",
-        content: "Bowls, sandwiches, appetizers, sides and desserts made fresh every day.",
+        content: "Discover Zaki bowls, pita wraps and Zaki Fries in Central Ohio.",
       },
     ],
   }),
@@ -31,18 +31,18 @@ function MenuPage() {
 
   return (
     <>
-      <section className="border-b border-border bg-cream py-14 md:py-20">
+      <section className="border-b border-border bg-cream py-7 md:py-10">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
             Fresh · Halal · Columbus
           </span>
-          <h1 className="mt-3 text-4xl font-bold text-deep md:text-6xl">The Zaki Menu</h1>
+          <h1 className="mt-3 text-4xl font-bold text-deep md:text-5xl">The Zaki Menu</h1>
           <p className="mt-4 max-w-2xl text-muted-foreground md:text-lg">
             Fresh halal Mediterranean flavors from Zaki in Central Ohio. Explore our bowls, pita wraps and favorites.
           </p>
           <Link
             to="/order"
-            className="mt-7 inline-flex rounded-xl bg-primary px-7 py-4 text-sm font-semibold uppercase tracking-wide text-primary-foreground hover:bg-primary/90"
+            className="mt-4 inline-flex rounded-xl bg-primary px-7 py-4 text-sm font-semibold uppercase tracking-wide text-primary-foreground hover:bg-primary/90"
           >
             Order Online
           </Link>
@@ -51,7 +51,7 @@ function MenuPage() {
 
       <div className="sticky top-16 z-40 border-b border-border bg-cream/95 backdrop-blur md:top-20">
         <div className="mx-auto flex max-w-6xl gap-2 overflow-x-auto px-4 py-3 md:px-6">
-          {menu.map((c) => (
+          {menu.filter(c => c.items.length > 0).map((c) => (
             <a
               key={c.id}
               href={`#${c.id}`}
@@ -63,8 +63,8 @@ function MenuPage() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-4xl px-4 py-14 md:px-6 md:py-20">
-        {menu.map((category) => (
+      <div className="mx-auto max-w-4xl px-4 py-8 md:px-6 md:py-10">
+        {menu.filter(category => category.items.length > 0).map((category) => (
           <section key={category.id} id={category.id} className="scroll-mt-40 pb-14">
             <h2 className="text-2xl font-bold md:text-4xl">{category.title}</h2>
             <div className="mt-6 space-y-4">

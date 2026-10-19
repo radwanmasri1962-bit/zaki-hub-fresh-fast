@@ -19,10 +19,10 @@ const dishes: MenuItem[] = signatureItems.map(({ note, alt, ...item }) => ({ ...
 export const menu: MenuCategory[] = [
  { id: "bowls", title: "Bowls", items: dishes.slice(0, 2) },
  { id: "pita-wraps", title: "Pita Wraps", items: dishes.slice(2, 5) },
- { id: "extras", title: "Extras", items: dishes.slice(5) },
+ { id: "extras", title: "Extras", items: [] },
  { id: "salads", title: "Salads", items: [] },
  { id: "appetizers", title: "Appetizers", items: [] },
- { id: "sides", title: "Sides", items: [] },
+ { id: "sides", title: "Sides", items: dishes.slice(5) },
  { id: "add-a-protein", title: "Add a Protein", items: [] },
  { id: "desserts", title: "Desserts", items: [] },
  { id: "drinks", title: "Drinks", items: [] },
