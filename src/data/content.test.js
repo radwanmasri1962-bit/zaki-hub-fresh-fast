@@ -45,19 +45,20 @@ describe("Confirmed stage-one content", () => {
   });
   test("No dietary claims or outdated entries survive without the workbook", () => {
     const items = menu.flatMap(category => category.items);
-    expect(items).toHaveLength(12);
+    expect(items).toHaveLength(20);
     expect(items.some(item => item.tags?.length)).toBe(false);
   });
-  test("New photo-confirmed dishes carry images but no invented prices or descriptions", () => {
+  test("New photo-confirmed dishes carry images and brief-confirmed prices", () => {
     const names = ["Falafel Bowl", "Lamb Chops Bowl", "Salmon Bowl", "Shrimp Bowl", "Chicken Gyro", "Veggie Gyro"];
     const items = menu.flatMap(category => category.items);
     for (const name of names) {
       const item = items.find(i => i.name === name);
       expect(item).toBeDefined();
       expect(item.image).toBeTruthy();
-      expect(item.price).toBeUndefined();
-      expect(item.description).toBeUndefined();
     }
+    const prices = { "Falafel Bowl": "$17", "Lamb Chops Bowl": "$30", "Salmon Bowl": "$24", "Shrimp Bowl": "$24", "Chicken Gyro": "$13", "Veggie Gyro": "$13" };
+    for (const [n, p] of Object.entries(prices)) expect(items.find(i => i.name === n).price).toBe(p);
+    expect(menu.find(c => c.id === "appetizers").items).toHaveLength(8);
     expect(menu.find(c => c.id === "bowls").items.map(i => i.name)).toEqual(["Zaki Chicken Bowl", "Gyro Bowl", "Falafel Bowl", "Lamb Chops Bowl", "Salmon Bowl", "Shrimp Bowl"]);
     expect(menu.find(c => c.id === "pita-wraps").items.map(i => i.name)).toEqual(["Chicken Shawarma", "Gyro the Hero", "Revenge of the Falafel", "Chicken Gyro", "Veggie Gyro"]);
   });
