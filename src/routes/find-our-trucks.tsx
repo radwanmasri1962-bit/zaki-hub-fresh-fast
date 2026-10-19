@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { MapPin, Clock, Navigation, ShoppingBag, CalendarDays } from "lucide-react";
-import trucksIllustration from "@/assets/zaki-trucks-illustration.jpg.asset.json";
+import truckHero from "@/assets/riverside-zaki-mediterranean-food-festival.png.asset.json";
 import { todayStops, upcomingStops, mapsUrl } from "@/data/locations";
 
 type SampleEvent = {
@@ -60,25 +60,32 @@ export const Route = createFileRoute("/find-our-trucks")({
 function TrucksPage() {
   return (
     <>
-      <section className="border-b border-border bg-cream py-14 md:py-20">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 md:grid-cols-2 md:items-center md:gap-14 md:px-6">
-          <div>
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
-              Find Zaki
-            </span>
-            <h1 className="mt-3 text-4xl font-bold text-deep md:text-6xl">Where's Zaki Today?</h1>
-            <p className="mt-4 max-w-2xl text-muted-foreground md:text-lg">
-              Our trucks move throughout Columbus every week. Find the closest Zaki truck, see
-              today's hours and order ahead when available.
-            </p>
-          </div>
-          <div className="overflow-hidden rounded-3xl shadow-lift">
-            <img
-              src={trucksIllustration.url}
-              alt="Illustrated map of Columbus showing Zaki food trucks moving through neighborhoods, events, and landmarks"
-              loading="eager"
-              className="h-full min-h-[240px] w-full object-cover md:min-h-[380px]"
-            />
+      <section className="relative border-b border-border bg-cream">
+        <div className="mx-auto max-w-6xl px-4 pb-6 pt-10 md:hidden">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">Find Zaki</span>
+          <h1 className="mt-2 text-4xl font-bold text-deep">Where's Zaki Today?</h1>
+          <p className="mt-3 text-muted-foreground">
+            Find Zaki around Columbus and explore our upcoming food-truck stops.
+          </p>
+        </div>
+        <div className="relative overflow-hidden">
+          <img
+            src={truckHero.url}
+            alt="Zaki food truck serving guests at a riverside festival with the Columbus skyline behind"
+            loading="eager"
+            className="h-[240px] w-full object-cover object-[70%_center] sm:h-[320px] md:h-[440px] md:object-center lg:h-[520px]"
+          />
+          <div className="absolute inset-y-0 left-0 hidden w-[55%] bg-gradient-to-r from-foreground/75 via-foreground/40 to-transparent md:block" />
+          <div className="absolute inset-y-0 left-0 hidden w-full items-center md:flex">
+            <div className="mx-auto w-full max-w-6xl px-6">
+              <div className="max-w-sm lg:max-w-md">
+                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">Find Zaki</span>
+                <h1 className="mt-3 text-5xl font-bold text-background lg:text-6xl">Where's Zaki Today?</h1>
+                <p className="mt-4 text-lg text-background/90">
+                  Find Zaki around Columbus and explore our upcoming food-truck stops.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
