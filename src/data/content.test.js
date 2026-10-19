@@ -44,7 +44,21 @@ describe("Confirmed stage-one content", () => {
     expect(menu.map(category => category.title)).toEqual(["Bowls", "Pita Wraps", "Extras", "Salads", "Appetizers", "Sides", "Add a Protein", "Desserts", "Drinks"]);
   });
   test("No dietary claims or outdated entries survive without the workbook", () => {
-    expect(menu.flatMap(category => category.items)).toHaveLength(6);
-    expect(menu.flatMap(category => category.items).some(item => item.tags?.length)).toBe(false);
+    const items = menu.flatMap(category => category.items);
+    expect(items).toHaveLength(12);
+    expect(items.some(item => item.tags?.length)).toBe(false);
+  });
+  test("New photo-confirmed dishes carry images but no invented prices or descriptions", () => {
+    const names = ["Falafel Bowl", "Lamb Chops Bowl", "Salmon Bowl", "Shrimp Bowl", "Chicken Gyro", "Veggie Gyro"];
+    const items = menu.flatMap(category => category.items);
+    for (const name of names) {
+      const item = items.find(i => i.name === name);
+      expect(item).toBeDefined();
+      expect(item.image).toBeTruthy();
+      expect(item.price).toBeUndefined();
+      expect(item.description).toBeUndefined();
+    }
+    expect(menu.find(c => c.id === "bowls").items.map(i => i.name)).toEqual(["Zaki Chicken Bowl", "Gyro Bowl", "Falafel Bowl", "Lamb Chops Bowl", "Salmon Bowl", "Shrimp Bowl"]);
+    expect(menu.find(c => c.id === "pita-wraps").items.map(i => i.name)).toEqual(["Chicken Shawarma", "Gyro the Hero", "Revenge of the Falafel", "Chicken Gyro", "Veggie Gyro"]);
   });
 });

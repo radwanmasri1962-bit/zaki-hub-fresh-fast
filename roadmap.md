@@ -3,6 +3,7 @@
 - [x] Both locations, confirmed hours and presentation-only ordering
 - [x] Founder-led story and footer/contact consistency
 - [ ] Menu categories and confirmed dishes; workbook-dependent entries blocked by missing Zaki_Mediterranean_Grill_Menu.xlsx
+- [x] Menu page cinematic banner, six new photo-confirmed dishes (prices/descriptions pending workbook), homepage Worthington hours removed
 - [x] Add supplied Worthington storefront and newly confirmed hours
 - [x] Add supplied Ahmed portrait and Worthington story photograph
 - [x] Refine Favorites background/image sizing, desktop headline and compact menu introduction
