@@ -75,3 +75,10 @@ export const locations = [
   { id: "budd-dairy", name: "Zaki at Budd Dairy Food Hall", address: "1086 N. 4th St.", cityStateZip: "Columbus, OH 43201" },
   { id: "worthington", name: "Zaki Worthington", address: "2245 W. Dublin-Granville Rd.", cityStateZip: "Columbus, OH 43085" },
 ] as const;
+
+export const worthingtonHours = [
+  ["Monday", "11 a.m.–9 p.m."], ["Tuesday", "11 a.m.–9 p.m."],
+  ["Wednesday", "11 a.m.–9 p.m."], ["Thursday", "11 a.m.–9 p.m."],
+  ["Friday", "11 a.m.–11 p.m."], ["Saturday", "11 a.m.–11 p.m."],
+  ["Sunday", "11 a.m.–9 p.m."],
+] as const;
