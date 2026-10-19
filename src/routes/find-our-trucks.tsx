@@ -75,12 +75,12 @@ function TrucksPage() {
             loading="eager"
             className="h-[240px] w-full object-cover object-[70%_center] sm:h-[320px] md:h-[440px] md:object-center lg:h-[520px]"
           />
-          <div className="absolute inset-y-0 left-0 hidden w-[55%] bg-gradient-to-r from-foreground/75 via-foreground/40 to-transparent md:block" />
+          <div className="absolute inset-y-0 left-0 hidden w-[50%] bg-gradient-to-r from-foreground/75 via-foreground/40 to-transparent md:block" />
           <div className="absolute inset-y-0 left-0 hidden w-full items-center md:flex">
             <div className="mx-auto w-full max-w-6xl px-6">
-              <div className="max-w-sm lg:max-w-md">
+              <div className="max-w-[22rem]">
                 <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">Find Zaki</span>
-                <h1 className="mt-3 text-5xl font-bold text-background lg:text-6xl">Where's Zaki Today?</h1>
+                <h1 className="mt-3 text-4xl font-bold text-background lg:text-5xl">Where's Zaki Today?</h1>
                 <p className="mt-4 text-lg text-background/90">
                   Find Zaki around Columbus and explore our upcoming food-truck stops.
                 </p>
