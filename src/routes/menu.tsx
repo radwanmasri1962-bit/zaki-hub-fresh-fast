@@ -32,21 +32,27 @@ function MenuPage() {
 
   return (
     <>
-      <section className="border-b border-border bg-cream py-7 md:py-10">
-        <div className="mx-auto max-w-6xl px-4 md:px-6">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
-            Fresh · Halal · Columbus
-          </span>
-          <h1 className="mt-3 text-4xl font-bold text-deep md:text-5xl">The Zaki Menu</h1>
-          <p className="mt-4 max-w-2xl text-muted-foreground md:text-lg">
-            Fresh halal Mediterranean flavors from Zaki in Central Ohio. Explore our bowls, pita wraps and favorites.
+      <section className="border-b border-border bg-cream">
+        <div className="mx-auto max-w-6xl px-4 pb-6 pt-7 md:hidden">
+          <h1 className="text-4xl font-bold text-deep">The Zaki Menu</h1>
+          <p className="mt-3 text-muted-foreground">
+            Explore our bowls, pita wraps, sides and Mediterranean favorites.
           </p>
-          <Link
-            to="/order"
-            className="mt-4 inline-flex rounded-xl bg-primary px-7 py-4 text-sm font-semibold uppercase tracking-wide text-primary-foreground hover:bg-primary/90"
-          >
-            Order Online
-          </Link>
+        </div>
+        <div className="relative">
+          <img
+            src={menuHero.url}
+            alt="Zaki menu banner showing a gyro bowl, salmon bowl, Zaki fries, baklava and a chicken shawarma wrap on a warm table"
+            className="h-auto w-full"
+            loading="eager"
+            fetchPriority="high"
+          />
+          <div className="absolute left-[4%] top-[9%] hidden w-[30%] md:block">
+            <h1 className="text-3xl font-bold text-deep lg:text-5xl">The Zaki Menu</h1>
+            <p className="mt-2 text-sm text-deep/80 lg:mt-3 lg:text-base">
+              Explore our bowls, pita wraps, sides and Mediterranean favorites.
+            </p>
+          </div>
         </div>
       </section>
 
