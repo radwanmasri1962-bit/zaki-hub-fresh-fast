@@ -35,7 +35,7 @@ function HeroText() {
   return (
     <>
       <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">Catering &amp; Events</span>
-      <h1 className="mt-3 text-4xl font-bold leading-[1.05] text-cream md:text-5xl lg:text-6xl">
+      <h1 className="mt-3 text-4xl font-bold leading-[1.05] text-cream md:text-4xl lg:text-5xl">
         Good Food.<br />Great Company.<br />Always Zaki.
       </h1>
       <p className="mt-4 text-cream/85 md:text-lg">
@@ -55,11 +55,11 @@ function CateringPage() {
       </section>
       {/* Desktop: cinematic overlay */}
       <section className="relative hidden overflow-hidden bg-deep md:block">
-        <img src={heroImg.url} alt="Zaki Catering buffet with grilled chicken, gyro meat, falafel, dips, salads, pita and desserts in a conference room." width={1920} height={640} className="block aspect-[3/1] min-h-[440px] w-full object-cover object-right" />
+        <img src={heroImg.url} alt="Zaki Catering buffet with grilled chicken, gyro meat, falafel, dips, salads, pita and desserts in a conference room." width={1920} height={640} className="block aspect-[3/1] min-h-[400px] w-full object-cover object-right" />
         <div className="absolute inset-0 bg-gradient-to-r from-deep from-10% via-deep/70 via-35% to-transparent to-60%" />
         <div className="absolute inset-0 flex items-center">
-          <div className="mx-auto w-full max-w-7xl px-6">
-            <div className="max-w-md lg:max-w-lg"><HeroText /></div>
+          <div className="mx-auto w-full max-w-6xl px-6">
+            <div className="max-w-sm lg:max-w-md"><HeroText /></div>
           </div>
         </div>
       </section>
