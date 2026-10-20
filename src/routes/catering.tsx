@@ -56,7 +56,7 @@ function CateringPage() {
       {/* Desktop: cinematic overlay */}
       <section className="relative hidden overflow-hidden bg-deep md:block">
         <img src={heroImg.url} alt="Zaki Catering buffet with grilled chicken, gyro meat, falafel, dips, salads, pita and desserts in a conference room." width={1920} height={640} className="block aspect-[3/1] min-h-[440px] w-full object-cover object-right" />
-        <div className="absolute inset-0 bg-gradient-to-r from-deep via-deep/70 to-transparent" style={{ backgroundSize: "70% 100%", backgroundRepeat: "no-repeat" }} />
+        <div className="absolute inset-0 bg-gradient-to-r from-deep from-10% via-deep/70 via-35% to-transparent to-60%" />
         <div className="absolute inset-0 flex items-center">
           <div className="mx-auto w-full max-w-7xl px-6">
             <div className="max-w-md lg:max-w-lg"><HeroText /></div>
