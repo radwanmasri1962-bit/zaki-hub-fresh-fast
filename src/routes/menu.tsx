@@ -212,7 +212,7 @@ function MenuPage() {
 }
 
 function singlePrice(item: MenuItem) {
-  if (item.variants?.length) return item.variants.length === 1 ? item.variants[0].price : null;
+  if (item.variants?.length) return item.variants.length === 1 ? item.variants[0]?.price ?? null : null;
   return item.price ?? null;
 }
 
@@ -222,7 +222,7 @@ function ItemDetails({ item, }: { item: MenuItem }) {
     return item.description ? <p className="mt-2 text-sm text-muted-foreground">{item.description}</p> : null;
   }
   if (variants.length === 1) {
-    const v = variants[0];
+    const v = variants[0]!;
     return (
       <div className="mt-2">
         {v.label !== "Standard" ? (
