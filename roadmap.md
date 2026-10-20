@@ -1,5 +1,5 @@
 # Stage one update
-- [ ] Replace Our Story numbered columns with the requested connected five-milestone timeline and verify desktop/mobile presentation
+- [x] Replace Our Story numbered columns with the requested connected five-milestone timeline and verify desktop/mobile presentation
 - [x] Cinematic homepage, shared navigation and six confirmed favorites
 - [x] Both locations, confirmed hours and presentation-only ordering
 - [x] Founder-led story and footer/contact consistency
