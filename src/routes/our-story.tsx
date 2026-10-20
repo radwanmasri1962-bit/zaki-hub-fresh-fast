@@ -1,8 +1,35 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import truckPhoto from "@/assets/zaki-truck-event.png.asset.json";
 import ahmedPhoto from "@/assets/ahmed-chicken-bowl.png.asset.json";
 import { Button } from "@/components/ui/button";
-import { MapPin } from "lucide-react";
+import { Store, Truck } from "lucide-react";
+
+const milestones = [
+  {
+    title: "The First Food Truck",
+    body: "A humble start: Ahmed brought Zaki’s Mediterranean food to people across Central Ohio, one stop and one meal at a time.",
+    icon: Truck,
+  },
+  {
+    title: "The Second Truck",
+    body: "As more people discovered Zaki, a second truck helped bring those flavors to more neighborhoods and gatherings.",
+    icon: Truck,
+  },
+  {
+    title: "The Third Truck",
+    body: "A growing team on the road gave Zaki more ways to serve the Columbus community.",
+    icon: Truck,
+  },
+  {
+    title: "Budd Dairy Food Hall",
+    body: "Zaki grew from a mobile food business into a place customers could visit at Budd Dairy Food Hall.",
+    icon: Store,
+  },
+  {
+    title: "Worthington",
+    body: "Zaki’s next permanent location brought the same Mediterranean hospitality to Worthington.",
+    icon: Store,
+  },
+];
 
 export const Route = createFileRoute("/our-story")({
   head: () => ({
