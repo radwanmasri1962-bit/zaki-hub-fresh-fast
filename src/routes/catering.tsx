@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { z } from "zod";
 import { toast } from "sonner";
 import { Truck, UtensilsCrossed } from "lucide-react";
-import cateringSpread from "@/assets/catering-spread.png.asset.json";
+import cateringSpread from "@/assets/catering-buffet.png.asset.json";
 
 export const Route = createFileRoute("/catering")({
 
@@ -81,11 +81,11 @@ function CateringPage() {
           </div>
           <img
             src={cateringSpread.url}
-            alt="Mediterranean catering spread with grilled chicken, falafel, hummus, rice, salads and pita"
-            width={1536}
-            height={864}
+            alt="Zaki Mediterranean corporate catering buffet with grilled meats, falafel, salads, dips, pita bread, desserts, and beverages."
+            width={1672}
+            height={941}
             loading="lazy"
-            className="h-full min-h-[260px] w-full rounded-2xl object-cover md:min-h-[360px]"
+            className="h-auto w-full rounded-2xl object-cover"
           />
 
         </div>
