@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { MapPin, Clock, Navigation, ShoppingBag, CalendarDays } from "lucide-react";
 import truckHero from "@/assets/riverside-zaki-mediterranean-food-festival.png.asset.json";
 import { todayStops, upcomingStops, mapsUrl } from "@/data/locations";
+import { InquiryForm } from "@/components/site/InquiryForm";
 
 type SampleEvent = {
   date: string;
@@ -236,15 +237,26 @@ function TrucksPage() {
             >
               View Full Truck Schedule
             </Link>
-            <Link
-              to="/catering"
+            <a
+              href="#book-a-truck"
               className="inline-flex items-center justify-center rounded-xl border border-input bg-card px-7 py-4 text-sm font-semibold uppercase tracking-wide hover:bg-accent"
             >
               Book a Food Truck
-            </Link>
+            </a>
           </div>
         </div>
       </section>
+
+      <section id="book-a-truck" className="scroll-mt-24 bg-secondary section-pad">
+        <div className="mx-auto max-w-3xl px-4 md:px-6">
+          <h2 className="text-3xl font-bold md:text-4xl">Book a Zaki Food Truck</h2>
+          <p className="mt-2 mb-6 text-muted-foreground">
+            Bring the full Zaki food-truck experience directly to your festival, wedding or community event.
+          </p>
+          <InquiryForm serviceType="food-truck" submitLabel="Request a Food Truck" />
+        </div>
+      </section>
     </>
+
   );
 }
