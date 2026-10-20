@@ -1,8 +1,35 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import truckPhoto from "@/assets/zaki-truck-event.png.asset.json";
 import ahmedPhoto from "@/assets/ahmed-chicken-bowl.png.asset.json";
 import { Button } from "@/components/ui/button";
-import { MapPin } from "lucide-react";
+import { Store, Truck } from "lucide-react";
+
+const milestones = [
+  {
+    title: "The First Food Truck",
+    body: "A humble start: Ahmed brought Zaki’s Mediterranean food to people across Central Ohio, one stop and one meal at a time.",
+    icon: Truck,
+  },
+  {
+    title: "The Second Truck",
+    body: "As more people discovered Zaki, a second truck helped bring those flavors to more neighborhoods and gatherings.",
+    icon: Truck,
+  },
+  {
+    title: "The Third Truck",
+    body: "A growing team on the road gave Zaki more ways to serve the Columbus community.",
+    icon: Truck,
+  },
+  {
+    title: "Budd Dairy Food Hall",
+    body: "Zaki grew from a mobile food business into a place customers could visit at Budd Dairy Food Hall.",
+    icon: Store,
+  },
+  {
+    title: "Worthington",
+    body: "Zaki’s next permanent location brought the same Mediterranean hospitality to Worthington.",
+    icon: Store,
+  },
+];
 
 export const Route = createFileRoute("/our-story")({
   head: () => ({
@@ -39,43 +66,22 @@ function StoryPage() {
 
       <section className="bg-secondary py-10 md:py-14">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
-          <ol aria-label="Ahmed’s Zaki journey" className="relative space-y-8 before:absolute before:bottom-0 before:left-[6px] before:top-2 before:w-px before:bg-gold/50 md:space-y-7 md:before:left-1/2">
-            <li className="relative pl-8 md:grid md:grid-cols-2 md:gap-16 md:pl-0">
-              <span aria-hidden="true" className="absolute left-0 top-2 h-[13px] w-[13px] rounded-full border-2 border-gold bg-secondary md:left-1/2 md:-translate-x-1/2" />
-              <div>
-                <h2 className="text-xl font-bold uppercase md:text-2xl">The First Food Truck</h2>
-                <p className="mt-3 leading-relaxed text-muted-foreground">A humble start: Ahmed brought Zaki’s Mediterranean food to people across Central Ohio, one stop and one meal at a time.</p>
-              </div>
-              <img src={truckPhoto.url} alt="Zaki food truck serving an outdoor community event" loading="lazy" className="mt-5 aspect-[16/9] w-full rounded-2xl object-cover shadow-card md:mt-0" />
-            </li>
-            <li className="relative pl-8 md:grid md:grid-cols-2 md:gap-16 md:pl-0">
-              <span aria-hidden="true" className="absolute left-0 top-2 h-[13px] w-[13px] rounded-full border-2 border-gold bg-secondary md:left-1/2 md:-translate-x-1/2" />
-              <div className="md:col-start-2">
-                <h2 className="text-xl font-bold uppercase md:text-2xl">The Second Truck</h2>
-                <p className="mt-3 leading-relaxed text-muted-foreground">As more people discovered Zaki, a second truck helped bring those flavors to more neighborhoods and gatherings.</p>
-              </div>
-            </li>
-            <li className="relative pl-8 md:grid md:grid-cols-2 md:gap-16 md:pl-0">
-              <span aria-hidden="true" className="absolute left-0 top-2 h-[13px] w-[13px] rounded-full border-2 border-gold bg-secondary md:left-1/2 md:-translate-x-1/2" />
-              <div>
-                <h2 className="text-xl font-bold uppercase md:text-2xl">The Third Truck</h2>
-                <p className="mt-3 leading-relaxed text-muted-foreground">A growing team on the road gave Zaki more ways to serve the Columbus community.</p>
-              </div>
-            </li>
-            <li className="relative pl-8 md:grid md:grid-cols-2 md:gap-16 md:pl-0">
-              <span aria-hidden="true" className="absolute left-0 top-2 h-[13px] w-[13px] rounded-full border-2 border-primary bg-secondary md:left-1/2 md:-translate-x-1/2" />
-              <div className="md:col-start-2">
-                <h2 className="flex items-start gap-3 text-xl font-bold uppercase md:text-2xl"><MapPin aria-hidden="true" className="mt-1 h-5 w-5 shrink-0 text-primary" />Budd Dairy Food Hall</h2>
-                <p className="mt-3 leading-relaxed text-muted-foreground">Zaki grew from a mobile food business into a place customers could visit at Budd Dairy Food Hall.</p>
-              </div>
-            </li>
-            <li className="relative pl-8 md:grid md:grid-cols-2 md:gap-16 md:pl-0">
-              <span aria-hidden="true" className="absolute left-0 top-2 h-[13px] w-[13px] rounded-full border-2 border-primary bg-secondary md:left-1/2 md:-translate-x-1/2" />
-              <div>
-                <h2 className="flex items-start gap-3 text-xl font-bold uppercase md:text-2xl"><MapPin aria-hidden="true" className="mt-1 h-5 w-5 shrink-0 text-primary" />Worthington</h2>
-                <p className="mt-3 leading-relaxed text-muted-foreground">Zaki’s next permanent location brought the same Mediterranean hospitality to Worthington.</p>
-              </div>
-            </li>
+          <ol aria-label="Ahmed’s Zaki journey" className="relative space-y-10 before:absolute before:bottom-4 before:left-[21px] before:top-4 before:w-px before:bg-gold/50 md:space-y-12 md:before:left-1/2 md:before:bottom-6 md:before:top-6">
+            {milestones.map((milestone, index) => {
+              const MilestoneIcon = milestone.icon;
+              const textOnRight = index % 2 === 1;
+              return (
+                <li key={milestone.title} className="relative pl-16 md:grid md:grid-cols-2 md:gap-20 md:pl-0">
+                  <span aria-hidden="true" className="absolute left-0 top-0 z-10 flex h-[42px] w-[42px] items-center justify-center rounded-full border border-gold/60 bg-card shadow-card md:left-1/2 md:-translate-x-1/2">
+                    <MilestoneIcon strokeWidth={1.75} className="h-[18px] w-[18px] text-primary" />
+                  </span>
+                  <div className={textOnRight ? "md:col-start-2 md:mr-auto md:pt-1" : "md:col-start-1 md:ml-auto md:pt-1 md:text-right"}>
+                    <h2 className="text-xl font-bold uppercase md:text-2xl">{milestone.title}</h2>
+                    <p className="mt-3 leading-relaxed text-muted-foreground">{milestone.body}</p>
+                  </div>
+                </li>
+              );
+            })}
           </ol>
           <div className="mx-auto mt-10 max-w-2xl border-t border-gold/30 pt-8 text-center">
             <h2 className="text-xl font-bold uppercase md:text-2xl">From a Food Truck to a Growing Columbus Favorite</h2>
