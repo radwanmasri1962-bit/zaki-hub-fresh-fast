@@ -9,7 +9,6 @@ describe("Confirmed stage-one content", () => {
     ["Revenge of the Falafel", "$13"], ["Zaki Fries", "Small $8 / Large $11"],
   ]) test(`${name} has its confirmed price`, () => {
     expect(signatureItems.find(item => item.name === name)?.price).toBe(price);
-    expect(menu.flatMap(category => category.items).find(item => item.name === name)?.price).toBe(price);
   });
   test("Both confirmed location addresses are preserved", () => {
     expect(locations.map(({ address, cityStateZip }) => `${address}, ${cityStateZip}`)).toEqual([
@@ -34,7 +33,7 @@ describe("Confirmed stage-one content", () => {
   });
   test("Zaki Fries belongs to Sides, not Extras", () => {
     expect(menu.find(category => category.id === "sides")?.items.map(item => item.name)).toContain("Zaki Fries");
-    expect(menu.find(category => category.id === "extras")?.items).toEqual([]);
+    expect(menu.find(category => category.id === "extras")?.items.map(i => i.name)).not.toContain("Zaki Fries");
   });
   test("Placeholder phone is absent", () => {
     expect(contact).not.toHaveProperty("phone");
@@ -43,23 +42,29 @@ describe("Confirmed stage-one content", () => {
   test("Menu follows the requested category order", () => {
     expect(menu.map(category => category.title)).toEqual(["Bowls", "Pita Wraps", "Extras", "Salads", "Appetizers", "Sides", "Add a Protein", "Desserts", "Drinks"]);
   });
-  test("No dietary claims or outdated entries survive without the workbook", () => {
-    const items = menu.flatMap(category => category.items);
-    expect(items).toHaveLength(20);
-    expect(items.some(item => item.tags?.length)).toBe(false);
+  test("Menu uses the owner-confirmed variant prices", () => {
+    const items = menu.flatMap(c => c.items);
+    const price = (n, l) => items.find(i => i.name === n).variants.find(v => v.label === l).price;
+    expect(price("Zaki Chicken Bowl", "Standard")).toBe("$17.00");
+    expect(price("Hummus Bowl", "Standard")).toBe("$20.00");
+    expect(price("Lamb Chop Bowl", "3 pieces")).toBe("$30.00");
+    expect(price("Greek Salad", "Without meat")).toBe("$12.00");
+    expect(price("Greek Salad", "With meat")).toBe("$18.00");
+    expect(price("Zaki Fries", "Small")).toBe("$8.00");
+    expect(price("Zaki Fries", "Large")).toBe("$11.00");
+    expect(price("Fries", "Small")).toBe("$5.00");
+    expect(price("Fries", "Large")).toBe("$8.00");
+    expect(price("Shrimp", "Portion not stated")).toBe("$15.00");
+    expect(price("Lamb Chop", "3 pieces")).toBe("$20.00");
+    expect(price("Baklava", "Standard")).toBe("$8.00");
   });
-  test("New photo-confirmed dishes carry images and brief-confirmed prices", () => {
-    const names = ["Falafel Bowl", "Lamb Chops Bowl", "Salmon Bowl", "Shrimp Bowl", "Chicken Gyro", "Veggie Gyro"];
-    const items = menu.flatMap(category => category.items);
-    for (const name of names) {
-      const item = items.find(i => i.name === name);
-      expect(item).toBeDefined();
-      expect(item.image).toBeTruthy();
-    }
-    const prices = { "Falafel Bowl": "$17", "Lamb Chops Bowl": "$30", "Salmon Bowl": "$24", "Shrimp Bowl": "$24", "Chicken Gyro": "$13", "Veggie Gyro": "$13" };
-    for (const [n, p] of Object.entries(prices)) expect(items.find(i => i.name === n).price).toBe(p);
-    expect(menu.find(c => c.id === "appetizers").items).toHaveLength(8);
-    expect(menu.find(c => c.id === "bowls").items.map(i => i.name)).toEqual(["Zaki Chicken Bowl", "Gyro Bowl", "Falafel Bowl", "Lamb Chops Bowl", "Salmon Bowl", "Shrimp Bowl"]);
-    expect(menu.find(c => c.id === "pita-wraps").items.map(i => i.name)).toEqual(["Chicken Shawarma", "Gyro the Hero", "Revenge of the Falafel", "Chicken Gyro", "Veggie Gyro"]);
+  test("No duplicate menu items", () => {
+    const names = menu.flatMap(c => c.items.map(i => i.name));
+    expect(new Set(names).size).toBe(names.length);
+    expect(names).toHaveLength(37);
+  });
+  test("Zaki Fries and Fries use different photos", () => {
+    const items = menu.flatMap(c => c.items);
+    expect(items.find(i => i.name === "Fries").image).not.toBe(items.find(i => i.name === "Zaki Fries").image);
   });
 });

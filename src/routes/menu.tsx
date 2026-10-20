@@ -128,16 +128,16 @@ function MenuPage() {
                           </span>
                         ) : null}
                       </div>
-                      {item.description ? (
-                        <p className="mt-2 text-sm text-muted-foreground">{item.description}</p>
-                      ) : null}
+                      <ItemDetails item={item} />
                       {item.tags?.length ? (
                         <p className="mt-3 text-xs font-medium uppercase tracking-wide text-primary">
                           {item.tags.join(" · ")}
                         </p>
                       ) : null}
                     </div>
-                    <span className="max-w-[120px] text-right text-base font-bold text-primary">{item.price}</span>
+                    {singlePrice(item) ? (
+                      <span className="max-w-[120px] text-right text-base font-bold text-primary">{singlePrice(item)}</span>
+                    ) : null}
                   </div>
                 </article>
                 );
@@ -189,9 +189,13 @@ function MenuPage() {
                     </span>
                   ) : null}
                 </div>
-                <p className="mt-2 text-xl font-bold text-primary">{active.price}</p>
-                <DialogDescription className="mt-3 text-sm text-muted-foreground">
-                  {active.description ?? active.name}
+                {singlePrice(active) ? (
+                  <p className="mt-2 text-xl font-bold text-primary">{singlePrice(active)}</p>
+                ) : null}
+                <DialogDescription asChild>
+                  <div className="mt-3 text-sm text-muted-foreground">
+                    <ItemDetails item={active} />
+                  </div>
                 </DialogDescription>
                 {active.tags?.length ? (
                   <p className="mt-4 text-xs font-medium uppercase tracking-wide text-primary">
@@ -204,5 +208,40 @@ function MenuPage() {
         </DialogContent>
       </Dialog>
     </>
+  );
+}
+
+function singlePrice(item: MenuItem) {
+  if (item.variants?.length) return item.variants.length === 1 ? item.variants[0]?.price ?? null : null;
+  return item.price ?? null;
+}
+
+function ItemDetails({ item, }: { item: MenuItem }) {
+  const variants = item.variants;
+  if (!variants?.length) {
+    return item.description ? <p className="mt-2 text-sm text-muted-foreground">{item.description}</p> : null;
+  }
+  if (variants.length === 1) {
+    const v = variants[0]!;
+    return (
+      <div className="mt-2">
+        {v.label !== "Standard" ? (
+          <p className="text-xs font-semibold uppercase tracking-wide text-primary">{v.label}</p>
+        ) : null}
+        <p className="mt-1 text-sm text-muted-foreground">{v.description}</p>
+      </div>
+    );
+  }
+  return (
+    <ul className="mt-2 space-y-2">
+      {variants.map((v) => (
+        <li key={v.label}>
+          <p className="text-xs font-semibold uppercase tracking-wide text-primary">
+            {v.label} · {v.price}
+          </p>
+          <p className="mt-0.5 text-sm text-muted-foreground">{v.description}</p>
+        </li>
+      ))}
+    </ul>
   );
 }
