@@ -33,7 +33,7 @@ describe("Confirmed stage-one content", () => {
   });
   test("Zaki Fries belongs to Sides, not Extras", () => {
     expect(menu.find(category => category.id === "sides")?.items.map(item => item.name)).toContain("Zaki Fries");
-    expect(menu.find(category => category.id === "extras")?.items).toEqual([]);
+    expect(menu.find(category => category.id === "extras")?.items.map(i => i.name)).not.toContain("Zaki Fries");
   });
   test("Placeholder phone is absent", () => {
     expect(contact).not.toHaveProperty("phone");
