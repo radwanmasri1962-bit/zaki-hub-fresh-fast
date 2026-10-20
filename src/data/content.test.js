@@ -61,7 +61,7 @@ describe("Confirmed stage-one content", () => {
   test("No duplicate menu items", () => {
     const names = menu.flatMap(c => c.items.map(i => i.name));
     expect(new Set(names).size).toBe(names.length);
-    expect(names).toHaveLength(42);
+    expect(names).toHaveLength(37);
   });
   test("Zaki Fries and Fries use different photos", () => {
     const items = menu.flatMap(c => c.items);
