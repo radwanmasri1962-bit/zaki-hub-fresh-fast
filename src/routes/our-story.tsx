@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import truckPhoto from "@/assets/zaki-truck-event.png.asset.json";
 import ahmedPhoto from "@/assets/ahmed-chicken-bowl.png.asset.json";
 import { Button } from "@/components/ui/button";
+import { MapPin } from "lucide-react";
 
 export const Route = createFileRoute("/our-story")({
   head: () => ({
@@ -36,27 +37,50 @@ function StoryPage() {
         </div>
       </section>
 
-      <section className="bg-secondary section-pad">
+      <section className="bg-secondary py-10 md:py-14">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
-          <ol className="relative grid gap-10 md:grid-cols-3 md:gap-8">
-            <div aria-hidden className="absolute left-0 right-0 top-5 hidden h-px bg-primary/30 md:block" />
-            <li className="relative">
-              <span className="relative inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">01</span>
-              <h2 className="mt-4 text-2xl font-bold">Roots</h2>
-              <p className="mt-3 text-muted-foreground">Ahmed’s story begins in Palestine. Food and hospitality connect those roots to the community he is building in Central Ohio.</p>
+          <ol aria-label="Ahmed’s Zaki journey" className="relative space-y-8 before:absolute before:bottom-0 before:left-[6px] before:top-2 before:w-px before:bg-gold/50 md:space-y-7 md:before:left-1/2">
+            <li className="relative pl-8 md:grid md:grid-cols-2 md:gap-16 md:pl-0">
+              <span aria-hidden="true" className="absolute left-0 top-2 h-[13px] w-[13px] rounded-full border-2 border-gold bg-secondary md:left-1/2 md:-translate-x-1/2" />
+              <div>
+                <h2 className="text-xl font-bold uppercase md:text-2xl">The First Food Truck</h2>
+                <p className="mt-3 leading-relaxed text-muted-foreground">A humble start: Ahmed brought Zaki’s Mediterranean food to people across Central Ohio, one stop and one meal at a time.</p>
+              </div>
+              <img src={truckPhoto.url} alt="Zaki food truck serving an outdoor community event" loading="lazy" className="mt-5 aspect-[16/9] w-full rounded-2xl object-cover shadow-card md:mt-0" />
             </li>
-            <li className="relative">
-              <span className="relative inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">02</span>
-              <h2 className="mt-4 text-2xl font-bold">Taking Zaki on the road</h2>
-              <p className="mt-3 text-muted-foreground">Food trucks brought Zaki’s Mediterranean flavors to neighborhoods, gatherings and events across Central Ohio.</p>
-              <img src={truckPhoto.url} alt="Zaki food truck serving an outdoor community event" loading="lazy" className="mt-5 aspect-[4/3] w-full rounded-2xl object-cover shadow-card" />
+            <li className="relative pl-8 md:grid md:grid-cols-2 md:gap-16 md:pl-0">
+              <span aria-hidden="true" className="absolute left-0 top-2 h-[13px] w-[13px] rounded-full border-2 border-gold bg-secondary md:left-1/2 md:-translate-x-1/2" />
+              <div className="md:col-start-2">
+                <h2 className="text-xl font-bold uppercase md:text-2xl">The Second Truck</h2>
+                <p className="mt-3 leading-relaxed text-muted-foreground">As more people discovered Zaki, a second truck helped bring those flavors to more neighborhoods and gatherings.</p>
+              </div>
             </li>
-            <li className="relative">
-              <span className="relative inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">03</span>
-              <h2 className="mt-4 text-2xl font-bold">A growing home in Central Ohio</h2>
-              <p className="mt-3 text-muted-foreground">Zaki now welcomes guests at Budd Dairy Food Hall and in Worthington. Each location is another place to share a meal and build relationships with the community.</p>
+            <li className="relative pl-8 md:grid md:grid-cols-2 md:gap-16 md:pl-0">
+              <span aria-hidden="true" className="absolute left-0 top-2 h-[13px] w-[13px] rounded-full border-2 border-gold bg-secondary md:left-1/2 md:-translate-x-1/2" />
+              <div>
+                <h2 className="text-xl font-bold uppercase md:text-2xl">The Third Truck</h2>
+                <p className="mt-3 leading-relaxed text-muted-foreground">A growing team on the road gave Zaki more ways to serve the Columbus community.</p>
+              </div>
+            </li>
+            <li className="relative pl-8 md:grid md:grid-cols-2 md:gap-16 md:pl-0">
+              <span aria-hidden="true" className="absolute left-0 top-2 h-[13px] w-[13px] rounded-full border-2 border-primary bg-secondary md:left-1/2 md:-translate-x-1/2" />
+              <div className="md:col-start-2">
+                <h2 className="flex items-start gap-3 text-xl font-bold uppercase md:text-2xl"><MapPin aria-hidden="true" className="mt-1 h-5 w-5 shrink-0 text-primary" />Budd Dairy Food Hall</h2>
+                <p className="mt-3 leading-relaxed text-muted-foreground">Zaki grew from a mobile food business into a place customers could visit at Budd Dairy Food Hall.</p>
+              </div>
+            </li>
+            <li className="relative pl-8 md:grid md:grid-cols-2 md:gap-16 md:pl-0">
+              <span aria-hidden="true" className="absolute left-0 top-2 h-[13px] w-[13px] rounded-full border-2 border-primary bg-secondary md:left-1/2 md:-translate-x-1/2" />
+              <div>
+                <h2 className="flex items-start gap-3 text-xl font-bold uppercase md:text-2xl"><MapPin aria-hidden="true" className="mt-1 h-5 w-5 shrink-0 text-primary" />Worthington</h2>
+                <p className="mt-3 leading-relaxed text-muted-foreground">Zaki’s next permanent location brought the same Mediterranean hospitality to Worthington.</p>
+              </div>
             </li>
           </ol>
+          <div className="mx-auto mt-10 max-w-2xl border-t border-gold/30 pt-8 text-center">
+            <h2 className="text-xl font-bold uppercase md:text-2xl">From a Food Truck to a Growing Columbus Favorite</h2>
+            <p className="mt-3 leading-relaxed text-muted-foreground">Ahmed’s journey continues as Zaki shares fresh Mediterranean food and personal hospitality with more people across Central Ohio.</p>
+          </div>
         </div>
       </section>
 
