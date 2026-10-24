@@ -38,10 +38,19 @@ import hummusHarissa from "@/assets/hummus-harissa.jpeg.asset.json";
 import riceSide from "@/assets/rice-side.jpeg.asset.json";
 import pitaBread from "@/assets/pita-bread.jpeg.asset.json";
 import meatSide from "@/assets/meat-side.jpeg.asset.json";
+import lambPoster from "@/assets/lamb-chops-poster.png.asset.json";
+import salmonPoster from "@/assets/salmon-bowl-poster.png.asset.json";
+import koftaPoster from "@/assets/kofta-kabab-poster.png.asset.json";
 
 export type MenuVariant = { label: string; price: string; description: string };
 export type MenuItem = { name: string; group?: string; price?: string; description?: string; variants?: MenuVariant[]; image?: string; imageAlt?: string; badge?: string; tags?: string[]; bestSeller?: boolean; highlight?: boolean };
 export type MenuCategory = { id: string; title: string; heading?: string; intro?: string; panel?: boolean; note?: string; items: MenuItem[] };
+
+export const featuredBowls = [
+  { name: "Lamb Chops Bowl", selector: "Lamb Chops", poster: lambPoster.url },
+  { name: "Salmon Bowl", selector: "Salmon", poster: salmonPoster.url },
+  { name: "Kofta Kabab Bowl", selector: "Kofta Kabab", poster: koftaPoster.url },
+];
 
 export const signatureItems = [
   { name: "Zaki Chicken Bowl", price: "$17", note: "Grilled chicken tenderloins with za’atar, sumac and paprika, served with basmati rice, salad and garlic sauce.", image: chicken.url, alt: "Zaki chicken bowl with rice, salad and garlic sauce" },

@@ -139,6 +139,22 @@
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: 0s !important; animation-duration: 0s !important; } }
 @layer base { a:focus-visible { outline: 2px solid var(--ring); outline-offset: 4px; } }
 
+/* A fixed square stage leaves space for the fanned edges without layout shifts. */
+.featured-stack { position: relative; width: min(100%, 550px); padding: 20px 26px 14px; touch-action: pan-y; }
+.featured-stack::before { content: ""; display: block; aspect-ratio: 1; }
+.featured-poster { position: absolute; inset: 20px 26px 14px; width: auto; height: auto; padding: 0; border-radius: 8px; background: var(--card); box-shadow: var(--shadow-lift); transition: transform 240ms ease, box-shadow 240ms ease; }
+.featured-poster:hover { background: var(--card); }
+.featured-poster[data-position="0"] { z-index: 3; transform: none; }
+.featured-poster[data-position="1"] { z-index: 2; transform: translateX(-20px) rotate(-3deg) scale(.97); }
+.featured-poster[data-position="2"] { z-index: 1; transform: translateX(20px) rotate(3deg) scale(.97); }
+.featured-poster:focus-visible { outline: 3px solid var(--ring); outline-offset: 4px; }
+@media (max-width: 479px) {
+  .featured-stack { padding-inline: 16px; }
+  .featured-poster { inset-inline: 16px; }
+  .featured-poster[data-position="1"] { transform: translateX(-12px) rotate(-2deg) scale(.97); }
+  .featured-poster[data-position="2"] { transform: translateX(12px) rotate(2deg) scale(.97); }
+}
+
 /* Photography placeholder: designed slots awaiting real Zaki photography. */
 @utility photo-slot {
   position: relative;

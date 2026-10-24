@@ -1,5 +1,6 @@
 import { describe, expect, test } from "bun:test";
-import { signatureItems, menu } from "./menu";
+import { signatureItems, menu, featuredBowls } from "./menu";
+import { menuItemAnchor } from "../lib/menu-anchors";
 import { locations, buddDairyHours, worthingtonHours, contact } from "./locations";
 
 describe("Confirmed stage-one content", () => {
@@ -153,4 +154,11 @@ describe("Add a Protein section", () => {
 test("Drinks & Beverages lists only Soft Drink and Water at $3.00", () => {
   const drinks = menu.find(c => c.id === "drinks");
   expect(drinks.items.map(i => [i.name, i.price])).toEqual([["Soft Drink", "$3.00"], ["Water", "$3.00"]]);
+});
+
+test("Featured posters link to the three confirmed bowls in the requested starting order", () => {
+  expect(featuredBowls.map(bowl => bowl.name)).toEqual(["Lamb Chops Bowl", "Salmon Bowl", "Kofta Kabab Bowl"]);
+  const bowls = menu.find(category => category.id === "bowls").items;
+  expect(featuredBowls.map(feature => bowls.find(bowl => bowl.name === feature.name)?.variants?.[0]?.price)).toEqual(["$30.00", "$24.00", "$26.00"]);
+  expect(featuredBowls.map(feature => menuItemAnchor(feature.name))).toEqual(["dish-lamb-chops-bowl", "dish-salmon-bowl", "dish-kofta-kabab-bowl"]);
 });
