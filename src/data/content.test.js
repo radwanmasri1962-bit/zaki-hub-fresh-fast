@@ -138,13 +138,13 @@ describe("Confirmed stage-one content", () => {
 });
 describe("Add a Protein section", () => {
   const cat = menu.find(c => c.id === "add-a-protein");
-  it("sits directly after Bowls with exact add-on prices and labels", () => {
+  test("sits directly after Bowls with exact add-on prices and labels", () => {
     expect(menu.findIndex(c => c.id === "add-a-protein")).toBe(menu.findIndex(c => c.id === "bowls") + 1);
     expect(cat.items.map(i => [i.name, i.variants[0].price, i.variants[0].label])).toEqual([
       ["Salmon", "+$12.00", "Standard"], ["Mahi Mahi", "+$12.00", "Standard"], ["Tiger Prawns", "+$15.00", "3 tiger prawns"], ["Lamb Chops", "+$20.00", "3 pieces"], ["Kofta Kabab", "+$17.00", "3 skewers"],
     ]);
   });
-  it("keeps the Kofta Kabab Bowl at $26.00", () => {
+  test("keeps the Kofta Kabab Bowl at $26.00", () => {
     const bowl = menu.find(c => c.id === "bowls").items.find(i => i.name === "Kofta Kabab Bowl");
     expect(bowl.variants[0].price).toBe("$26.00");
   });
