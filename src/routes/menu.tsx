@@ -74,8 +74,9 @@ function MenuPage() {
         {menu.filter(category => category.items.length > 0).map((category) => (
           <section key={category.id} id={category.id} className="scroll-mt-40 pb-14">
             <h2 className="text-2xl font-bold md:text-4xl">{category.heading ?? category.items[0]?.group ?? category.title}</h2>
-            {category.intro ? <p className="mt-3 max-w-2xl text-sm text-muted-foreground md:text-base">{category.intro}</p> : null}
-            <div className={category.panel ? "mt-6 grid gap-4 rounded-2xl border border-primary/20 bg-primary/5 p-4 md:grid-cols-2 md:p-6" : "mt-6 space-y-4"}>
+            {category.intro ? <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">{category.intro}</p> : null}
+            {category.panel ? <ProteinStrip items={category.items} onOpen={setActive} /> : (
+            <div className="mt-6 space-y-4">
               {category.items.map((item, i) => {
                 const badge = item.badge ?? null;
                 const interactive = Boolean(item.image);
@@ -149,6 +150,7 @@ function MenuPage() {
                 );
               })}
             </div>
+            )}
             {category.note ? (
               <p className="mt-4 text-xs text-muted-foreground">{category.note}</p>
             ) : null}
@@ -214,6 +216,42 @@ function MenuPage() {
         </DialogContent>
       </Dialog>
     </>
+  );
+}
+
+function ProteinStrip({ items, onOpen }: { items: MenuItem[]; onOpen: (item: MenuItem) => void }) {
+  return (
+    <div className="mt-4 rounded-2xl border border-primary/15 bg-primary/5 px-3 py-3">
+      <ul className="-mx-1 flex snap-x gap-2 overflow-x-auto px-1 pb-1 md:grid md:grid-cols-5 md:overflow-visible">
+        {items.map((item, i) => {
+          const v = item.variants?.[0];
+          const align = i === 0 ? "left-0" : i === items.length - 1 ? "right-0" : "left-1/2 -translate-x-1/2";
+          return (
+            <li key={item.name} className="w-[42%] shrink-0 snap-start sm:w-[30%] md:w-auto">
+              <div className="flex flex-col items-center gap-1 text-center">
+                <div className="group/thumb relative">
+                  <button
+                    type="button"
+                    onClick={() => onOpen(item)}
+                    onKeyDown={(e) => { if (e.key === "Escape") (e.currentTarget as HTMLButtonElement).blur(); }}
+                    aria-label={`View photo of ${item.name}`}
+                    className="block h-[68px] w-[68px] overflow-hidden rounded-xl border border-border bg-food-surface focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  >
+                    <img src={item.image} alt={item.imageAlt ?? item.name} loading="lazy" className="h-full w-full object-contain p-1" />
+                  </button>
+                  <div className={`pointer-events-none absolute bottom-full z-30 mb-2 hidden h-56 w-56 rounded-2xl border border-border bg-food-surface p-3 opacity-0 shadow-lg transition-opacity md:block md:group-hover/thumb:opacity-100 md:group-focus-within/thumb:opacity-100 ${align}`} aria-hidden="true">
+                    <img src={item.image} alt="" className="h-full w-full object-contain" />
+                  </div>
+                </div>
+                <p className="text-sm font-semibold leading-tight">{item.name}</p>
+                {v ? <p className="text-[0.65rem] font-semibold uppercase tracking-wide text-primary">{v.label}</p> : null}
+                {v ? <p className="text-sm font-bold text-primary">{v.price}</p> : null}
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 }
 

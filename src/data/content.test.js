@@ -56,7 +56,7 @@ describe("Confirmed stage-one content", () => {
     expect(price("Zaki Fries", "Large")).toBe("$11.00");
     expect(price("Fries", "Small")).toBe("$5.00");
     expect(price("Fries", "Large")).toBe("$8.00");
-    expect(price("Tiger Prawns", "3 tiger prawns")).toBe("+$15.00");
+    expect(price("Tiger Prawns", "3 pieces")).toBe("+$15.00");
     expect(price("Lamb Chops", "3 pieces")).toBe("+$20.00");
     expect(price("Baklava", "Standard")).toBe("$8.00");
   });
@@ -141,7 +141,7 @@ describe("Add a Protein section", () => {
   test("sits directly after Bowls with exact add-on prices and labels", () => {
     expect(menu.findIndex(c => c.id === "add-a-protein")).toBe(menu.findIndex(c => c.id === "bowls") + 1);
     expect(cat.items.map(i => [i.name, i.variants[0].price, i.variants[0].label])).toEqual([
-      ["Salmon", "+$12.00", "Standard"], ["Mahi Mahi", "+$12.00", "Standard"], ["Tiger Prawns", "+$15.00", "3 tiger prawns"], ["Lamb Chops", "+$20.00", "3 pieces"], ["Kofta Kabab", "+$17.00", "3 skewers"],
+      ["Salmon", "+$12.00", "8 oz"], ["Mahi Mahi", "+$12.00", "6 oz"], ["Tiger Prawns", "+$15.00", "3 pieces"], ["Lamb Chops", "+$20.00", "3 pieces"], ["Kofta Kabab", "+$17.00", "3 skewers"],
     ]);
   });
   test("keeps the Kofta Kabab Bowl at $26.00", () => {

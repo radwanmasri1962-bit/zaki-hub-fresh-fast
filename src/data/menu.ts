@@ -81,21 +81,21 @@ export const menu: MenuCategory[] = [
       { label: "3 skewers", price: "$26.00", description: "Tender, char-grilled lamb and Wagyu beef kofta blended with parsley, onion, and Mediterranean spices. Served with basmati rice, house salad, charred vegetables, hummus, and four toasted pita triangles." },
     ], image: koftaBowl.url, imageAlt: "Kofta kabab bowl with rice, house side salad, hummus and toasted pita triangles" },
   ] },
-  { id: "add-a-protein", title: "Add a Protein", heading: "Add Protein to Your Bowl", intro: "Make it your own with an additional full portion of your favorite protein. Add-ons include protein only, without additional rice, salad, sauces, or pita.", panel: true, items: [
+  { id: "add-a-protein", title: "Add a Protein", heading: "Add a Protein", intro: "Add to any bowl · Protein only", panel: true, items: [
     { name: "Salmon", variants: [
-      { label: "Standard", price: "+$12.00", description: "Mediterranean-spiced salmon with a beautifully seared finish." },
+      { label: "8 oz", price: "+$12.00", description: "" },
     ], image: pSalmon.url, imageAlt: "Salmon protein add-on" },
     { name: "Mahi Mahi", variants: [
-      { label: "Standard", price: "+$12.00", description: "Tender mahi mahi seasoned with fragrant herbs and Mediterranean spices." },
+      { label: "6 oz", price: "+$12.00", description: "" },
     ], image: pMahi.url, imageAlt: "Mahi Mahi protein add-on" },
     { name: "Tiger Prawns", variants: [
-      { label: "3 tiger prawns", price: "+$15.00", description: "Three succulent, grilled tiger prawns seasoned with Mediterranean spices." },
+      { label: "3 pieces", price: "+$15.00", description: "" },
     ], image: pShrimp.url, imageAlt: "Tiger Prawns protein add-on" },
     { name: "Lamb Chops", variants: [
-      { label: "3 pieces", price: "+$20.00", description: "Three tender, grilled lamb chops with a rich, smoky finish." },
+      { label: "3 pieces", price: "+$20.00", description: "" },
     ], image: pLamb.url, imageAlt: "Lamb Chops protein add-on" },
     { name: "Kofta Kabab", variants: [
-      { label: "3 skewers", price: "+$17.00", description: "Tender, char-grilled lamb and Wagyu beef kofta blended with parsley, onion, and Mediterranean spices." },
+      { label: "3 skewers", price: "+$17.00", description: "" },
     ], image: pKofta.url, imageAlt: "Kofta Kabab protein add-on" },
   ] },
   { id: "pita-wraps", title: "Pita Wraps", items: [
