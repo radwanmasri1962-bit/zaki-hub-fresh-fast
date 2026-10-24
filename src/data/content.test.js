@@ -31,9 +31,9 @@ describe("Confirmed stage-one content", () => {
       ["Sunday", "11 a.m.–9 p.m."],
     ]);
   });
-  test("Zaki Fries belongs to Sides, not Extras", () => {
+  test("Zaki Fries belongs only to Sides", () => {
     expect(menu.find(category => category.id === "sides")?.items.map(item => item.name)).toContain("Zaki Fries");
-    expect(menu.find(category => category.id === "extras")?.items.map(i => i.name)).not.toContain("Zaki Fries");
+    expect(menu.filter(category => category.id !== "sides").flatMap(category => category.items.map(i => i.name))).not.toContain("Zaki Fries");
   });
   test("Placeholder phone is absent", () => {
     expect(contact).not.toHaveProperty("phone");
