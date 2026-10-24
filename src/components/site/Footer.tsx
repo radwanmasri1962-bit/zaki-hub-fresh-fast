@@ -40,16 +40,17 @@ export function Footer() {
             >
               <Facebook className="h-5 w-5" />
             </a>
-            <span
-              role="img"
-              aria-label="Zaki on TikTok (link coming soon)"
-              title="TikTok — coming soon"
-              className="grid h-11 w-11 place-items-center rounded-xl bg-cream/10"
+            <a
+              href={contact.tiktok}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Zaki on TikTok"
+              className="grid h-11 w-11 place-items-center rounded-xl bg-cream/10 transition-colors hover:bg-cream/20"
             >
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5" aria-hidden="true">
                 <path d="M9 12a4 4 0 1 0 4 4V3c.5 2.5 2.5 4.5 5 5" />
               </svg>
-            </span>
+            </a>
             <a
               href={contact.streetFoodFinder}
               target="_blank"

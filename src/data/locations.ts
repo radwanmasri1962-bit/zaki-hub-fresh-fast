@@ -61,6 +61,7 @@ export const contact = {
   instagram: "https://www.instagram.com/zakigrill/",
   facebook: "https://www.facebook.com/ZakiGrill/",
   streetFoodFinder: "https://streetfoodfinder.com/ZakiGrill",
+  tiktok: "https://www.tiktok.com/search?q=zaki%20grill%20columbus&t=1792884974454",
 };
 
 export const mapsUrl = (query: string) =>
