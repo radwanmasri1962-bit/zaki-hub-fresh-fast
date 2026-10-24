@@ -1,15 +1,48 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowRight, Pause, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { featuredBowls, menu } from "@/data/menu";
 import { menuItemAnchor } from "@/lib/menu-anchors";
+import { canRotateFeatured, FEATURED_ROTATION_MS, nextFeaturedIndex } from "@/lib/featured-rotation";
 
 export function FeaturedBowls() {
   const [active, setActive] = useState(0);
+  const stage = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
+  const [tabActive, setTabActive] = useState(true);
+  const [reducedMotion, setReducedMotion] = useState(true);
+  const [paused, setPaused] = useState(false);
+  const [hovered, setHovered] = useState(false);
+  const [focused, setFocused] = useState(false);
   const touchStart = useRef<{ x: number; y: number } | null>(null);
+  const suppressClick = useRef(false);
   const selected = featuredBowls[active];
-  const switchBy = (direction: number) => setActive(index => (index + direction + featuredBowls.length) % featuredBowls.length);
+  const switchBy = (direction: number) => setActive(index => nextFeaturedIndex(index, direction, featuredBowls.length));
+  useEffect(() => {
+    const element = stage.current;
+    if (!element) return;
+    const observer = new IntersectionObserver(([entry]) => setInView(Boolean(entry?.isIntersecting)), { threshold: 0.25 });
+    observer.observe(element);
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updateMotion = () => setReducedMotion(motion.matches);
+    const updateVisibility = () => setTabActive(document.visibilityState === "visible");
+    updateMotion();
+    updateVisibility();
+    motion.addEventListener("change", updateMotion);
+    document.addEventListener("visibilitychange", updateVisibility);
+    return () => {
+      observer.disconnect();
+      motion.removeEventListener("change", updateMotion);
+      document.removeEventListener("visibilitychange", updateVisibility);
+    };
+  }, []);
+  const rotating = canRotateFeatured({ inView, tabActive, reducedMotion, paused, hovered, focused });
+  useEffect(() => {
+    if (!rotating) return;
+    const timer = window.setInterval(() => setActive(index => nextFeaturedIndex(index, 1, featuredBowls.length)), FEATURED_ROTATION_MS);
+    return () => window.clearInterval(timer);
+  }, [rotating, active]);
   if (!selected) return null;
 
   return (
@@ -18,9 +51,16 @@ export function FeaturedBowls() {
         <p className="text-xs font-semibold uppercase tracking-wide text-primary">NEW AT ZAKI</p>
         <h2 id="featured-bowls-heading" className="mt-3 text-3xl font-bold md:text-5xl">Meet Your New Favorites</h2>
         <div
+          ref={stage}
           className="featured-stack mx-auto mt-8 md:mt-10"
           role="group"
           aria-label="Signature bowl posters"
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+          onFocusCapture={() => setFocused(true)}
+          onBlurCapture={event => {
+            if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false);
+          }}
           onKeyDown={event => {
             if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
               event.preventDefault();
@@ -28,6 +68,7 @@ export function FeaturedBowls() {
             }
           }}
           onTouchStart={event => {
+            suppressClick.current = false;
             const touch = event.touches[0];
             if (touch) touchStart.current = { x: touch.clientX, y: touch.clientY };
           }}
@@ -38,7 +79,10 @@ export function FeaturedBowls() {
             if (!start || !end) return;
             const dx = end.clientX - start.x;
             const dy = end.clientY - start.y;
-            if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) switchBy(dx < 0 ? 1 : -1);
+            if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+              suppressClick.current = true;
+              switchBy(dx < 0 ? 1 : -1);
+            }
           }}
         >
           {featuredBowls.map((bowl, index) => {
@@ -46,26 +90,28 @@ export function FeaturedBowls() {
             const item = menu.find(category => category.id === "bowls")?.items.find(item => item.name === bowl.name);
             const price = item?.variants?.[0]?.price ?? item?.price ?? "";
             return (
-              <Button key={bowl.name} variant="ghost" className="featured-poster" data-position={position}
-                onClick={() => setActive(index)} aria-label={`Show ${bowl.name} poster`} aria-pressed={position === 0}>
+              <Button key={bowl.name} asChild variant="ghost" className="featured-poster" data-position={position}>
+                <Link to="/menu" hash={menuItemAnchor(bowl.name)}
+                  aria-label={`${position === 0 ? "View" : "Select"} ${bowl.name} — ${price}`}
+                  aria-current={position === 0 ? "true" : undefined}
+                  onClick={event => {
+                    if (suppressClick.current) { event.preventDefault(); suppressClick.current = false; return; }
+                    if (position !== 0) { event.preventDefault(); setActive(index); }
+                  }}>
                 <img src={bowl.poster} alt={`${bowl.name} — ${price}. Finished promotional poster showing the bowl with salad and pita.`}
                   className="aspect-square h-full w-full rounded-lg object-contain" loading="lazy" draggable={false} />
+                </Link>
               </Button>
             );
           })}
+          {!reducedMotion && <Button variant="outline" size="icon" className="featured-playback bg-cream text-primary"
+            aria-label={paused ? "Play automatic bowl rotation" : "Pause automatic bowl rotation"}
+            title={paused ? "Play automatic bowl rotation" : "Pause automatic bowl rotation"}
+            onClick={() => setPaused(value => !value)}>{paused ? <Play /> : <Pause />}</Button>}
         </div>
-        <div className="mx-auto mt-5 flex max-w-lg items-center justify-center gap-1 sm:gap-3" role="group" aria-label="Choose a signature bowl">
-          <Button variant="ghost" size="icon" className="shrink-0 text-primary" aria-label="Previous bowl" title="Previous bowl" onClick={() => switchBy(-1)}><ArrowLeft /></Button>
-          {featuredBowls.map((bowl, index) => (
-            <Button key={bowl.name} size="sm" variant={index === active ? "default" : "ghost"}
-              className="px-2 sm:px-3" aria-pressed={index === active} onClick={() => setActive(index)}>{bowl.selector}</Button>
-          ))}
-          <Button variant="ghost" size="icon" className="shrink-0 text-primary" aria-label="Next bowl" title="Next bowl" onClick={() => switchBy(1)}><ArrowRight /></Button>
-        </div>
-        <p className="sr-only" aria-live="polite" aria-atomic="true">{selected.name} selected</p>
-        <div className="mt-5 flex flex-col items-center gap-3">
-          <Button asChild variant="link" className="font-semibold"><Link to="/menu" hash={menuItemAnchor(selected.name)}>View {selected.name} <ArrowRight /></Link></Button>
-          <Button asChild variant="link" className="text-sm text-muted-foreground"><Link to="/menu">Explore the Full Menu</Link></Button>
+        <p className="sr-only" aria-live={rotating ? "off" : "polite"} aria-atomic="true">{selected.name} selected</p>
+        <div className="mt-5 flex justify-center">
+          <Button asChild variant="link" className="font-semibold"><Link to="/menu">Explore the Full Menu <ArrowRight /></Link></Button>
         </div>
       </div>
     </section>

@@ -12,6 +12,7 @@
 - Keep approved product photography and confirmed dish prices in src/data/menu.ts as the shared source for favorites and menu detail views, so replacements stay synchronized.
 - Keep optional menu subgroup labels on the shared menu items and render consecutive group headings within the existing category anchor, so subgroup organization does not duplicate items or navigation tabs.
 - Keep promotional poster references and their bowl identities in the shared menu data; derive prices from the matching menu item so accessible labels stay synchronized without replacing menu photography.
+- Keep showcase rotation eligibility and cyclic indexing in a browser-safe helper with focused tests; the showcase owns visibility, focus and motion-preference tracking so timers never run unattended.
 - Generate menu item anchors through the shared menu-anchors helper and apply sticky-navigation scroll offsets to item targets so homepage featured links remain stable.
 - Keep location addresses and confirmed food-service hours in src/data/locations.ts and render shared LocationCards on home and locations pages to avoid inconsistent business details.
 - Stage-one ordering is presentation-only navigation; no order actions or commerce services are implemented.
