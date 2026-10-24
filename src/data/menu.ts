@@ -33,7 +33,7 @@ import hummusHarissa from "@/assets/hummus-harissa.jpeg.asset.json";
 import meatSide from "@/assets/meat-side.jpeg.asset.json";
 
 export type MenuVariant = { label: string; price: string; description: string };
-export type MenuItem = { name: string; group?: string; price?: string; description?: string; variants?: MenuVariant[]; image?: string; imageAlt?: string; badge?: string; tags?: string[]; bestSeller?: boolean };
+export type MenuItem = { name: string; group?: string; price?: string; description?: string; variants?: MenuVariant[]; image?: string; imageAlt?: string; badge?: string; tags?: string[]; bestSeller?: boolean; highlight?: boolean };
 export type MenuCategory = { id: string; title: string; note?: string; items: MenuItem[] };
 
 export const signatureItems = [
@@ -58,7 +58,7 @@ export const menu: MenuCategory[] = [
       { label: "Standard", price: "$17.00", description: "Falafel made with ground chickpeas, parsley, green onion, and cumin, served with basmati rice, our house side salad, and tzatziki." },
     ], image: falafelBowl.url, imageAlt: "Zaki falafel bowl with rice, salad and sauce" },
     { name: "Hummus Bowl", group: "Zaki Bowls", variants: [
-      { label: "Standard", price: "$20.00", description: "Creamy hummus finished with a decorative swirl and flavorful garnishes, paired with our house side salad, your choice of side sauce, and four toasted pita triangles." },
+      { label: "Standard", price: "$17.00", description: "Creamy hummus finished with a decorative swirl and flavorful garnishes, paired with our house side salad, your choice of side sauce, and four toasted pita triangles." },
     ], image: hummusBowl.url, imageAlt: "Hummus bowl with house side salad and toasted pita triangles" },
     { name: "Salmon Bowl", group: "Signature Bowls", variants: [
       { label: "Standard", price: "$24.00", description: "Salmon seasoned with our house Mediterranean spice blend, served with basmati rice and our house side salad." },
@@ -72,7 +72,9 @@ export const menu: MenuCategory[] = [
     { name: "Lamb Chops Bowl", group: "Signature Bowls", variants: [
       { label: "3 pieces", price: "$30.00", description: "Grilled lamb chops served over basmati rice with our house side salad, charred tomato, red onion, and serrano pepper, plus a side of hummus and four toasted pita triangles." },
     ], image: lambChopsBowl.url, imageAlt: "Zaki lamb chops bowl with rice and salad" },
-    { name: "Kofta Kabab Bowl", group: "Signature Bowls", price: "$26.00", description: "Tender kofta kabab made with a blend of lamb and Wagyu beef, parsley, onion, and aromatic Mediterranean spices, char-grilled for a beautifully seared finish and juicy center. Served over basmati rice with our house side salad, charred tomato, red onion, and serrano pepper, accompanied by creamy hummus and four toasted pita triangles.", image: koftaBowl.url, imageAlt: "Kofta kabab bowl with rice, house side salad, hummus and toasted pita triangles" },
+    { name: "Kofta Kabab Bowl", group: "Signature Bowls", variants: [
+      { label: "3 skewers", price: "$26.00", description: "Tender, char-grilled lamb and Wagyu beef kofta blended with parsley, onion, and Mediterranean spices. Served with basmati rice, house salad, charred vegetables, hummus, and four toasted pita triangles." },
+    ], image: koftaBowl.url, imageAlt: "Kofta kabab bowl with rice, house side salad, hummus and toasted pita triangles" },
   ] },
   { id: "pita-wraps", title: "Pita Wraps", items: [
     { name: "Chicken Shawarma", variants: [
@@ -90,15 +92,14 @@ export const menu: MenuCategory[] = [
     { name: "Veggie Gyro", variants: [
       { label: "Standard", price: "$13.00", description: "Hummus with lettuce, tomato, cucumber, banana pepper, red onion, pickles, and pickled cabbage in a pita wrap." },
     ], image: veggieGyro.url, imageAlt: "Veggie gyro pita wrap with hummus and fresh vegetables" },
-    { name: "Make It a Combo", price: "$20.00", description: "Chicken gyro pita wrap served with golden French fries and an ice-cold Coca-Cola.", image: combo.url, imageAlt: "Chicken gyro pita wrap with French fries and Coca-Cola" },
+    { name: "Make It a Combo", price: "$20.00", highlight: true, description: "Make any of the wraps above a combo with golden French fries and an ice-cold Coca-Cola.", image: combo.url, imageAlt: "Example pita wrap combo with French fries and Coca-Cola" },
   ] },
   { id: "salads-healthy-options", title: "Salads & Healthy Options", items: [
     { name: "Summer Salata", variants: [
       { label: "Standard", price: "$10.00", description: "Spring mix with tomato, cucumber, banana pepper, red onion, pickled cabbage, feta cheese, and vinaigrette." },
     ], image: summerSalata.url, imageAlt: "Zaki Summer Salata" },
     { name: "Greek Salad", variants: [
-      { label: "Without meat", price: "$12.00", description: "Tomatoes, cucumbers, onions, feta cheese, and olives, finished with vinaigrette and tzatziki sauce." },
-      { label: "With meat", price: "$18.00", description: "Greek salad with meat, tomatoes, cucumbers, onions, feta cheese, olives, vinaigrette, and tzatziki sauce." },
+      { label: "Standard", price: "$12.00", description: "Juicy tomatoes, crisp cucumbers, onion, Kalamata olives, tangy banana peppers, and creamy feta, finished with vinaigrette and tzatziki." },
     ], image: greekSalad.url, imageAlt: "Greek salad with tomatoes, cucumbers, onions, feta, olives, vinaigrette, and tzatziki." },
     { name: "Veggie Platter", variants: [
       { label: "Choice of 2 appetizers", price: "$20.00", description: "Choose two appetizers, served with salad and a side of fresh pita bread." },

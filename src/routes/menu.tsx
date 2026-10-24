@@ -99,7 +99,7 @@ function MenuPage() {
                   role={interactive ? "button" : undefined}
                   tabIndex={interactive ? 0 : undefined}
                   aria-label={interactive ? `View details for ${item.name}` : undefined}
-                  className={`group rounded-2xl bg-card p-5 shadow-card ${
+                  className={`group rounded-2xl p-5 shadow-card ${item.highlight ? "border border-primary/30 bg-primary/5" : "bg-card"} ${
                     interactive
                       ? "cursor-pointer transition-shadow hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                       : ""
