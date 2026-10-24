@@ -5,6 +5,7 @@ import { menu, type MenuItem } from "@/data/menu";
 import menuHero from "@/assets/menu-hero.png.asset.json";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { OrderComingSoon } from "@/components/site/OrderComingSoon";
+import { menuItemAnchor } from "@/lib/menu-anchors";
 
 export const Route = createFileRoute("/menu")({
   head: () => ({
@@ -87,6 +88,7 @@ function MenuPage() {
                   <h2 className="pb-2 pt-10 text-2xl font-bold md:text-4xl">{item.group}</h2>
                 ) : null}
                 <article
+                  id={menuItemAnchor(item.name)}
                   key={`${category.id}-${item.name}-${i}`}
                   onClick={interactive ? () => setActive(item) : undefined}
                   onKeyDown={
@@ -102,7 +104,7 @@ function MenuPage() {
                   role={interactive ? "button" : undefined}
                   tabIndex={interactive ? 0 : undefined}
                   aria-label={interactive ? `View details for ${item.name}` : undefined}
-                  className={`group rounded-2xl p-5 shadow-card ${item.highlight ? "border border-primary/30 bg-primary/5" : "bg-card"} ${
+                  className={`group scroll-mt-40 rounded-2xl p-5 shadow-card ${item.highlight ? "border border-primary/30 bg-primary/5" : "bg-card"} ${
                     interactive
                       ? "cursor-pointer transition-shadow hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                       : ""
