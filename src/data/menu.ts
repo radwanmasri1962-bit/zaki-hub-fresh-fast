@@ -22,7 +22,8 @@ import spicyFeta from "@/assets/spicy-feta.jpeg.asset.json";
 import sampler from "@/assets/zaki-sampler.jpeg.asset.json";
 import veggiePlatter from "@/assets/veggie-platter.jpeg.asset.json";
 
-import summerSalata from "@/assets/summer-salata.png.asset.json";
+import summerSalata from "@/assets/summer-salata-photo.jpeg.asset.json";
+import combo from "@/assets/chicken-gyro-combo.png.asset.json";
 import baklava from "@/assets/baklava-photo.jpeg.asset.json";
 import fetaSide from "@/assets/feta-side.jpeg.asset.json";
 import frenchFries from "@/assets/french-fries.jpeg.asset.json";
@@ -63,7 +64,7 @@ export const menu: MenuCategory[] = [
       { label: "Standard", price: "$24.00", description: "Salmon seasoned with our house Mediterranean spice blend, served with basmati rice and our house side salad." },
     ], image: salmonBowl.url, imageAlt: "Zaki salmon bowl with rice and salad" },
     { name: "Shrimp Bowl", group: "Signature Bowls", variants: [
-      { label: "Standard", price: "$24.00", description: "Shrimp seasoned with Mediterranean-inspired spices, served with basmati rice and our house side salad." },
+      { label: "3 tiger prawns", price: "$24.00", description: "Three succulent tiger prawns seasoned with aromatic Mediterranean-inspired spices, served over basmati rice with our fresh house side salad." },
     ], image: shrimpBowl.url, imageAlt: "Zaki shrimp bowl with rice and salad" },
     { name: "Mahi Mahi Bowl", group: "Signature Bowls", variants: [
       { label: "Standard", price: "$24.00", description: "Mahi mahi seasoned with a fragrant blend of herbs and Mediterranean-inspired spices, served with basmati rice and our house side salad." },
@@ -71,7 +72,7 @@ export const menu: MenuCategory[] = [
     { name: "Lamb Chops Bowl", group: "Signature Bowls", variants: [
       { label: "3 pieces", price: "$30.00", description: "Grilled lamb chops served over basmati rice with our house side salad, charred tomato, red onion, and serrano pepper, plus a side of hummus and four toasted pita triangles." },
     ], image: lambChopsBowl.url, imageAlt: "Zaki lamb chops bowl with rice and salad" },
-    { name: "Kofta Kabab Bowl", group: "Signature Bowls", description: "Grilled kofta kabab seasoned with aromatic Mediterranean spices, served over basmati rice with our house side salad, charred tomato, red onion, and serrano pepper, plus a side of hummus and four toasted pita triangles.", image: koftaBowl.url, imageAlt: "Kofta kabab bowl with rice, house side salad, hummus and toasted pita triangles" },
+    { name: "Kofta Kabab Bowl", group: "Signature Bowls", price: "$26.00", description: "Tender kofta kabab made with a blend of lamb and Wagyu beef, parsley, onion, and aromatic Mediterranean spices, char-grilled for a beautifully seared finish and juicy center. Served over basmati rice with our house side salad, charred tomato, red onion, and serrano pepper, accompanied by creamy hummus and four toasted pita triangles.", image: koftaBowl.url, imageAlt: "Kofta kabab bowl with rice, house side salad, hummus and toasted pita triangles" },
   ] },
   { id: "pita-wraps", title: "Pita Wraps", items: [
     { name: "Chicken Shawarma", variants: [
@@ -89,19 +90,9 @@ export const menu: MenuCategory[] = [
     { name: "Veggie Gyro", variants: [
       { label: "Standard", price: "$13.00", description: "Hummus with lettuce, tomato, cucumber, banana pepper, red onion, pickles, and pickled cabbage in a pita wrap." },
     ], image: veggieGyro.url, imageAlt: "Veggie gyro pita wrap with hummus and fresh vegetables" },
+    { name: "Make It a Combo", price: "$20.00", description: "Chicken gyro pita wrap served with golden French fries and an ice-cold Coca-Cola.", image: combo.url, imageAlt: "Chicken gyro pita wrap with French fries and Coca-Cola" },
   ] },
-  { id: "extras", title: "Extras", items: [
-    { name: "Combo Meal", variants: [
-      { label: "Choice of pita wrap", price: "$20.00", description: "Your choice of Zaki pita wrap served with small fries and a drink." },
-    ] },
-    { name: "Zaki Sampler", variants: [
-      { label: "3 appetizers OR 3 dips", price: "$20.00", description: "Build a sampler with three appetizers or three dips, served with two fresh pita breads." },
-    ], image: sampler.url, imageAlt: "Zaki sampler platter" },
-    { name: "Veggie Platter", variants: [
-      { label: "Choice of 2 appetizers", price: "$20.00", description: "Choose two appetizers, served with salad and a side of fresh pita bread." },
-    ], image: veggiePlatter.url, imageAlt: "Zaki veggie platter" },
-  ] },
-  { id: "salads", title: "Salads", items: [
+  { id: "salads-healthy-options", title: "Salads & Healthy Options", items: [
     { name: "Summer Salata", variants: [
       { label: "Standard", price: "$10.00", description: "Spring mix with tomato, cucumber, banana pepper, red onion, pickled cabbage, feta cheese, and vinaigrette." },
     ], image: summerSalata.url, imageAlt: "Zaki Summer Salata" },
@@ -109,6 +100,12 @@ export const menu: MenuCategory[] = [
       { label: "Without meat", price: "$12.00", description: "Tomatoes, cucumbers, onions, feta cheese, and olives, finished with vinaigrette and tzatziki sauce." },
       { label: "With meat", price: "$18.00", description: "Greek salad with meat, tomatoes, cucumbers, onions, feta cheese, olives, vinaigrette, and tzatziki sauce." },
     ], image: greekSalad.url, imageAlt: "Greek salad with tomatoes, cucumbers, onions, feta, olives, vinaigrette, and tzatziki." },
+    { name: "Veggie Platter", variants: [
+      { label: "Choice of 2 appetizers", price: "$20.00", description: "Choose two appetizers, served with salad and a side of fresh pita bread." },
+    ], image: veggiePlatter.url, imageAlt: "Zaki veggie platter" },
+    { name: "Zaki Sampler", variants: [
+      { label: "3 appetizers OR 3 dips", price: "$20.00", description: "Build a sampler with three appetizers or three dips, served with two fresh pita breads." },
+    ], image: sampler.url, imageAlt: "Zaki sampler platter" },
   ] },
   { id: "appetizers", title: "Appetizers", items: [
     { name: "Hummus", variants: [
