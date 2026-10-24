@@ -227,7 +227,7 @@ function ProteinStrip({ items, onOpen }: { items: MenuItem[]; onOpen: (item: Men
           const v = item.variants?.[0];
           const align = i === 0 ? "left-0" : i === items.length - 1 ? "right-0" : "left-1/2 -translate-x-1/2";
           return (
-            <li key={item.name} className="w-[42%] shrink-0 snap-start sm:w-[30%] md:w-auto">
+            <li key={item.name} className="w-[38%] shrink-0 snap-start sm:w-[30%] md:w-auto">
               <div className="flex flex-col items-center gap-1 text-center">
                 <div className="group/thumb relative">
                   <button
@@ -239,7 +239,7 @@ function ProteinStrip({ items, onOpen }: { items: MenuItem[]; onOpen: (item: Men
                   >
                     <img src={item.image} alt={item.imageAlt ?? item.name} loading="lazy" className="h-full w-full object-contain p-1" />
                   </button>
-                  <div className={`pointer-events-none absolute bottom-full z-30 mb-2 hidden h-56 w-56 rounded-2xl border border-border bg-food-surface p-3 opacity-0 shadow-lg transition-opacity md:block md:group-hover/thumb:opacity-100 md:group-focus-within/thumb:opacity-100 ${align}`} aria-hidden="true">
+                  <div className={`pointer-events-none absolute top-full z-30 mt-2 hidden h-56 w-56 rounded-2xl border border-border bg-food-surface p-3 opacity-0 shadow-lg transition-opacity md:block md:group-hover/thumb:opacity-100 md:group-focus-within/thumb:opacity-100 ${align}`} aria-hidden="true">
                     <img src={item.image} alt="" className="h-full w-full object-contain" />
                   </div>
                 </div>

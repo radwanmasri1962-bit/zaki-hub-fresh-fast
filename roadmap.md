@@ -2,6 +2,7 @@
 - [x] Update only Bowls grouping, descriptions and three photos; preserve prices and verify desktop/mobile details
 - [x] Apply the confirmed $26 Kofta price and description, shrimp portion, final Pita Wraps combo, combined salads section and two photos; verify desktop/mobile
 - [x] Relocate Add a Protein after Bowls with five photos, + prices and portion labels; verify desktop/mobile
+- [x] Compact one-row Add a Protein strip with confirmed portions and hover previews
 - [x] Replace Our Story numbered columns with the requested connected five-milestone timeline and verify desktop/mobile presentation
 - [x] Cinematic homepage, shared navigation and six confirmed favorites
 - [x] Both locations, confirmed hours and presentation-only ordering
