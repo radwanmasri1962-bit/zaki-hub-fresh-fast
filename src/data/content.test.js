@@ -48,10 +48,10 @@ describe("Confirmed stage-one content", () => {
     const items = menu.flatMap(c => c.items);
     const price = (n, l) => items.find(i => i.name === n).variants.find(v => v.label === l).price;
     expect(price("Zaki Chicken Bowl", "Standard")).toBe("$17.00");
-    expect(price("Hummus Bowl", "Standard")).toBe("$20.00");
+    expect(price("Hummus Bowl", "Standard")).toBe("$17.00");
     expect(price("Lamb Chops Bowl", "3 pieces")).toBe("$30.00");
-    expect(price("Greek Salad", "Without meat")).toBe("$12.00");
-    expect(price("Greek Salad", "With meat")).toBe("$18.00");
+    expect(price("Greek Salad", "Standard")).toBe("$12.00");
+    expect(items.find(i => i.name === "Greek Salad").variants).toHaveLength(1);
     expect(price("Zaki Fries", "Small")).toBe("$8.00");
     expect(price("Zaki Fries", "Large")).toBe("$11.00");
     expect(price("Fries", "Small")).toBe("$5.00");
@@ -78,7 +78,7 @@ describe("Confirmed stage-one content", () => {
   test("Bowl prices use the confirmed Kofta price while others are preserved", () => {
     const bowls = menu.find(c => c.id === "bowls").items;
     expect(bowls.map(i => i.variants?.[0]?.price ?? i.price ?? null)).toEqual([
-      "$17.00", "$17.00", "$17.00", "$20.00", "$24.00", "$24.00", "$24.00", "$30.00", "$26.00",
+      "$17.00", "$17.00", "$17.00", "$17.00", "$24.00", "$24.00", "$24.00", "$30.00", "$26.00",
     ]);
   });
   test("French Fry Bowl is removed while both fries sides remain", () => {
@@ -94,7 +94,7 @@ describe("Confirmed stage-one content", () => {
     ["Shrimp Bowl", "Three succulent tiger prawns seasoned with aromatic Mediterranean-inspired spices, served over basmati rice with our fresh house side salad."],
     ["Mahi Mahi Bowl", "Mahi mahi seasoned with a fragrant blend of herbs and Mediterranean-inspired spices, served with basmati rice and our house side salad."],
     ["Lamb Chops Bowl", "Grilled lamb chops served over basmati rice with our house side salad, charred tomato, red onion, and serrano pepper, plus a side of hummus and four toasted pita triangles."],
-    ["Kofta Kabab Bowl", "Tender kofta kabab made with a blend of lamb and Wagyu beef, parsley, onion, and aromatic Mediterranean spices, char-grilled for a beautifully seared finish and juicy center. Served over basmati rice with our house side salad, charred tomato, red onion, and serrano pepper, accompanied by creamy hummus and four toasted pita triangles."],
+    ["Kofta Kabab Bowl", "Tender, char-grilled lamb and Wagyu beef kofta blended with parsley, onion, and Mediterranean spices. Served with basmati rice, house salad, charred vegetables, hummus, and four toasted pita triangles."],
   ]) test(`${name} contains only its supplied ingredients and accompaniments`, () => {
     const item = menu.find(c => c.id === "bowls").items.find(i => i.name === name);
     expect(item.variants?.[0]?.description ?? item.description).toBe(description);
@@ -118,7 +118,7 @@ describe("Confirmed stage-one content", () => {
     expect(combos).toHaveLength(1);
     expect(combos[0].price).toBe("$20.00");
     expect(combos[0].variants).toBeUndefined();
-    expect(combos[0].description).toBe("Chicken gyro pita wrap served with golden French fries and an ice-cold Coca-Cola.");
+    expect(combos[0].description).toBe("Make any of the wraps above a combo with golden French fries and an ice-cold Coca-Cola.");
     expect(combos[0].image.endsWith("/chicken-gyro-combo.png")).toBe(true);
   });
   test("The combined category contains exactly the four requested options", () => {
@@ -127,11 +127,12 @@ describe("Confirmed stage-one content", () => {
     expect(items[0].variants[0].price).toBe("$10.00");
     expect(items[0].variants[0].description).toBe("Spring mix with tomato, cucumber, banana pepper, red onion, pickled cabbage, feta cheese, and vinaigrette.");
     expect(items[0].image.endsWith("/summer-salata-photo.jpeg")).toBe(true);
-    expect(items[1].variants.map(v => [v.label, v.price])).toEqual([["Without meat", "$12.00"], ["With meat", "$18.00"]]);
+    expect(items[1].variants.map(v => [v.label, v.price])).toEqual([["Standard", "$12.00"]]);
   });
   test("Shrimp portion is three tiger prawns while Lamb Chops stays three pieces", () => {
     const bowls = menu.find(c => c.id === "bowls").items;
     expect(bowls.find(i => i.name === "Shrimp Bowl").variants[0].label).toBe("3 tiger prawns");
     expect(bowls.find(i => i.name === "Lamb Chops Bowl").variants[0].label).toBe("3 pieces");
+    expect(bowls.find(i => i.name === "Kofta Kabab Bowl").variants[0].label).toBe("3 skewers");
   });
 });
