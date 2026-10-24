@@ -1,5 +1,5 @@
 # Stage one update
-- [ ] Refine homepage poster fan, four-second rotation, pause behavior and card destinations; verify desktop/mobile
+- [x] Refine homepage poster fan, four-second rotation, pause behavior and card destinations; verify desktop/mobile
 - [x] Replace homepage favorites with supplied three-poster stack; verify switching and exact menu links on desktop/mobile
 - [x] Update only Bowls grouping, descriptions and three photos; preserve prices and verify desktop/mobile details
 - [x] Apply the confirmed $26 Kofta price and description, shrimp portion, final Pita Wraps combo, combined salads section and two photos; verify desktop/mobile
