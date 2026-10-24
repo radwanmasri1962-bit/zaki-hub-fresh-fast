@@ -1,3 +1,8 @@
+import pSalmon from "@/assets/protein-salmon-fillet.png.asset.json";
+import pMahi from "@/assets/protein-mahi-mahi.png.asset.json";
+import pShrimp from "@/assets/protein-shrimps.png.asset.json";
+import pLamb from "@/assets/protein-lamb-chops.png.asset.json";
+import pKofta from "@/assets/protein-kofta-trio.png.asset.json";
 import chicken from "@/assets/chicken-bowl-white.jpg.asset.json";
 import gyro from "@/assets/gyro-bowl-white.jpg.asset.json";
 import shawarma from "@/assets/shawarma-white.png.asset.json";
@@ -34,7 +39,7 @@ import meatSide from "@/assets/meat-side.jpeg.asset.json";
 
 export type MenuVariant = { label: string; price: string; description: string };
 export type MenuItem = { name: string; group?: string; price?: string; description?: string; variants?: MenuVariant[]; image?: string; imageAlt?: string; badge?: string; tags?: string[]; bestSeller?: boolean; highlight?: boolean };
-export type MenuCategory = { id: string; title: string; note?: string; items: MenuItem[] };
+export type MenuCategory = { id: string; title: string; heading?: string; intro?: string; panel?: boolean; note?: string; items: MenuItem[] };
 
 export const signatureItems = [
   { name: "Zaki Chicken Bowl", price: "$17", note: "Grilled chicken tenderloins with za’atar, sumac and paprika, served with basmati rice, salad and garlic sauce.", image: chicken.url, alt: "Zaki chicken bowl with rice, salad and garlic sauce" },
@@ -75,6 +80,23 @@ export const menu: MenuCategory[] = [
     { name: "Kofta Kabab Bowl", group: "Signature Bowls", variants: [
       { label: "3 skewers", price: "$26.00", description: "Tender, char-grilled lamb and Wagyu beef kofta blended with parsley, onion, and Mediterranean spices. Served with basmati rice, house salad, charred vegetables, hummus, and four toasted pita triangles." },
     ], image: koftaBowl.url, imageAlt: "Kofta kabab bowl with rice, house side salad, hummus and toasted pita triangles" },
+  ] },
+  { id: "add-a-protein", title: "Add a Protein", heading: "Add Protein to Your Bowl", intro: "Make it your own with an additional full portion of your favorite protein. Add-ons include protein only, without additional rice, salad, sauces, or pita.", panel: true, items: [
+    { name: "Salmon", variants: [
+      { label: "Standard", price: "+$12.00", description: "Mediterranean-spiced salmon with a beautifully seared finish." },
+    ], image: pSalmon.url, imageAlt: "Salmon protein add-on" },
+    { name: "Mahi Mahi", variants: [
+      { label: "Standard", price: "+$12.00", description: "Tender mahi mahi seasoned with fragrant herbs and Mediterranean spices." },
+    ], image: pMahi.url, imageAlt: "Mahi Mahi protein add-on" },
+    { name: "Tiger Prawns", variants: [
+      { label: "3 tiger prawns", price: "+$15.00", description: "Three succulent, grilled tiger prawns seasoned with Mediterranean spices." },
+    ], image: pShrimp.url, imageAlt: "Tiger Prawns protein add-on" },
+    { name: "Lamb Chops", variants: [
+      { label: "3 pieces", price: "+$20.00", description: "Three tender, grilled lamb chops with a rich, smoky finish." },
+    ], image: pLamb.url, imageAlt: "Lamb Chops protein add-on" },
+    { name: "Kofta Kabab", variants: [
+      { label: "3 skewers", price: "+$17.00", description: "Tender, char-grilled lamb and Wagyu beef kofta blended with parsley, onion, and Mediterranean spices." },
+    ], image: pKofta.url, imageAlt: "Kofta Kabab protein add-on" },
   ] },
   { id: "pita-wraps", title: "Pita Wraps", items: [
     { name: "Chicken Shawarma", variants: [
@@ -152,20 +174,6 @@ export const menu: MenuCategory[] = [
     { name: "Side of Meat", variants: [
       { label: "Standard", price: "$6.00", description: "An extra side of meat; available meat choices require confirmation." },
     ], image: meatSide.url, imageAlt: "Extra side of seasoned gyro meat." },
-  ] },
-  { id: "add-a-protein", title: "Add a Protein", items: [
-    { name: "Mahi Mahi", variants: [
-      { label: "Portion not stated", price: "$12.00", description: "Add mahi mahi to your order." },
-    ] },
-    { name: "Salmon", variants: [
-      { label: "Portion not stated", price: "$12.00", description: "Add salmon to your order." },
-    ] },
-    { name: "Shrimp", variants: [
-      { label: "Portion not stated", price: "$15.00", description: "Add shrimp to your order." },
-    ] },
-    { name: "Lamb Chop", variants: [
-      { label: "3 pieces", price: "$20.00", description: "Add three lamb chops to your order." },
-    ] },
   ] },
   { id: "desserts", title: "Desserts", items: [
     { name: "Baklava", variants: [

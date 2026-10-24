@@ -40,7 +40,7 @@ describe("Confirmed stage-one content", () => {
     expect(contact).not.toHaveProperty("phoneHref");
   });
   test("Menu follows the requested visible category order", () => {
-    expect(menu.filter(category => category.items.length).map(category => category.title)).toEqual(["Bowls", "Pita Wraps", "Salads & Healthy Options", "Appetizers", "Sides", "Add a Protein", "Desserts"]);
+    expect(menu.filter(category => category.items.length).map(category => category.title)).toEqual(["Bowls", "Add a Protein", "Pita Wraps", "Salads & Healthy Options", "Appetizers", "Sides", "Desserts"]);
     expect(menu.map(category => category.id)).not.toContain("extras");
     expect(menu.map(category => category.id)).not.toContain("salads");
   });
@@ -56,14 +56,14 @@ describe("Confirmed stage-one content", () => {
     expect(price("Zaki Fries", "Large")).toBe("$11.00");
     expect(price("Fries", "Small")).toBe("$5.00");
     expect(price("Fries", "Large")).toBe("$8.00");
-    expect(price("Shrimp", "Portion not stated")).toBe("$15.00");
-    expect(price("Lamb Chop", "3 pieces")).toBe("$20.00");
+    expect(price("Tiger Prawns", "3 tiger prawns")).toBe("+$15.00");
+    expect(price("Lamb Chops", "3 pieces")).toBe("+$20.00");
     expect(price("Baklava", "Standard")).toBe("$8.00");
   });
   test("No duplicate menu items", () => {
     const names = menu.flatMap(c => c.items.map(i => i.name));
     expect(new Set(names).size).toBe(names.length);
-    expect(names).toHaveLength(37);
+    expect(names).toHaveLength(38);
   });
   test("Bowls has the exact four Zaki Bowls followed by five Signature Bowls", () => {
     const bowls = menu.find(c => c.id === "bowls").items;
@@ -134,5 +134,18 @@ describe("Confirmed stage-one content", () => {
     expect(bowls.find(i => i.name === "Shrimp Bowl").variants[0].label).toBe("3 tiger prawns");
     expect(bowls.find(i => i.name === "Lamb Chops Bowl").variants[0].label).toBe("3 pieces");
     expect(bowls.find(i => i.name === "Kofta Kabab Bowl").variants[0].label).toBe("3 skewers");
+  });
+});
+describe("Add a Protein section", () => {
+  const cat = menu.find(c => c.id === "add-a-protein");
+  test("sits directly after Bowls with exact add-on prices and labels", () => {
+    expect(menu.findIndex(c => c.id === "add-a-protein")).toBe(menu.findIndex(c => c.id === "bowls") + 1);
+    expect(cat.items.map(i => [i.name, i.variants[0].price, i.variants[0].label])).toEqual([
+      ["Salmon", "+$12.00", "Standard"], ["Mahi Mahi", "+$12.00", "Standard"], ["Tiger Prawns", "+$15.00", "3 tiger prawns"], ["Lamb Chops", "+$20.00", "3 pieces"], ["Kofta Kabab", "+$17.00", "3 skewers"],
+    ]);
+  });
+  test("keeps the Kofta Kabab Bowl at $26.00", () => {
+    const bowl = menu.find(c => c.id === "bowls").items.find(i => i.name === "Kofta Kabab Bowl");
+    expect(bowl.variants[0].price).toBe("$26.00");
   });
 });
