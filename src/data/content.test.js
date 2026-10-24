@@ -47,7 +47,7 @@ describe("Confirmed stage-one content", () => {
     const price = (n, l) => items.find(i => i.name === n).variants.find(v => v.label === l).price;
     expect(price("Zaki Chicken Bowl", "Standard")).toBe("$17.00");
     expect(price("Hummus Bowl", "Standard")).toBe("$20.00");
-    expect(price("Lamb Chop Bowl", "3 pieces")).toBe("$30.00");
+    expect(price("Lamb Chops Bowl", "3 pieces")).toBe("$30.00");
     expect(price("Greek Salad", "Without meat")).toBe("$12.00");
     expect(price("Greek Salad", "With meat")).toBe("$18.00");
     expect(price("Zaki Fries", "Small")).toBe("$8.00");
@@ -62,6 +62,26 @@ describe("Confirmed stage-one content", () => {
     const names = menu.flatMap(c => c.items.map(i => i.name));
     expect(new Set(names).size).toBe(names.length);
     expect(names).toHaveLength(37);
+  });
+  test("Bowls has the exact four Zaki Bowls followed by five Signature Bowls", () => {
+    const bowls = menu.find(c => c.id === "bowls").items;
+    expect(bowls.map(i => [i.group, i.name])).toEqual([
+      ["Zaki Bowls", "Zaki Chicken Bowl"], ["Zaki Bowls", "Gyro Bowl"],
+      ["Zaki Bowls", "Falafel Bowl"], ["Zaki Bowls", "Hummus Bowl"],
+      ["Signature Bowls", "Salmon Bowl"], ["Signature Bowls", "Shrimp Bowl"],
+      ["Signature Bowls", "Mahi Mahi Bowl"], ["Signature Bowls", "Lamb Chops Bowl"],
+      ["Signature Bowls", "Kofta Kabab Bowl"],
+    ]);
+  });
+  test("Existing bowl prices are preserved and Kofta has no invented price", () => {
+    const bowls = menu.find(c => c.id === "bowls").items;
+    expect(bowls.map(i => i.variants?.[0]?.price ?? i.price ?? null)).toEqual([
+      "$17.00", "$17.00", "$17.00", "$20.00", "$24.00", "$24.00", "$24.00", "$30.00", null,
+    ]);
+  });
+  test("French Fry Bowl is removed while both fries sides remain", () => {
+    expect(menu.flatMap(c => c.items).map(i => i.name)).not.toContain("French Fry Bowl");
+    expect(menu.find(c => c.id === "sides").items.map(i => i.name)).toEqual(expect.arrayContaining(["Fries", "Zaki Fries"]));
   });
   test("Zaki Fries and Fries use different photos", () => {
     const items = menu.flatMap(c => c.items);
