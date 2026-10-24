@@ -83,6 +83,28 @@ describe("Confirmed stage-one content", () => {
     expect(menu.flatMap(c => c.items).map(i => i.name)).not.toContain("French Fry Bowl");
     expect(menu.find(c => c.id === "sides").items.map(i => i.name)).toEqual(expect.arrayContaining(["Fries", "Zaki Fries"]));
   });
+  for (const [name, description] of [
+    ["Zaki Chicken Bowl", "Grilled chicken tenderloins seasoned with za’atar, sumac, and paprika, served with basmati rice, our house side salad, and garlic sauce."],
+    ["Gyro Bowl", "Slow-roasted lamb-and-beef gyro served with basmati rice, our house side salad, and creamy tzatziki."],
+    ["Falafel Bowl", "Falafel made with ground chickpeas, parsley, green onion, and cumin, served with basmati rice, our house side salad, and tzatziki."],
+    ["Hummus Bowl", "Creamy hummus finished with a decorative swirl and flavorful garnishes, paired with our house side salad, your choice of side sauce, and four toasted pita triangles."],
+    ["Salmon Bowl", "Salmon seasoned with our house Mediterranean spice blend, served with basmati rice and our house side salad."],
+    ["Shrimp Bowl", "Shrimp seasoned with Mediterranean-inspired spices, served with basmati rice and our house side salad."],
+    ["Mahi Mahi Bowl", "Mahi mahi seasoned with a fragrant blend of herbs and Mediterranean-inspired spices, served with basmati rice and our house side salad."],
+    ["Lamb Chops Bowl", "Grilled lamb chops served over basmati rice with our house side salad, charred tomato, red onion, and serrano pepper, plus a side of hummus and four toasted pita triangles."],
+    ["Kofta Kabab Bowl", "Grilled kofta kabab seasoned with aromatic Mediterranean spices, served over basmati rice with our house side salad, charred tomato, red onion, and serrano pepper, plus a side of hummus and four toasted pita triangles."],
+  ]) test(`${name} contains only its supplied ingredients and accompaniments`, () => {
+    const item = menu.find(c => c.id === "bowls").items.find(i => i.name === name);
+    expect(item.variants?.[0]?.description ?? item.description).toBe(description);
+  });
+  for (const [name, filename] of [
+    ["Hummus Bowl", "hummus-bowl.png"], ["Kofta Kabab Bowl", "kofta-kabab-bowl.jpg"], ["Mahi Mahi Bowl", "mahi-mahi-bowl.png"],
+    ["Zaki Chicken Bowl", "chicken-bowl-white.jpg"], ["Gyro Bowl", "gyro-bowl-white.jpg"],
+    ["Falafel Bowl", "falafel-bowl-white.jpg"], ["Salmon Bowl", "salmon-bowl.jpg"],
+    ["Shrimp Bowl", "shrimp-bowl.jpg"], ["Lamb Chops Bowl", "lamb-chops-bowl.jpg"],
+  ]) test(`${name} uses its approved photo`, () => {
+    expect(menu.find(c => c.id === "bowls").items.find(i => i.name === name).image.endsWith(`/${filename}`)).toBe(true);
+  });
   test("Zaki Fries and Fries use different photos", () => {
     const items = menu.flatMap(c => c.items);
     expect(items.find(i => i.name === "Fries").image).not.toBe(items.find(i => i.name === "Zaki Fries").image);
