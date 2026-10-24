@@ -56,14 +56,14 @@ describe("Confirmed stage-one content", () => {
     expect(price("Zaki Fries", "Large")).toBe("$11.00");
     expect(price("Fries", "Small")).toBe("$5.00");
     expect(price("Fries", "Large")).toBe("$8.00");
-    expect(price("Shrimp", "Portion not stated")).toBe("$15.00");
-    expect(price("Lamb Chop", "3 pieces")).toBe("$20.00");
+    expect(price("Tiger Prawns", "3 tiger prawns")).toBe("+$15.00");
+    expect(price("Lamb Chops", "3 pieces")).toBe("+$20.00");
     expect(price("Baklava", "Standard")).toBe("$8.00");
   });
   test("No duplicate menu items", () => {
     const names = menu.flatMap(c => c.items.map(i => i.name));
     expect(new Set(names).size).toBe(names.length);
-    expect(names).toHaveLength(37);
+    expect(names).toHaveLength(38);
   });
   test("Bowls has the exact four Zaki Bowls followed by five Signature Bowls", () => {
     const bowls = menu.find(c => c.id === "bowls").items;
