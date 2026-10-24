@@ -1,4 +1,5 @@
 # Stage one update
+- [ ] Update only Bowls grouping, descriptions and three photos; preserve prices and verify desktop/mobile details
 - [x] Replace Our Story numbered columns with the requested connected five-milestone timeline and verify desktop/mobile presentation
 - [x] Cinematic homepage, shared navigation and six confirmed favorites
 - [x] Both locations, confirmed hours and presentation-only ordering
