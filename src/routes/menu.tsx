@@ -73,8 +73,9 @@ function MenuPage() {
       <div className="mx-auto max-w-4xl px-4 py-8 md:px-6 md:py-10">
         {menu.filter(category => category.items.length > 0).map((category) => (
           <section key={category.id} id={category.id} className="scroll-mt-40 pb-14">
-            <h2 className="text-2xl font-bold md:text-4xl">{category.items[0]?.group ?? category.title}</h2>
-            <div className="mt-6 space-y-4">
+            <h2 className="text-2xl font-bold md:text-4xl">{category.heading ?? category.items[0]?.group ?? category.title}</h2>
+            {category.intro ? <p className="mt-3 max-w-2xl text-sm text-muted-foreground md:text-base">{category.intro}</p> : null}
+            <div className={category.panel ? "mt-6 grid gap-4 rounded-2xl border border-primary/20 bg-primary/5 p-4 md:grid-cols-2 md:p-6" : "mt-6 space-y-4"}>
               {category.items.map((item, i) => {
                 const badge = item.badge ?? null;
                 const interactive = Boolean(item.image);
