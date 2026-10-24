@@ -63,7 +63,7 @@ describe("Confirmed stage-one content", () => {
   test("No duplicate menu items", () => {
     const names = menu.flatMap(c => c.items.map(i => i.name));
     expect(new Set(names).size).toBe(names.length);
-    expect(names).toHaveLength(38);
+    expect(names).toHaveLength(41);
   });
   test("Bowls has the exact four Zaki Bowls followed by five Signature Bowls", () => {
     const bowls = menu.find(c => c.id === "bowls").items;
