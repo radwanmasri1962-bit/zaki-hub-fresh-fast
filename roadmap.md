@@ -1,4 +1,5 @@
 # Stage one update
+- [x] Link the footer TikTok icon to the owner-supplied TikTok address; verify desktop presentation
 - [x] Refine homepage poster fan, four-second rotation, pause behavior and card destinations; verify desktop/mobile
 - [x] Replace homepage favorites with supplied three-poster stack; verify switching and exact menu links on desktop/mobile
 - [x] Update only Bowls grouping, descriptions and three photos; preserve prices and verify desktop/mobile details
