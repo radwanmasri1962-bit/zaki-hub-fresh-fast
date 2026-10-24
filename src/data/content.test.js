@@ -40,6 +40,9 @@ describe("Confirmed stage-one content", () => {
     expect(contact).not.toHaveProperty("phone");
     expect(contact).not.toHaveProperty("phoneHref");
   });
+  test("TikTok link is the owner-supplied address", () => {
+    expect(contact.tiktok).toBe("https://www.tiktok.com/search?q=zaki%20grill%20columbus&t=1792884974454");
+  });
   test("Menu follows the requested visible category order", () => {
     expect(menu.filter(category => category.items.length).map(category => category.title)).toEqual(["Bowls", "Add a Protein", "Pita Wraps", "Salads & Healthy Options", "Appetizers", "Sides", "Desserts", "Drinks & Beverages"]);
     expect(menu.map(category => category.id)).not.toContain("extras");
