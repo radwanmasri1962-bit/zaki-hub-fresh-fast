@@ -4,6 +4,7 @@ import { Expand } from "lucide-react";
 import { menu, type MenuItem } from "@/data/menu";
 import menuHero from "@/assets/menu-hero.png.asset.json";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { OrderComingSoon } from "@/components/site/OrderComingSoon";
 
 export const Route = createFileRoute("/menu")({
   head: () => ({
@@ -163,12 +164,7 @@ function MenuPage() {
             Online ordering is coming soon. Explore our locations and find Zaki near you.
           </p>
           <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
-            <Link
-              to="/order"
-              className="rounded-xl bg-cream px-6 py-4 text-sm font-semibold uppercase tracking-wide text-foreground hover:bg-cream/90"
-            >
-              Order Online
-            </Link>
+            <OrderComingSoon className="rounded-xl bg-cream px-6 py-4 text-sm font-semibold uppercase tracking-wide text-foreground hover:bg-cream/90" />
             <Link
               to="/locations"
               className="rounded-xl border border-cream/40 px-6 py-4 text-sm font-semibold uppercase tracking-wide hover:bg-cream/10"

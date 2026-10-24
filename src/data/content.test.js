@@ -40,7 +40,7 @@ describe("Confirmed stage-one content", () => {
     expect(contact).not.toHaveProperty("phoneHref");
   });
   test("Menu follows the requested visible category order", () => {
-    expect(menu.filter(category => category.items.length).map(category => category.title)).toEqual(["Bowls", "Add a Protein", "Pita Wraps", "Salads & Healthy Options", "Appetizers", "Sides", "Desserts"]);
+    expect(menu.filter(category => category.items.length).map(category => category.title)).toEqual(["Bowls", "Add a Protein", "Pita Wraps", "Salads & Healthy Options", "Appetizers", "Sides", "Desserts", "Drinks & Beverages"]);
     expect(menu.map(category => category.id)).not.toContain("extras");
     expect(menu.map(category => category.id)).not.toContain("salads");
   });
@@ -63,7 +63,7 @@ describe("Confirmed stage-one content", () => {
   test("No duplicate menu items", () => {
     const names = menu.flatMap(c => c.items.map(i => i.name));
     expect(new Set(names).size).toBe(names.length);
-    expect(names).toHaveLength(38);
+    expect(names).toHaveLength(41);
   });
   test("Bowls has the exact four Zaki Bowls followed by five Signature Bowls", () => {
     const bowls = menu.find(c => c.id === "bowls").items;
@@ -148,4 +148,9 @@ describe("Add a Protein section", () => {
     const bowl = menu.find(c => c.id === "bowls").items.find(i => i.name === "Kofta Kabab Bowl");
     expect(bowl.variants[0].price).toBe("$26.00");
   });
+});
+
+test("Drinks & Beverages lists only Soft Drink and Water at $3.00", () => {
+  const drinks = menu.find(c => c.id === "drinks");
+  expect(drinks.items.map(i => [i.name, i.price])).toEqual([["Soft Drink", "$3.00"], ["Water", "$3.00"]]);
 });

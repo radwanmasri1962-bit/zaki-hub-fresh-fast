@@ -35,6 +35,8 @@ import frenchFries from "@/assets/french-fries.jpeg.asset.json";
 import garlicSauce from "@/assets/garlic-sauce.jpeg.asset.json";
 import greekSalad from "@/assets/greek-salad.jpeg.asset.json";
 import hummusHarissa from "@/assets/hummus-harissa.jpeg.asset.json";
+import riceSide from "@/assets/rice-side.jpeg.asset.json";
+import pitaBread from "@/assets/pita-bread.jpeg.asset.json";
 import meatSide from "@/assets/meat-side.jpeg.asset.json";
 
 export type MenuVariant = { label: string; price: string; description: string };
@@ -161,7 +163,7 @@ export const menu: MenuCategory[] = [
     ], image: frenchFries.url, imageAlt: "Freshly prepared Idaho fries." },
     { name: "Extra Pita Bread", variants: [
       { label: "Standard", price: "$1.00", description: "An extra side of pita bread." },
-    ] },
+    ], image: pitaBread.url, imageAlt: "Extra side of warm pita bread." },
     { name: "Side of Sauce", variants: [
       { label: "Standard", price: "$1.00", description: "An extra side of sauce." },
     ], image: garlicSauce.url, imageAlt: "Extra side of Zaki garlic sauce." },
@@ -170,17 +172,19 @@ export const menu: MenuCategory[] = [
     ], image: fetaSide.url, imageAlt: "Side of crumbled feta cheese." },
     { name: "Side of Rice", variants: [
       { label: "Standard", price: "$6.00", description: "An extra side of rice." },
-    ] },
+    ], image: riceSide.url, imageAlt: "Side of basmati rice." },
     { name: "Side of Meat", variants: [
       { label: "Standard", price: "$6.00", description: "An extra side of meat; available meat choices require confirmation." },
     ], image: meatSide.url, imageAlt: "Extra side of seasoned gyro meat." },
   ] },
   { id: "desserts", title: "Desserts", items: [
     { name: "Baklava", variants: [
-      { label: "Standard", price: "$8.00", description: "Classic baklava served as a sweet finish." },
-    ], image: baklava.url, imageAlt: "Pieces of classic baklava with layered pastry and pistachio garnish." },
+      { label: "Standard", price: "$8.00", description: "Our signature dessert: delicate layers of golden, flaky pastry filled with walnuts and finished with a sweet syrup for a rich, satisfying crunch." },
+    ], image: baklava.url, imageAlt: "Pieces of classic baklava with layered pastry and walnut filling." },
+    { name: "Seasonal Desserts", description: "Discover a changing selection of sweet treats, available exclusively at our shops. Visit us to see what’s in store." },
   ] },
-  { id: "drinks", title: "Drinks", items: [
-
+  { id: "drinks", title: "Drinks & Beverages", items: [
+    { name: "Soft Drink", price: "$3.00" },
+    { name: "Water", price: "$3.00" },
   ] },
 ];

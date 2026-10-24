@@ -57,7 +57,7 @@ export const buddDairy = {
 };
 
 export const contact = {
-  email: "hello@zakigrill.com",
+  email: "hello@eatzakigrill.com",
   instagram: "https://www.instagram.com/zakigrill/",
   facebook: "https://www.facebook.com/ZakiGrill/",
   streetFoodFinder: "https://streetfoodfinder.com/ZakiGrill",
