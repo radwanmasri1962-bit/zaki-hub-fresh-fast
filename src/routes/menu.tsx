@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Expand } from "lucide-react";
 import { menu, type MenuItem } from "@/data/menu";
@@ -73,12 +73,16 @@ function MenuPage() {
       <div className="mx-auto max-w-4xl px-4 py-8 md:px-6 md:py-10">
         {menu.filter(category => category.items.length > 0).map((category) => (
           <section key={category.id} id={category.id} className="scroll-mt-40 pb-14">
-            <h2 className="text-2xl font-bold md:text-4xl">{category.title}</h2>
+            <h2 className="text-2xl font-bold md:text-4xl">{category.items[0]?.group ?? category.title}</h2>
             <div className="mt-6 space-y-4">
               {category.items.map((item, i) => {
                 const badge = item.badge ?? null;
                 const interactive = Boolean(item.image);
                 return (
+                <Fragment key={`${category.id}-${item.name}-${i}`}>
+                {item.group && i > 0 && item.group !== category.items[i - 1]?.group ? (
+                  <h2 className="pb-2 pt-10 text-2xl font-bold md:text-4xl">{item.group}</h2>
+                ) : null}
                 <article
                   key={`${category.id}-${item.name}-${i}`}
                   onClick={interactive ? () => setActive(item) : undefined}
@@ -140,6 +144,7 @@ function MenuPage() {
                     ) : null}
                   </div>
                 </article>
+                </Fragment>
                 );
               })}
             </div>
@@ -222,7 +227,8 @@ function ItemDetails({ item, }: { item: MenuItem }) {
     return item.description ? <p className="mt-2 text-sm text-muted-foreground">{item.description}</p> : null;
   }
   if (variants.length === 1) {
-    const v = variants[0]!;
+    const v = variants[0];
+    if (!v) return null;
     return (
       <div className="mt-2">
         {v.label !== "Standard" ? (

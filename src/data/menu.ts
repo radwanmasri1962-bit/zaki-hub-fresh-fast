@@ -8,6 +8,9 @@ import falafelBowl from "@/assets/falafel-bowl-white.jpg.asset.json";
 import lambChopsBowl from "@/assets/lamb-chops-bowl.jpg.asset.json";
 import salmonBowl from "@/assets/salmon-bowl.jpg.asset.json";
 import shrimpBowl from "@/assets/shrimp-bowl.jpg.asset.json";
+import hummusBowl from "@/assets/hummus-bowl.png.asset.json";
+import koftaBowl from "@/assets/kofta-kabab-bowl.jpg.asset.json";
+import mahiBowl from "@/assets/mahi-mahi-bowl.png.asset.json";
 import chickenGyro from "@/assets/chicken-gyro.png.asset.json";
 import veggieGyro from "@/assets/veggie-gyro.png.asset.json";
 import hummus from "@/assets/hummus.jpeg.asset.json";
@@ -29,7 +32,7 @@ import hummusHarissa from "@/assets/hummus-harissa.jpeg.asset.json";
 import meatSide from "@/assets/meat-side.jpeg.asset.json";
 
 export type MenuVariant = { label: string; price: string; description: string };
-export type MenuItem = { name: string; price?: string; description?: string; variants?: MenuVariant[]; image?: string; imageAlt?: string; badge?: string; tags?: string[]; bestSeller?: boolean };
+export type MenuItem = { name: string; group?: string; price?: string; description?: string; variants?: MenuVariant[]; image?: string; imageAlt?: string; badge?: string; tags?: string[]; bestSeller?: boolean };
 export type MenuCategory = { id: string; title: string; note?: string; items: MenuItem[] };
 
 export const signatureItems = [
@@ -44,33 +47,31 @@ export const signatureItems = [
 /** Full menu content as confirmed by the owner (Oct 2026). Variant-level price and description. */
 export const menu: MenuCategory[] = [
   { id: "bowls", title: "Bowls", items: [
-    { name: "Zaki Chicken Bowl", variants: [
-      { label: "Standard", price: "$17.00", description: "Grilled chicken tenderloins seasoned with za’atar, sumac, and paprika, served with basmati rice, the house side salad, and garlic sauce." },
+    { name: "Zaki Chicken Bowl", group: "Zaki Bowls", variants: [
+      { label: "Standard", price: "$17.00", description: "Grilled chicken tenderloins seasoned with za’atar, sumac, and paprika, served with basmati rice, our house side salad, and garlic sauce." },
     ], image: chicken.url, imageAlt: "Zaki chicken bowl with rice, salad and garlic sauce" },
-    { name: "Gyro Bowl", variants: [
-      { label: "Standard", price: "$17.00", description: "Slow-roasted lamb-and-beef gyro served with basmati rice, the house side salad, and tzatziki sauce." },
+    { name: "Gyro Bowl", group: "Zaki Bowls", variants: [
+      { label: "Standard", price: "$17.00", description: "Slow-roasted lamb-and-beef gyro served with basmati rice, our house side salad, and creamy tzatziki." },
     ], image: gyro.url, imageAlt: "Gyro bowl with lamb and beef, basmati rice, salad and tzatziki" },
-    { name: "Falafel Bowl", variants: [
-      { label: "Standard", price: "$17.00", description: "Falafel made with ground chickpeas, parsley, green onion, and cumin, served with basmati rice, the house side salad, and tzatziki sauce." },
+    { name: "Falafel Bowl", group: "Zaki Bowls", variants: [
+      { label: "Standard", price: "$17.00", description: "Falafel made with ground chickpeas, parsley, green onion, and cumin, served with basmati rice, our house side salad, and tzatziki." },
     ], image: falafelBowl.url, imageAlt: "Zaki falafel bowl with rice, salad and sauce" },
-    { name: "French Fry Bowl", variants: [
-      { label: "Standard", price: "$17.00", description: "Fresh French fries served with your choice of meat, the house side salad, and your choice of sauce." },
-    ] },
-    { name: "Hummus Bowl", variants: [
-      { label: "Standard", price: "$20.00", description: "Fresh hummus served with your choice of meat, the house side salad, your choice of sauce, and fresh pita bread." },
-    ] },
-    { name: "Mahi Mahi Bowl", variants: [
-      { label: "Standard", price: "$24.00", description: "Mahi mahi served as a bowl with the house side salad." },
-    ] },
-    { name: "Salmon Bowl", variants: [
-      { label: "Standard", price: "$24.00", description: "Salmon served as a bowl with the house side salad." },
+    { name: "Hummus Bowl", group: "Zaki Bowls", variants: [
+      { label: "Standard", price: "$20.00", description: "Creamy hummus finished with a decorative swirl and flavorful garnishes, paired with our house side salad, your choice of side sauce, and four toasted pita triangles." },
+    ], image: hummusBowl.url, imageAlt: "Hummus bowl with house side salad and toasted pita triangles" },
+    { name: "Salmon Bowl", group: "Signature Bowls", variants: [
+      { label: "Standard", price: "$24.00", description: "Salmon seasoned with our house Mediterranean spice blend, served with basmati rice and our house side salad." },
     ], image: salmonBowl.url, imageAlt: "Zaki salmon bowl with rice and salad" },
-    { name: "Shrimp Bowl", variants: [
-      { label: "Standard", price: "$24.00", description: "Shrimp served as a bowl with the house side salad." },
+    { name: "Shrimp Bowl", group: "Signature Bowls", variants: [
+      { label: "Standard", price: "$24.00", description: "Shrimp seasoned with Mediterranean-inspired spices, served with basmati rice and our house side salad." },
     ], image: shrimpBowl.url, imageAlt: "Zaki shrimp bowl with rice and salad" },
-    { name: "Lamb Chop Bowl", variants: [
-      { label: "3 pieces", price: "$30.00", description: "Three lamb chops served as a bowl with the house side salad." },
+    { name: "Mahi Mahi Bowl", group: "Signature Bowls", variants: [
+      { label: "Standard", price: "$24.00", description: "Mahi mahi seasoned with a fragrant blend of herbs and Mediterranean-inspired spices, served with basmati rice and our house side salad." },
+    ], image: mahiBowl.url, imageAlt: "Mahi mahi bowl with basmati rice and house side salad" },
+    { name: "Lamb Chops Bowl", group: "Signature Bowls", variants: [
+      { label: "3 pieces", price: "$30.00", description: "Grilled lamb chops served over basmati rice with our house side salad, charred tomato, red onion, and serrano pepper, plus a side of hummus and four toasted pita triangles." },
     ], image: lambChopsBowl.url, imageAlt: "Zaki lamb chops bowl with rice and salad" },
+    { name: "Kofta Kabab Bowl", group: "Signature Bowls", description: "Grilled kofta kabab seasoned with aromatic Mediterranean spices, served over basmati rice with our house side salad, charred tomato, red onion, and serrano pepper, plus a side of hummus and four toasted pita triangles.", image: koftaBowl.url, imageAlt: "Kofta kabab bowl with rice, house side salad, hummus and toasted pita triangles" },
   ] },
   { id: "pita-wraps", title: "Pita Wraps", items: [
     { name: "Chicken Shawarma", variants: [
