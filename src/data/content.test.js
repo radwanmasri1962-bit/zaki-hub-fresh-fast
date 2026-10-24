@@ -39,8 +39,10 @@ describe("Confirmed stage-one content", () => {
     expect(contact).not.toHaveProperty("phone");
     expect(contact).not.toHaveProperty("phoneHref");
   });
-  test("Menu follows the requested category order", () => {
-    expect(menu.map(category => category.title)).toEqual(["Bowls", "Pita Wraps", "Extras", "Salads", "Appetizers", "Sides", "Add a Protein", "Desserts", "Drinks"]);
+  test("Menu follows the requested visible category order", () => {
+    expect(menu.filter(category => category.items.length).map(category => category.title)).toEqual(["Bowls", "Pita Wraps", "Salads & Healthy Options", "Appetizers", "Sides", "Add a Protein", "Desserts"]);
+    expect(menu.map(category => category.id)).not.toContain("extras");
+    expect(menu.map(category => category.id)).not.toContain("salads");
   });
   test("Menu uses the owner-confirmed variant prices", () => {
     const items = menu.flatMap(c => c.items);
@@ -73,10 +75,10 @@ describe("Confirmed stage-one content", () => {
       ["Signature Bowls", "Kofta Kabab Bowl"],
     ]);
   });
-  test("Existing bowl prices are preserved and Kofta has no invented price", () => {
+  test("Bowl prices use the confirmed Kofta price while others are preserved", () => {
     const bowls = menu.find(c => c.id === "bowls").items;
     expect(bowls.map(i => i.variants?.[0]?.price ?? i.price ?? null)).toEqual([
-      "$17.00", "$17.00", "$17.00", "$20.00", "$24.00", "$24.00", "$24.00", "$30.00", null,
+      "$17.00", "$17.00", "$17.00", "$20.00", "$24.00", "$24.00", "$24.00", "$30.00", "$26.00",
     ]);
   });
   test("French Fry Bowl is removed while both fries sides remain", () => {
@@ -89,10 +91,10 @@ describe("Confirmed stage-one content", () => {
     ["Falafel Bowl", "Falafel made with ground chickpeas, parsley, green onion, and cumin, served with basmati rice, our house side salad, and tzatziki."],
     ["Hummus Bowl", "Creamy hummus finished with a decorative swirl and flavorful garnishes, paired with our house side salad, your choice of side sauce, and four toasted pita triangles."],
     ["Salmon Bowl", "Salmon seasoned with our house Mediterranean spice blend, served with basmati rice and our house side salad."],
-    ["Shrimp Bowl", "Shrimp seasoned with Mediterranean-inspired spices, served with basmati rice and our house side salad."],
+    ["Shrimp Bowl", "Three succulent tiger prawns seasoned with aromatic Mediterranean-inspired spices, served over basmati rice with our fresh house side salad."],
     ["Mahi Mahi Bowl", "Mahi mahi seasoned with a fragrant blend of herbs and Mediterranean-inspired spices, served with basmati rice and our house side salad."],
     ["Lamb Chops Bowl", "Grilled lamb chops served over basmati rice with our house side salad, charred tomato, red onion, and serrano pepper, plus a side of hummus and four toasted pita triangles."],
-    ["Kofta Kabab Bowl", "Grilled kofta kabab seasoned with aromatic Mediterranean spices, served over basmati rice with our house side salad, charred tomato, red onion, and serrano pepper, plus a side of hummus and four toasted pita triangles."],
+    ["Kofta Kabab Bowl", "Tender kofta kabab made with a blend of lamb and Wagyu beef, parsley, onion, and aromatic Mediterranean spices, char-grilled for a beautifully seared finish and juicy center. Served over basmati rice with our house side salad, charred tomato, red onion, and serrano pepper, accompanied by creamy hummus and four toasted pita triangles."],
   ]) test(`${name} contains only its supplied ingredients and accompaniments`, () => {
     const item = menu.find(c => c.id === "bowls").items.find(i => i.name === name);
     expect(item.variants?.[0]?.description ?? item.description).toBe(description);
@@ -108,5 +110,28 @@ describe("Confirmed stage-one content", () => {
   test("Zaki Fries and Fries use different photos", () => {
     const items = menu.flatMap(c => c.items);
     expect(items.find(i => i.name === "Fries").image).not.toBe(items.find(i => i.name === "Zaki Fries").image);
+  });
+  test("The total $20 combo appears once as the final Pita Wraps item", () => {
+    const wraps = menu.find(c => c.id === "pita-wraps").items;
+    expect(wraps.map(i => i.name)).toEqual(["Chicken Shawarma", "Gyro the Hero", "Chicken Gyro", "Revenge of the Falafel", "Veggie Gyro", "Make It a Combo"]);
+    const combos = menu.flatMap(c => c.items).filter(i => i.name === "Make It a Combo" || i.name === "Combo Meal");
+    expect(combos).toHaveLength(1);
+    expect(combos[0].price).toBe("$20.00");
+    expect(combos[0].variants).toBeUndefined();
+    expect(combos[0].description).toBe("Chicken gyro pita wrap served with golden French fries and an ice-cold Coca-Cola.");
+    expect(combos[0].image.endsWith("/chicken-gyro-combo.png")).toBe(true);
+  });
+  test("The combined category contains exactly the four requested options", () => {
+    const items = menu.find(c => c.id === "salads-healthy-options").items;
+    expect(items.map(i => i.name)).toEqual(["Summer Salata", "Greek Salad", "Veggie Platter", "Zaki Sampler"]);
+    expect(items[0].variants[0].price).toBe("$10.00");
+    expect(items[0].variants[0].description).toBe("Spring mix with tomato, cucumber, banana pepper, red onion, pickled cabbage, feta cheese, and vinaigrette.");
+    expect(items[0].image.endsWith("/summer-salata-photo.jpeg")).toBe(true);
+    expect(items[1].variants.map(v => [v.label, v.price])).toEqual([["Without meat", "$12.00"], ["With meat", "$18.00"]]);
+  });
+  test("Shrimp portion is three tiger prawns while Lamb Chops stays three pieces", () => {
+    const bowls = menu.find(c => c.id === "bowls").items;
+    expect(bowls.find(i => i.name === "Shrimp Bowl").variants[0].label).toBe("3 tiger prawns");
+    expect(bowls.find(i => i.name === "Lamb Chops Bowl").variants[0].label).toBe("3 pieces");
   });
 });
