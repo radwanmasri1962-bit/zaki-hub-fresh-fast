@@ -13,7 +13,7 @@ test("rotation starts only when the showcase is in view", () => {
   expect(canRotateFeatured(ready)).toBe(true);
   expect(canRotateFeatured({ ...ready, inView: false })).toBe(false);
 });
-for (const [key, value] of [["tabActive", false], ["reducedMotion", true], ["paused", true], ["hovered", true], ["focused", true]] as const) {
+for (const [key, value] of [["tabActive", false], ["reducedMotion", true], ["paused", true], ["hovered", true], ["focused", true]]) {
   test(`rotation pauses for ${key}`, () => {
     expect(canRotateFeatured({ ...ready, [key]: value })).toBe(false);
   });
