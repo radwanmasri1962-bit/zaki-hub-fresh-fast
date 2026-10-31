@@ -179,7 +179,7 @@ function MenuPage() {
         </div>
       </div>
 
-      {!active ? <div className="fixed inset-x-0 bottom-20 z-40 flex justify-center px-4 pb-[env(safe-area-inset-bottom)] md:hidden">
+      {!active ? <div className="fixed inset-x-0 bottom-16 z-40 flex h-16 items-center justify-center border-t border-border bg-cream/95 px-4 backdrop-blur md:hidden">
         <Button asChild className="h-auto max-w-full rounded-xl px-6 py-3 font-semibold shadow-card">
           <a href={worthingtonOrderingUrl} target="_blank" rel="noopener noreferrer" aria-label="Order at Worthington (opens Toast in a new tab)">Order at Worthington</a>
         </Button>
