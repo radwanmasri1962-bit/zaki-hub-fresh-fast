@@ -148,11 +148,15 @@
 }
 /* The mobile shortcut sits in a quiet dock, not over readable dish text. */
 @media (max-width: 767px) {
-  .menu-floating-order:has(a)::before {
+  .menu-floating-order > div::before {
     content: "";
     position: absolute;
     z-index: -1;
-    inset: -0.75rem calc((15rem - 100vw) / 2) calc(-2.25rem - env(safe-area-inset-bottom, 0px));
+    top: -0.75rem;
+    bottom: calc(-2.25rem - env(safe-area-inset-bottom, 0px));
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
     background: var(--cream);
     pointer-events: auto;
   }
