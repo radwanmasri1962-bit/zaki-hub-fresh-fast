@@ -16,4 +16,5 @@
 - Generate menu item anchors through the shared menu-anchors helper and apply sticky-navigation scroll offsets to item targets so homepage featured links remain stable.
 - Keep location addresses and confirmed food-service hours in src/data/locations.ts and render shared LocationCards on home and locations pages to avoid inconsistent business details.
 - Keep public location-specific ordering destinations in src/data/locations.ts; only location selection cards use external ordering links, while general and menu-popup ordering links use /order without transferring item or cart data, so destinations never mix.
+- Mount floating ordering only in the Menu route; its dedicated component tracks modal visibility and footer clearance, and its browser-safe helper tests destination and visibility rules without changing shared navigation.
 - The full workbook-driven menu remains pending until the supplied workbook is available; publish only the six dishes explicitly confirmed in the brief rather than importing outdated website data.
