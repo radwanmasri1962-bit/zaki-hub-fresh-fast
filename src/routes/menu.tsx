@@ -6,6 +6,8 @@ import menuHero from "@/assets/menu-hero.png.asset.json";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { OrderComingSoon } from "@/components/site/OrderComingSoon";
 import { menuItemAnchor } from "@/lib/menu-anchors";
+import { Button } from "@/components/ui/button";
+import { worthingtonOrderingUrl } from "@/data/locations";
 
 export const Route = createFileRoute("/menu")({
   head: () => ({
@@ -72,7 +74,7 @@ function MenuPage() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-4xl px-4 py-8 md:px-6 md:py-10">
+      <div className="mx-auto max-w-4xl px-4 pb-32 pt-8 md:px-6 md:py-10">
         {menu.filter(category => category.items.length > 0).map((category) => (
           <section key={category.id} id={category.id} className="scroll-mt-40 pb-14">
             <h2 className="text-2xl font-bold md:text-4xl">{category.heading ?? category.items[0]?.group ?? category.title}</h2>
@@ -177,6 +179,12 @@ function MenuPage() {
         </div>
       </div>
 
+      {!active ? <div className="fixed inset-x-0 bottom-16 z-40 flex h-16 items-center justify-center border-t border-border bg-cream/95 px-4 backdrop-blur md:hidden">
+        <Button asChild className="h-auto max-w-full rounded-xl px-6 py-3 font-semibold shadow-card">
+          <a href={worthingtonOrderingUrl} target="_blank" rel="noopener noreferrer" aria-label="Order at Worthington (opens Toast in a new tab)">Order at Worthington</a>
+        </Button>
+      </div> : null}
+
       <Dialog open={!!active} onOpenChange={(open) => !open && setActive(null)}>
         <DialogContent className="max-w-lg overflow-hidden rounded-2xl bg-card p-0">
           {active ? (
@@ -208,6 +216,10 @@ function MenuPage() {
                     {active.tags.join(" · ")}
                   </p>
                 ) : null}
+                <Button asChild className="mt-6 h-auto w-full rounded-xl px-6 py-3.5 font-semibold">
+                  <a href={worthingtonOrderingUrl} target="_blank" rel="noopener noreferrer" aria-label="Order at Worthington (opens Toast in a new tab)">Order at Worthington</a>
+                </Button>
+                <p className="mt-3 text-center text-xs text-muted-foreground">You’ll continue to Toast to select your item, customize it, and complete your order.</p>
               </div>
             </div>
           ) : null}
