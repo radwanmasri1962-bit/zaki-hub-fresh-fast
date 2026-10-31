@@ -139,6 +139,37 @@
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: 0s !important; animation-duration: 0s !important; } }
 @layer base { a:focus-visible { outline: 2px solid var(--ring); outline-offset: 4px; } }
 
+.menu-floating-order {
+  bottom: calc(5.25rem + env(safe-area-inset-bottom, 0px));
+  left: 50%;
+  width: min(15rem, calc(100% - 4rem));
+  height: 3rem;
+  transform: translateX(-50%);
+}
+/* The mobile shortcut sits in a quiet dock, not over readable dish text. */
+@media (max-width: 767px) {
+  .menu-floating-order > div[data-lifted="false"]::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: -0.75rem;
+    bottom: calc(-2.25rem - env(safe-area-inset-bottom, 0px));
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
+    background: var(--cream);
+    pointer-events: auto;
+  }
+}
+@media (min-width: 768px) {
+  .menu-floating-order { bottom: 1.5rem; right: 1.5rem; left: auto; width: auto; transform: none; }
+}
+
+/* Keep focused or linked dishes clear of the floating shortcut and existing mobile bar. */
+@media (max-width: 767px) {
+  article[id^="dish-"] { scroll-margin-bottom: calc(9.5rem + env(safe-area-inset-bottom, 0px)); }
+}
+
 /* A stable stage keeps the whole fan inside the viewport without moving the heading. */
 .featured-stack { position: relative; width: min(100%, 1160px); padding-block: 28px; touch-action: pan-y; }
 .featured-stack::before { content: ""; display: block; width: min(76%, 460px); margin-inline: auto; aspect-ratio: 1; }

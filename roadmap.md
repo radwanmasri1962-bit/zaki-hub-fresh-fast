@@ -1,4 +1,5 @@
 # Stage one update
+- [x] Add Menu-only floating Order Online pill linking to /order; verified at 1280, 629 and 390 pixels, popup hiding/restoration, keyboard location selection, footer clearance and absence on all other pages; 60 tests passed, not published
 - [x] Route general/menu-popup ordering through /order and add distinct Budd Dairy Toast link; verified all 38 popups and nine pages desktop/mobile, plus published badge absence desktop/tablet/mobile without publishing (Toast verification screens prevent checking its menus)
 - [x] Add Worthington-only Toast links on /order, all 38 existing menu popups and mobile menu shortcut; verified desktop/mobile without publishing (Toast opens in a new tab but its verification screen prevents inspecting the ordering menu)
 - [x] Link the footer TikTok icon to the owner-supplied TikTok address; verify desktop presentation

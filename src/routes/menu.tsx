@@ -6,6 +6,7 @@ import menuHero from "@/assets/menu-hero.png.asset.json";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { menuItemAnchor } from "@/lib/menu-anchors";
 import { Button } from "@/components/ui/button";
+import { FloatingMenuOrder } from "@/components/site/FloatingMenuOrder";
 
 export const Route = createFileRoute("/menu")({
   head: () => ({
@@ -177,11 +178,7 @@ function MenuPage() {
         </div>
       </div>
 
-      {!active ? <div className="fixed inset-x-0 bottom-16 z-40 flex h-16 items-center justify-center border-t border-border bg-cream/95 px-4 backdrop-blur md:hidden">
-        <Button asChild className="h-auto max-w-full rounded-xl px-6 py-3 font-semibold shadow-card">
-          <Link to="/order">Order Online</Link>
-        </Button>
-      </div> : null}
+      <FloatingMenuOrder popupOpen={!!active} />
 
       <Dialog open={!!active} onOpenChange={(open) => !open && setActive(null)}>
         <DialogContent className="max-w-lg overflow-hidden rounded-2xl bg-card p-0">
