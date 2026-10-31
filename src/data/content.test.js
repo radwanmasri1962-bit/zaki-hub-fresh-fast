@@ -8,8 +8,12 @@ test("Worthington ordering uses the owner-confirmed public Toast URL", () => {
   expect(locationOrderingUrl("worthington")).toBe("https://order.toasttab.com/online/zakis-grill");
 });
 
-test("Budd Dairy does not offer Worthington ordering", () => {
-  expect(locationOrderingUrl("budd-dairy")).toBeNull();
+test("Budd Dairy ordering uses its own owner-confirmed Toast URL", () => {
+  expect(locationOrderingUrl("budd-dairy")).toBe("https://order.toasttab.com/online/budd-dairy-food-hall-zaki-grill");
+  expect(locationOrderingUrl("budd-dairy")).not.toBe(worthingtonOrderingUrl);
+});
+
+test("Unknown locations have no ordering destination", () => {
   expect(locationOrderingUrl("unknown")).toBeNull();
 });
 

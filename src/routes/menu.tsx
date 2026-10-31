@@ -4,10 +4,8 @@ import { Expand } from "lucide-react";
 import { menu, type MenuItem } from "@/data/menu";
 import menuHero from "@/assets/menu-hero.png.asset.json";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { OrderComingSoon } from "@/components/site/OrderComingSoon";
 import { menuItemAnchor } from "@/lib/menu-anchors";
 import { Button } from "@/components/ui/button";
-import { worthingtonOrderingUrl } from "@/data/locations";
 
 export const Route = createFileRoute("/menu")({
   head: () => ({
@@ -165,10 +163,10 @@ function MenuPage() {
         <div className="rounded-2xl bg-primary p-8 text-center text-primary-foreground">
           <h2 className="text-2xl font-bold md:text-3xl">Ready to eat?</h2>
           <p className="mt-2 text-primary-foreground/85">
-            Online ordering is coming soon. Explore our locations and find Zaki near you.
+            Choose your Zaki location to order online.
           </p>
           <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
-            <OrderComingSoon className="rounded-xl bg-cream px-6 py-4 text-sm font-semibold uppercase tracking-wide text-foreground hover:bg-cream/90" />
+            <Button asChild className="h-auto rounded-xl bg-cream px-6 py-4 text-sm font-semibold uppercase tracking-wide text-foreground hover:bg-cream/90"><Link to="/order">Order Online</Link></Button>
             <Link
               to="/locations"
               className="rounded-xl border border-cream/40 px-6 py-4 text-sm font-semibold uppercase tracking-wide hover:bg-cream/10"
@@ -181,7 +179,7 @@ function MenuPage() {
 
       {!active ? <div className="fixed inset-x-0 bottom-16 z-40 flex h-16 items-center justify-center border-t border-border bg-cream/95 px-4 backdrop-blur md:hidden">
         <Button asChild className="h-auto max-w-full rounded-xl px-6 py-3 font-semibold shadow-card">
-          <a href={worthingtonOrderingUrl} target="_blank" rel="noopener noreferrer" aria-label="Order at Worthington (opens Toast in a new tab)">Order at Worthington</a>
+          <Link to="/order">Order Online</Link>
         </Button>
       </div> : null}
 
@@ -217,9 +215,9 @@ function MenuPage() {
                   </p>
                 ) : null}
                 <Button asChild className="mt-6 h-auto w-full rounded-xl px-6 py-3.5 font-semibold">
-                  <a href={worthingtonOrderingUrl} target="_blank" rel="noopener noreferrer" aria-label="Order at Worthington (opens Toast in a new tab)">Order at Worthington</a>
+                  <Link to="/order" onClick={() => setActive(null)}>Order Online</Link>
                 </Button>
-                <p className="mt-3 text-center text-xs text-muted-foreground">You’ll continue to Toast to select your item, customize it, and complete your order.</p>
+                <p className="mt-3 text-center text-xs text-muted-foreground">Choose your location, then continue to Toast to select your item, customize it, and complete your order.</p>
               </div>
             </div>
           ) : null}

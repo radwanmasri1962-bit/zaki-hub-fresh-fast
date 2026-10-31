@@ -15,5 +15,5 @@
 - Keep showcase rotation eligibility and cyclic indexing in a browser-safe helper with focused tests; the showcase owns visibility, focus and motion-preference tracking so timers never run unattended.
 - Generate menu item anchors through the shared menu-anchors helper and apply sticky-navigation scroll offsets to item targets so homepage featured links remain stable.
 - Keep location addresses and confirmed food-service hours in src/data/locations.ts and render shared LocationCards on home and locations pages to avoid inconsistent business details.
-- Keep the public Worthington ordering destination and location eligibility in src/data/locations.ts; reuse them for external ordering links without transferring item or cart data, so Budd Dairy never shares Worthington ordering.
+- Keep public location-specific ordering destinations in src/data/locations.ts; only location selection cards use external ordering links, while general and menu-popup ordering links use /order without transferring item or cart data, so destinations never mix.
 - The full workbook-driven menu remains pending until the supplied workbook is available; publish only the six dishes explicitly confirmed in the brief rather than importing outdated website data.

@@ -1,4 +1,5 @@
 # Stage one update
+- [x] Route general/menu-popup ordering through /order and add distinct Budd Dairy Toast link; verified all 38 popups and nine pages desktop/mobile, plus published badge absence desktop/tablet/mobile without publishing (Toast verification screens prevent checking its menus)
 - [x] Add Worthington-only Toast links on /order, all 38 existing menu popups and mobile menu shortcut; verified desktop/mobile without publishing (Toast opens in a new tab but its verification screen prevents inspecting the ordering menu)
 - [x] Link the footer TikTok icon to the owner-supplied TikTok address; verify desktop presentation
 - [x] Refine homepage poster fan, four-second rotation, pause behavior and card destinations; verify desktop/mobile
