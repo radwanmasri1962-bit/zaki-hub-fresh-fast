@@ -146,13 +146,24 @@
   height: 3rem;
   transform: translateX(-50%);
 }
+/* The mobile shortcut sits in a quiet dock, not over readable dish text. */
+@media (max-width: 767px) {
+  .menu-floating-order:has(a)::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: -0.75rem calc((15rem - 100vw) / 2) calc(-2.25rem - env(safe-area-inset-bottom, 0px));
+    background: var(--cream);
+    pointer-events: auto;
+  }
+}
 @media (min-width: 768px) {
   .menu-floating-order { bottom: 1.5rem; right: 1.5rem; left: auto; width: auto; transform: none; }
 }
 
 /* Keep focused or linked dishes clear of the floating shortcut and existing mobile bar. */
 @media (max-width: 767px) {
-  #dish-zaki-chicken-bowl, article[id^="dish-"] { scroll-margin-bottom: calc(9.5rem + env(safe-area-inset-bottom, 0px)); }
+  article[id^="dish-"] { scroll-margin-bottom: calc(9.5rem + env(safe-area-inset-bottom, 0px)); }
 }
 
 /* A stable stage keeps the whole fan inside the viewport without moving the heading. */
