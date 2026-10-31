@@ -68,9 +68,10 @@ export const mapsUrl = (query: string) =>
   `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
 
 export const worthingtonOrderingUrl = "https://order.toasttab.com/online/zakis-grill";
+export const buddDairyOrderingUrl = "https://order.toasttab.com/online/budd-dairy-food-hall-zaki-grill";
 
 export const locationOrderingUrl = (locationId: string) =>
-  locationId === "worthington" ? worthingtonOrderingUrl : null;
+  locationId === "worthington" ? worthingtonOrderingUrl : locationId === "budd-dairy" ? buddDairyOrderingUrl : null;
 
 export const buddDairyHours = [
   ["Monday", "Closed"], ["Tuesday", "4–9 p.m."], ["Wednesday", "4–9 p.m."],
