@@ -67,6 +67,11 @@ export const contact = {
 export const mapsUrl = (query: string) =>
   `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
 
+export const worthingtonOrderingUrl = "https://order.toasttab.com/online/zakis-grill";
+
+export const locationOrderingUrl = (locationId: string) =>
+  locationId === "worthington" ? worthingtonOrderingUrl : null;
+
 export const buddDairyHours = [
   ["Monday", "Closed"], ["Tuesday", "4–9 p.m."], ["Wednesday", "4–9 p.m."],
   ["Thursday", "11 a.m.–9 p.m."], ["Friday", "11 a.m.–11 p.m."],

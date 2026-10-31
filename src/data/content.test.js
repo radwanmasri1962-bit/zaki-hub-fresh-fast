@@ -1,7 +1,17 @@
 import { describe, expect, test } from "bun:test";
 import { signatureItems, menu, featuredBowls } from "./menu";
 import { menuItemAnchor } from "../lib/menu-anchors";
-import { locations, buddDairyHours, worthingtonHours, contact } from "./locations";
+import { locations, buddDairyHours, worthingtonHours, contact, locationOrderingUrl, worthingtonOrderingUrl } from "./locations";
+
+test("Worthington ordering uses the owner-confirmed public Toast URL", () => {
+  expect(worthingtonOrderingUrl).toBe("https://order.toasttab.com/online/zakis-grill");
+  expect(locationOrderingUrl("worthington")).toBe("https://order.toasttab.com/online/zakis-grill");
+});
+
+test("Budd Dairy does not offer Worthington ordering", () => {
+  expect(locationOrderingUrl("budd-dairy")).toBeNull();
+  expect(locationOrderingUrl("unknown")).toBeNull();
+});
 
 describe("Confirmed stage-one content", () => {
   for (const [name, price] of [
