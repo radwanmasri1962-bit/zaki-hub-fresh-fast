@@ -38,7 +38,7 @@ export function FloatingMenuOrder({ popupOpen }: { popupOpen: boolean }) {
   return (
     <div ref={anchor} className="menu-floating-order pointer-events-none fixed z-40">
       {canShowFloatingOrder(popupOpen, anotherModalOpen) ? (
-        <div style={{ transform: `translateY(-${lift}px)` }}>
+        <div data-lifted={lift > 0} style={{ transform: `translateY(-${lift}px)` }}>
           <Button asChild className="pointer-events-auto h-12 w-full rounded-full px-7 font-semibold shadow-lift active:bg-primary/80 focus-visible:ring-2 focus-visible:ring-offset-2 md:w-auto">
             <Link to={FLOATING_ORDER_DESTINATION} aria-label="Choose a Zaki location to order online.">Order Online</Link>
           </Button>

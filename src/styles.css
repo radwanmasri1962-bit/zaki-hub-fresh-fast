@@ -148,7 +148,7 @@
 }
 /* The mobile shortcut sits in a quiet dock, not over readable dish text. */
 @media (max-width: 767px) {
-  .menu-floating-order > div::before {
+  .menu-floating-order > div[data-lifted="false"]::before {
     content: "";
     position: absolute;
     z-index: -1;
