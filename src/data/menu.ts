@@ -74,7 +74,7 @@ export const menu: MenuCategory[] = [
       { label: "Standard", price: "$17.00", description: "Falafel made with ground chickpeas, parsley, green onion, and cumin, served with basmati rice, our house side salad, and tzatziki." },
     ], image: falafelBowl.url, imageAlt: "Zaki falafel bowl with rice, salad and sauce" },
     { name: "Hummus Bowl", group: "Zaki Bowls", variants: [
-      { label: "Standard", price: "$17.00", description: "Creamy hummus finished with a decorative swirl and flavorful garnishes, paired with our house side salad, your choice of side sauce, and four toasted pita triangles." },
+      { label: "Standard", price: "$20.00", description: "Creamy hummus finished with a decorative swirl and flavorful garnishes, paired with our house side salad, your choice of side sauce, and four toasted pita triangles." },
     ], image: hummusBowl.url, imageAlt: "Hummus bowl with house side salad and toasted pita triangles" },
     { name: "Salmon Bowl", group: "Signature Bowls", variants: [
       { label: "Standard", price: "$24.00", description: "Salmon seasoned with our house Mediterranean spice blend, served with basmati rice and our house side salad." },

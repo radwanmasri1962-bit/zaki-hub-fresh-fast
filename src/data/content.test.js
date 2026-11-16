@@ -66,7 +66,7 @@ describe("Confirmed stage-one content", () => {
     const items = menu.flatMap(c => c.items);
     const price = (n, l) => items.find(i => i.name === n).variants.find(v => v.label === l).price;
     expect(price("Zaki Chicken Bowl", "Standard")).toBe("$17.00");
-    expect(price("Hummus Bowl", "Standard")).toBe("$17.00");
+    expect(price("Hummus Bowl", "Standard")).toBe("$20.00");
     expect(price("Lamb Chops Bowl", "3 pieces")).toBe("$30.00");
     expect(price("Greek Salad", "Standard")).toBe("$12.00");
     expect(items.find(i => i.name === "Greek Salad").variants).toHaveLength(1);
@@ -96,7 +96,7 @@ describe("Confirmed stage-one content", () => {
   test("Bowl prices use the confirmed Kofta price while others are preserved", () => {
     const bowls = menu.find(c => c.id === "bowls").items;
     expect(bowls.map(i => i.variants?.[0]?.price ?? i.price ?? null)).toEqual([
-      "$17.00", "$17.00", "$17.00", "$17.00", "$24.00", "$24.00", "$24.00", "$30.00", "$26.00",
+      "$17.00", "$17.00", "$17.00", "$20.00", "$24.00", "$24.00", "$24.00", "$30.00", "$26.00",
     ]);
   });
   test("French Fry Bowl is removed while both fries sides remain", () => {
