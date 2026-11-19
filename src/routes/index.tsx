@@ -16,7 +16,8 @@ function Home() { return <>
  <section className="cinematic-hero relative isolate overflow-hidden bg-hero-shade text-cream">
   <img src={hero.url} alt="Zaki chicken rice bowl in the foreground with a pita wrap, Zaki cup, fries and baklava" className="absolute inset-0 -z-20 h-full w-full object-cover" loading="eager" fetchPriority="high" />
   <div className="hero-scrim absolute inset-0 -z-10" />
-  <div className="mx-auto flex h-full max-w-6xl items-center px-4 pt-20 md:px-6"><div className="max-w-[420px] lg:max-w-[490px] self-start pt-12 md:self-auto md:pt-0"><YelpRecognition /><h1 className="text-5xl font-bold leading-[1.08] md:text-7xl">Fresh.<br />Fast.<br /><span className="lg:whitespace-nowrap">Always Zaki.</span></h1><p className="mt-6 max-w-sm text-base leading-relaxed text-cream/95 md:text-lg">Fresh halal Mediterranean flavors, served at Budd Dairy, in Worthington, and from our food trucks across Central Ohio.</p></div></div>
+  <div className="mx-auto flex h-full max-w-6xl items-center px-4 pt-20 md:px-6"><div className="max-w-[420px] lg:max-w-[490px] self-start pt-12 md:self-auto md:pt-0"><h1 className="text-5xl font-bold leading-[1.08] md:text-7xl">Fresh.<br />Fast.<br /><span className="lg:whitespace-nowrap">Always Zaki.</span></h1><p className="mt-6 max-w-sm text-base leading-relaxed text-cream/95 md:text-lg">Fresh halal Mediterranean flavors, served at Budd Dairy, in Worthington, and from our food trucks across Central Ohio.</p></div></div>
+  <YelpRecognition />
  </section>
   <FeaturedBowls />
  <section className="section-pad bg-cream"><div className="mx-auto max-w-6xl px-4 md:px-6"><h2 className="text-3xl font-bold md:text-5xl">Our Locations</h2><div className="mt-10"><LocationCards /></div><Link to="/locations" className="mt-6 inline-flex items-center gap-2 font-semibold text-primary">Location details & hours <ArrowRight className="h-4 w-4" /></Link></div></section>

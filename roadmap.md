@@ -1,4 +1,5 @@
 # Stage one update
+- [x] Replace cream Yelp pill with pixel-preserved transparent certificate emblem at hero bottom-right and restore headline spacing; verified 95px desktop/65px mobile, 24px insets, no text overlap and accessible lightbox at 1280, 693 and 390 pixels; 60 tests passed, preview only
 - [x] Replace footer certificate section with compact authentic-logo hero badge; verified at 1280, 693 and 390 pixels, alignment, original certificate lightbox, close, Escape and focus return; 60 tests passed, preview only
 - [x] Add original Yelp certificate above the homepage footer; verified at 1280, 693 and 390 pixels with enlargement, close, Escape and focus return; no existing Yelp link so button omitted; 60 tests passed, not published
 - [x] Add Menu-only floating Order Online pill linking to /order; verified at 1280, 629 and 390 pixels, popup hiding/restoration, keyboard location selection, footer clearance and absence on all other pages; 60 tests passed, not published

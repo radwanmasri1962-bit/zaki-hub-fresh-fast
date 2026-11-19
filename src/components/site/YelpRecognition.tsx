@@ -1,5 +1,5 @@
 import certificate from "@/assets/zaki-yelp-certificate.png.asset.json";
-import yelpLogo from "@/assets/yelp-logo.svg.asset.json";
+import seal from "@/assets/yelp-recognition-seal.png.asset.json";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -18,18 +18,16 @@ export function YelpRecognition() {
             <Button
               variant="ghost"
               aria-label="Enlarge Zaki Mediterranean Grill Yelp recognition certificate"
-              className="mb-5 flex h-12 w-[248px] max-w-full justify-start gap-3 rounded-lg border border-cream/40 bg-cream/90 px-3 text-foreground shadow-card backdrop-blur-sm hover:bg-cream/95 focus-visible:ring-cream md:w-[268px]"
+              className="absolute bottom-6 right-6 h-auto w-[65px] rounded-none bg-transparent p-0 hover:bg-transparent focus-visible:ring-cream md:w-[95px]"
             >
               <img
-                src={yelpLogo.url}
-                alt="Yelp"
-                width={50}
-                height={21}
+                src={seal.url}
+                alt="2026 — People Love Us on Yelp"
+                width={352}
+                height={530}
                 decoding="async"
-                className="h-auto w-[50px] shrink-0 object-contain"
+                className="block h-auto w-full object-contain"
               />
-              <span className="text-left text-xs font-medium leading-4">People love us<br />on Yelp</span>
-              <span className="ml-auto border-l border-foreground/20 pl-3 text-xs font-semibold">2026</span>
             </Button>
           </DialogTrigger>
           <DialogContent className="w-[calc(100%-2rem)] max-w-5xl gap-3 rounded-lg p-4 pt-12 md:p-6 md:pt-12 [&>button]:grid [&>button]:h-8 [&>button]:w-8 [&>button]:place-items-center [&>button]:bg-cream [&>button]:text-foreground [&>button]:opacity-100">
