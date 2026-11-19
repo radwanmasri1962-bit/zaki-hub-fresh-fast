@@ -18,7 +18,7 @@ export function YelpRecognition() {
             <Button
               variant="ghost"
               aria-label="Enlarge Zaki Mediterranean Grill Yelp recognition certificate"
-              className="absolute bottom-6 right-6 h-auto w-[65px] rounded-none bg-transparent p-0 hover:bg-transparent focus-visible:ring-cream md:w-[95px]"
+              className="mb-5 block h-auto w-[75px] rounded-none bg-transparent p-0 hover:bg-transparent focus-visible:ring-cream md:w-[109px]"
             >
               <img
                 src={seal.url}
