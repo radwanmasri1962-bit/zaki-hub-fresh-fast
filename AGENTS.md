@@ -18,4 +18,4 @@
 - Keep public location-specific ordering destinations in src/data/locations.ts; only location selection cards use external ordering links, while general and menu-popup ordering links use /order without transferring item or cart data, so destinations never mix.
 - Mount floating ordering only in the Menu route; its dedicated component tracks modal visibility and footer clearance, and its browser-safe helper tests destination and visibility rules without changing shared navigation.
 - The full workbook-driven menu remains pending until the supplied workbook is available; publish only the six dishes explicitly confirmed in the brief rather than importing outdated website data.
-- Keep homepage certificate recognition in a dedicated component using the original CDN asset and shared dialog, so enlargement preserves the artwork and accessible focus behavior without changing other pages.
+- Keep homepage recognition as a hero badge in a dedicated component using an authentic CDN logo and original certificate with the shared dialog, so enlargement preserves the artwork and accessible focus behavior without changing other pages.
