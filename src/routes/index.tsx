@@ -4,6 +4,7 @@ import hero from "@/assets/cinematic-hero.jpg.asset.json";
 import { FeaturedBowls } from "@/components/site/FeaturedBowls";
 import { LocationCards } from "@/components/site/LocationCards";
 import { Button } from "@/components/ui/button";
+import { YelpRecognition } from "@/components/site/YelpRecognition";
 export const Route = createFileRoute("/")({ head: () => ({ meta: [
  { title: "Zaki Mediterranean Grill | Budd Dairy, Worthington & Food Trucks" },
  { name: "description", content: "Fresh halal Mediterranean flavors at Budd Dairy, in Worthington, and from Zaki food trucks across Central Ohio. Explore our favorites and locations." },
@@ -20,4 +21,5 @@ function Home() { return <>
   <FeaturedBowls />
  <section className="section-pad bg-cream"><div className="mx-auto max-w-6xl px-4 md:px-6"><h2 className="text-3xl font-bold md:text-5xl">Our Locations</h2><div className="mt-10"><LocationCards /></div><Link to="/locations" className="mt-6 inline-flex items-center gap-2 font-semibold text-primary">Location details & hours <ArrowRight className="h-4 w-4" /></Link></div></section>
  <section className="bg-deep py-14 text-deep-foreground"><div className="mx-auto flex max-w-6xl flex-col items-start gap-6 px-4 md:flex-row md:items-center md:justify-between md:px-6"><div className="flex items-start gap-4"><Star className="mt-1 h-6 w-6 shrink-0 text-gold" /><div><h2 className="text-2xl font-bold md:text-3xl">Halal Mediterranean Food</h2><p className="mt-2 max-w-xl text-deep-foreground/85">Local, independent and family-operated. “Zaki” means delicious in Arabic — and that's the standard for every bowl we serve.</p></div></div><Button asChild className="h-auto rounded-xl bg-cream px-6 py-4 font-semibold uppercase text-foreground hover:bg-cream/90"><Link to="/our-story">Our Story <ArrowRight /></Link></Button></div></section>
- </>; }
+  <YelpRecognition />
+  </>; }
